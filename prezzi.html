@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6TTVMQFNY6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6TTVMQFNY6');
+    </script>
+ 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelli di analisi RGandja | rgandja</title>
+    <meta name="description" content="Scegli il piano rgandja adatto alla tua azienda. Da startup a PMI fino a Enterprise. Inizia gratis con la demo.">
+ 
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .pricing-card {
+            background: var(--glass);
+            padding: 45px 35px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+        .featured-card {
+            border: 2px solid var(--accent-gold) !important;
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+            background: rgba(15, 23, 42, 0.95) !important;
+        }
+        .feature-list {
+            margin: 25px 0;
+            padding: 0;
+            list-style: none;
+            flex-grow: 1;
+        }
+        .feature-list li {
+            padding: 11px 0;
+            color: var(--text-muted);
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            font-size: 0.93rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .feature-list li::before {
+            content: "✦";
+            color: var(--accent-gold);
+            font-size: 0.7rem;
+            flex-shrink: 0;
+        }
+        .btn-cta {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        .btn-cta-outline {
+            border: 1px solid var(--accent-gold);
+            background: transparent;
+            color: var(--accent-gold);
+        }
+        .btn-cta-outline:hover { background: rgba(212,175,55,0.05); }
+        .btn-cta-gold {
+            background: var(--accent-gold);
+            color: #000;
+            border: none;
+        }
+        .btn-cta-gold:hover { filter: brightness(1.1); transform: translateY(-2px); }
+        .btn-cta-blue {
+            border: 1px solid #63b3ed;
+            background: transparent;
+            color: #63b3ed;
+        }
+        .badge-status {
+            border: 1px solid var(--accent-gold);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            display: inline-block;
+        }
+        .text-center { text-align: center; }
+        #cookie-banner {
+            position: fixed; bottom: 20px; left: 20px; right: 20px;
+            background: rgba(15, 23, 42, 0.95); border: 1px solid var(--accent-gold);
+            padding: 15px 25px; display: flex; justify-content: space-between;
+            align-items: center; z-index: 9999; border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body>
+ 
+    <div id="cookie-banner">
+        <p style="color: #fff; font-size: 0.85rem; margin: 0; max-width: 70%;">
+            Utilizziamo cookie tecnici per il funzionamento del sito. <a href="cookies.html" style="color:var(--accent-gold)">Cookie Policy</a>.
+        </p>
+        <div style="display: flex; gap: 10px;">
+            <button onclick="rejectCookies()" style="background:transparent; border:1px solid #fff; color:#fff; padding:8px 16px; border-radius:4px; cursor:pointer; font-size: 0.8rem;">Rifiuta</button>
+            <button onclick="acceptCookies()" style="background:var(--accent-gold); border:none; padding:8px 20px; border-radius:4px; font-weight:900; cursor:pointer; font-size: 0.8rem;">Acconsento</button>
+        </div>
+    </div>
+ 
+    <header class="header">
+        <div class="header-inner container">
+            <div class="header-brand">
+                <img src="logo.png" alt="Logo rgandja" class="brand-logo">
+                <h1 style="font-size: 1.2rem; font-weight: 900; letter-spacing: -0.5px;">rgandja</h1>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="funzionalita.html">Funzionalità</a>
+                <a href="metodo.html">Come Funziona</a>
+                <a href="prezzi.html" class="active-nav">Piani</a>
+                <a href="chi-siamo.html">Chi Siamo</a>
+                <a href="contatti.html">Contatti</a>
+            </nav>
+        </div>
+    </header>
+ 
+    <main>
+        <section class="hero-premium">
+            <div class="container text-center">
+                <span class="badge-status">I DIVERSI PIANI</span>
+                <h1 style="margin-top: 25px;">Scegli il piano<br><span style="color: var(--accent-gold);">giusto per la tua azienda.</span></h1>
+                <p class="hero-subtitle" style="max-width: 650px; margin: 25px auto;">
+                    Inizia gratis con la demo, poi passa al piano che si adatta alla dimensione del tuo business. 
+                    Nessun contratto annuale obbligatorio, nessuna sorpresa.
+                </p>
+            </div>
+        </section>
+ 
+        <section class="container section">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 30px; margin-top: 40px; align-items: start;">
+ 
+                <!-- STARTER -->
+                <div class="pricing-card" id="card-starter">
+                    <div>
+                        <p style="color: #63b3ed; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Starter</p>
+                        <h2 style="color: #fff; margin-bottom: 5px; letter-spacing: -1px; font-size: 1.8rem;">Piano Base</h2>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.5;">Ideale per piccole realtà che vogliono testare il sistema RGandja in versione dimostrativa.</p>
+                        <div style="padding: 20px; background: rgba(15,23,42,0.4); border-radius: 12px; border: 1px solid var(--border); margin-bottom: 5px;">
+                            <p style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Prezzo mensile</p>
+                            <p><em>Accesso dimostrativo gratuito</em></p>
+                        </div>
+                    </div>
+                    <ul class="feature-list">
+                        <li>Fino a 500 prodotti analizzati</li>
+                        <li>Import CSV/Excel illimitati</li>
+                        <li>Risk Score per ogni prodotto</li>
+                        <li>Dashboard a semafori</li>
+                        <li>Proiezioni a 30 giorni</li>
+                        <li>Secure Vault per i tuoi dati</li>
+                        <li>Supporto via email</li>
+                    </ul>
+                </div>
+ 
+                <!-- PMI - FEATURED -->
+                <div class="pricing-card featured-card" id="card-pmi">
+                    <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%);">
+                        <span style="background: var(--accent-gold); color: #000; padding: 5px 18px; border-radius: 20px; font-size: 0.7rem; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; white-space: nowrap;">PIÙ SCELTO</span>
+                    </div>
+                    <div>
+                        <p style="color: var(--accent-gold); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Professionale</p>
+                        <h2 style="color: #fff; margin-bottom: 5px; letter-spacing: -1px; font-size: 1.8rem;">Piano PMI</h2>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.5;">Per la media impresa con magazzino strutturato e più utenti coinvolti nella gestione.</p>
+                        <div style="padding: 20px; background: rgba(212,175,55,0.05); border-radius: 12px; border: 1px solid rgba(212,175,55,0.2); margin-bottom: 5px;">
+                            <p style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Prezzo mensile</p>
+                            <p><em>Accesso dimostrativo gratuito</em></p>
+                        </div>
+                    </div>
+                    <ul class="feature-list">
+                        <li>Prodotti illimitati</li>
+                        <li>Import CSV/Excel illimitati</li>
+                        <li>Risk Score avanzato con pesi personalizzabili</li>
+                        <li>Dashboard War Room in tempo reale</li>
+                        <li>Proiezioni a 30 e 90 giorni</li>
+                        <li>Piano d'azione prescrittivo automatico</li>
+                        <li>Fino a 3 utenti / postazioni</li>
+                        <li>Export report PDF</li>
+                        <li>Secure Vault + audit trail</li>
+                        <li>Supporto prioritario via email</li>
+                    </ul>
+                </div>
+ 
+                <!-- ENTERPRISE -->
+                <div class="pricing-card" id="card-enterprise">
+                    <div>
+                        <p style="color: #63b3ed; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Enterprise</p>
+                        <h2 style="color: #fff; margin-bottom: 5px; letter-spacing: -1px; font-size: 1.8rem;">Piano Custom</h2>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.5;">Per aziende con esigenze complesse, integrazioni API e team distribuiti.</p>
+                        <div style="padding: 20px; background: rgba(99,179,237,0.05); border-radius: 12px; border: 1px solid rgba(99,179,237,0.15); margin-bottom: 5px;">
+                            <p style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Pricing</p>
+                            <p><em>Accesso dimostrativo gratuito</em></p>
+                        </div>
+                    </div>
+                    <ul class="feature-list">
+                        <li>Tutto del piano PMI</li>
+                        <li>Utenti e postazioni illimitati</li>
+                        <li>Integrazione API REST con il tuo gestionale</li>
+                        <li>Whitelabel disponibile</li>
+                        <li>SLA garantito 99.9%</li>
+                        <li>Account manager tecnico dedicato</li>
+                        <li>Onboarding e formazione inclusi</li>
+                        <li>Infrastruttura dedicata (opzionale)</li>
+                    </ul>
+                </div>
+ 
+            </div>
+ 
+            <!-- NOTA TRASPARENTE -->
+            <div style="margin-top: 60px; text-align: center; padding: 35px; background: rgba(212,175,55,0.03); border: 1px solid rgba(212,175,55,0.1); border-radius: 16px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <p style="color: var(--accent-gold); font-size: 0.75rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;">
+                    💡 Questa sezione presenta una panoramica delle configurazioni RGandja disponibili
+                    per differenti contesti aziendali. Le informazioni hanno finalità esclusivamente
+                    descrittive e dimostrative. Le funzionalità complete del sistema sono accessibili
+                    tramite ambienti dedicati e non costituiscono offerta commerciale.
+                </p>
+            </div>
+        </section>
+ 
+        <!-- FAQ RAPIDE -->
+        <section class="section container" style="max-width: 850px;">
+            <h2 class="text-center" style="font-size: 2rem; letter-spacing: -1px; margin-bottom: 50px;">Domande frequenti</h2>
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div style="padding: 25px 30px; border: 1px solid var(--border); border-radius: 12px; background: rgba(15,23,42,0.4);">
+                    <h4 style="color: #fff; margin-bottom: 10px; font-size: 1rem;">Devo installare qualcosa?</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.7;">No. rgandja è una piattaforma web — funziona da browser, su qualsiasi dispositivo. Nessuna installazione, nessun aggiornamento manuale.</p>
+                </div>
+                <div style="padding: 25px 30px; border: 1px solid var(--border); border-radius: 12px; background: rgba(15,23,42,0.4);">
+                    <h4 style="color: #fff; margin-bottom: 10px; font-size: 1rem;">I miei dati sono al sicuro?</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.7;">Sì. Tutti i file caricati sono crittografati e isolati nel tuo Secure Vault personale. Piena conformità GDPR, hosting europeo, nessuna condivisione con terze parti.</p>
+                </div>
+                <div style="padding: 25px 30px; border: 1px solid var(--border); border-radius: 12px; background: rgba(15,23,42,0.4);">
+                    <h4 style="color: #fff; margin-bottom: 10px; font-size: 1rem;">Posso provare prima di pagare?</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.7;">Sì. La demo è gratuita e non richiede carta di credito. Carica un file reale e vedi subito i risultati sul tuo inventario.</p>
+                </div>
+                <div style="padding: 25px 30px; border: 1px solid var(--border); border-radius: 12px; background: rgba(15,23,42,0.4);">
+                    <h4 style="color: #fff; margin-bottom: 10px; font-size: 1rem;">Posso cambiare piano o disdire?</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.7;">Sì. Nessun contratto di lungo termine obbligatorio per i piani mensili. Puoi cambiare piano o cancellare in qualsiasi momento, senza penali.</p>
+                </div>
+            </div>
+        </section>
+ 
+        <!-- CTA -->
+        <section class="section container text-center" style="padding-bottom: 120px;">
+            <h2 style="font-size: 2.2rem; letter-spacing: -1px; margin-bottom: 20px;">Non sai quale piano fa per te?</h2>
+            <p style="font-size: 2.rem; letter-spacing: -1px; margin-bottom: 20px;">
+                Scrivici. In 15 minuti di chiamata capiamo insieme le tue esigenze e ti consigliamo il piano giusto — o ti diciamo se la demo gratuita è già sufficiente.
+            </p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="demo.html" class="btn btn-gold" style="padding: 20px 45px;">Prova Gratis</a>
+                <a href="contatti.html" class="btn" style="border: 1px solid var(--border); padding: 20px 45px;">Parlaci</a>
+            </div>
+        </section>
+    </main>
+ 
+    <footer class="footer container text-center" style="padding: 60px 0;">
+        <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
+        <p style="color: var(--text-main); font-weight: 700; letter-spacing: 2px; font-size: 1rem;">© 2026 <strong>RGANDJA</strong> · by RGandja Enterprise</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">International Operations · Athens, Greece (EU)</p>
+        <div style="margin-top: 30px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+            <a href="privacy.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Privacy Policy</a>
+            <a href="cookies.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Cookie Policy</a>
+            <a href="imprint.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Note Legali</a>
+        </div>
+    </footer>
+ 
+    <script>
+        function acceptCookies() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            localStorage.setItem('cookieConsent', 'true');
+        }
+        function rejectCookies() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            localStorage.setItem('cookieConsent', 'false');
+        }
+        if (localStorage.getItem('cookieConsent')) {
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+ 
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tipo = urlParams.get('piano');
+            if(tipo) {
+                document.querySelectorAll('.pricing-card').forEach(c => c.classList.remove('featured-card'));
+                const target = document.getElementById('card-' + tipo.toLowerCase());
+                if(target) {
+                    target.classList.add('featured-card');
+                    setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'center' }), 400);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+ 

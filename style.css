@@ -1,0 +1,255 @@
+/* ============================================================
+    RGANDJA NEURAL ENGINE - OFFICIAL DESIGN SYSTEM 2026
+    Architect: Andrew Di Censo & AI Master Integration
+    Version: 6.0.0 - Premium Deployment (Athens HQ)
+   ============================================================ */
+
+:root {
+    /* Palette Core - Profondità Aumentata */
+    --primary: #0f172a; 
+    --accent: #10b981;         /* Tech Green */
+    --accent-gold: #d4af37;    /* RGandja Premium Gold */
+    --accent-gold-dark: #b8860b;
+    --accent-gold-light: #f2d472;
+    
+    /* Superfici e Testi - Precisione Master */
+    --bg-app: #020617; 
+    --text-main: #f8fafc;
+    --text-muted: #64748b;
+    --glass: rgba(15, 23, 42, 0.65);
+    --border: rgba(255, 255, 255, 0.06);
+    --gold-glow: rgba(212, 175, 55, 0.15);
+    
+    /* Elevazione & Moto - Curve Professionali */
+    --shadow-premium: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+    --transition-smooth: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* 1. RESET & FONDAMENTALI */
+* { margin: 0; padding: 0; box-sizing: border-box; outline-color: var(--accent-gold); }
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: var(--bg-app);
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-app);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* 2. HEADER & NAVIGATION - Look "Command Center" */
+.header {
+    background: rgba(2, 6, 23, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 85px;
+    display: flex;
+    transition: var(--transition-smooth);
+}
+
+.header-inner {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-brand { display: flex; align-items: center; gap: 15px; }
+.brand-logo { 
+    height: 45px; 
+    filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.2));
+    transition: var(--transition-smooth);
+}
+.header-brand:hover .brand-logo { transform: rotate(-5deg) scale(1.05); }
+
+.main-nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-left: 35px;
+    font-weight: 500;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; left: 0; width: 0; height: 1px;
+    background: var(--accent-gold);
+    transition: var(--transition-smooth);
+}
+
+.main-nav a:hover::after, .main-nav a.active-nav::after { width: 100%; }
+.main-nav a:hover, .main-nav a.active-nav { color: #fff; }
+
+/* 3. HERO SECTION - Il "Wow" iniziale */
+.hero-premium {
+    padding: 180px 0 120px;
+    background: radial-gradient(circle at 50% -20%, rgba(212, 175, 55, 0.15) 0%, var(--bg-app) 70%);
+    position: relative;
+}
+
+.hero-premium h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    margin-bottom: 35px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -3px;
+}
+
+.hero-subtitle {
+    color: var(--text-muted);
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin: 0 auto;
+    font-weight: 400;
+}
+
+/* 4. CARD & GRID SYSTEM */
+.container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+
+.card-expert {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    padding: 50px 40px;
+    border-radius: 16px;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-expert::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+    transform: translateX(-100%);
+    transition: 0.6s ease;
+}
+
+.card-expert:hover {
+    border-color: rgba(212, 175, 55, 0.4);
+    transform: translateY(-12px) scale(1.01);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.8), 0 0 20px var(--gold-glow);
+}
+
+.card-expert:hover::before { transform: translateX(100%); }
+
+/* 5. INPUT & FORM - Industrial Precision */
+input, select, textarea {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid var(--border);
+    color: #fff;
+    padding: 18px;
+    border-radius: 8px;
+    width: 100%;
+    font-family: inherit;
+    transition: var(--transition-smooth);
+}
+
+input:focus, select:focus, textarea:focus { 
+    border-color: var(--accent-gold); 
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+    background: #0f172a;
+}
+
+/* 6. BOTTONI - Premium CTA */
+.btn {
+    padding: 22px 48px;
+    border-radius: 6px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 0.75rem;
+    border: none;
+}
+
+.btn-gold {
+    background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
+    color: #000;
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+}
+
+.btn-gold:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.4);
+    filter: brightness(1.1);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: #fff;
+    backdrop-filter: blur(10px);
+}
+
+.btn-outline:hover {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+    background: rgba(212, 175, 55, 0.05);
+}
+
+/* 7. FOOTER */
+.footer {
+    padding: 120px 0 60px;
+    background: #010307;
+    border-top: 1px solid var(--border);
+}
+
+.intro-piani h2 {
+    background: linear-gradient(90deg, rgba(212,175,55,0.15) 0%, rgba(212,175,55,0) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 8. ANIMAZIONI UTILITY */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in { animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+
+/* 9. RESPONSIVE MASTER */
+@media (max-width: 1024px) {
+    .container { padding: 0 30px; }
+    .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .main-nav { display: none; }
+    .hero-premium { padding: 120px 0 80px; }
+    .btn { width: 100%; }
+}
