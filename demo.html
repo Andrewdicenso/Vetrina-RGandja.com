@@ -375,4 +375,27 @@ p>
         }
     </script>
 </body>
+</html>         return;
+            }
+
+            const bottone = document.querySelector('.paywall-overlay .btn-execute');
+            bottone.innerText = "INVIO DOCUMENTAZIONE...";
+            bottone.disabled = true;
+
+            fetch('https://rgandja-api.onrender.com/email/invia-report', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    email: emailUtente,
+                    pdf_link: "https://rgandja.com/reports/RGD-ALPHA-GEN-2026.pdf" 
+                })
+            })
+            .then(response => {
+                const scelto = document.getElementById('algoritmo').value;
+                // Redirect alla pagina piani con parametro pulito
+                window.location.href = `/piani?tipo=${scelto}`;
+            });
+        }
+    </script>
+</body>
 </html>
