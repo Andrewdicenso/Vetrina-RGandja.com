@@ -26,6 +26,7 @@
             display: flex;
             flex-direction: column;
             position: relative;
+            height: 100%;
         }
         .pricing-card:hover {
             transform: translateY(-8px);
@@ -96,21 +97,12 @@
         }
         .text-center { text-align: center; }
         
-        /* Nuove sezioni */
         .calculator-box {
-            background: linear-gradient(135deg, rgba(212,175,55,0.1) 0%, rgba(15,23,42,0.8) 100%);
-            border: 1px solid rgba(212,175,55,0.3);
+            background: linear-gradient(135deg, rgba(212,175,55,0.05) 0%, rgba(15,23,42,0.8) 100%);
+            border: 1px solid rgba(212,175,55,0.2);
             border-radius: 20px;
-            padding: 40px;
-            margin: 60px 0;
-        }
-        .case-study {
-            border-left: 3px solid var(--accent-gold);
-            padding-left: 30px;
-            margin: 40px 0;
-            background: rgba(255,255,255,0.02);
-            padding: 30px;
-            border-radius: 0 20px 20px 0;
+            padding: 50px;
+            margin: 80px 0;
         }
         #cookie-banner {
             position: fixed; bottom: 20px; left: 20px; right: 20px;
@@ -123,14 +115,9 @@
 </head>
 <body>
  
-    <div id="cookie-banner">
-        <p style="color: #fff; font-size: 0.85rem; margin: 0; max-width: 70%;">
-            Utilizziamo cookie tecnici per il funzionamento del sito. <a href="cookies.html" style="color:var(--accent-gold)">Cookie Policy</a>.
-        </p>
-        <div style="display: flex; gap: 10px;">
-            <button onclick="document.getElementById('cookie-banner').style.display='none'" style="background:transparent; border:1px solid #fff; color:#fff; padding:8px 16px; border-radius:4px; cursor:pointer; font-size: 0.8rem;">Rifiuta</button>
-            <button onclick="document.getElementById('cookie-banner').style.display='none'" style="background:var(--accent-gold); border:none; padding:8px 20px; border-radius:4px; font-weight:900; cursor:pointer; font-size: 0.8rem;">Acconsento</button>
-        </div>
+    <div id="cookie-banner" style="display: none;">
+        <p style="color: #fff; font-size: 0.85rem; margin: 0;">Utilizziamo cookie tecnici. <a href="cookies.html" style="color:var(--accent-gold)">Cookie Policy</a>.</p>
+        <button onclick="document.getElementById('cookie-banner').style.display='none'" style="background:var(--accent-gold); border:none; padding:8px 20px; border-radius:4px; font-weight:900; cursor:pointer;">ACCONSENTO</button>
     </div>
  
     <header class="header">
@@ -150,7 +137,7 @@
         </div>
     </header>
  
-        <main>
+    <main>
         <section class="hero-premium">
             <div class="container text-center">
                 <span class="badge-status">INVESTIMENTO E VALORE</span>
@@ -163,16 +150,14 @@
         </section>
  
         <section class="container section">
-            <!-- PRICING GRID -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; align-items: start;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 30px; margin-top: 40px; align-items: start;">
  
                 <!-- STARTER -->
                 <div class="pricing-card">
                     <div>
                         <p style="color: #63b3ed; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Starter</p>
                         <h2 style="color: #fff; margin-bottom: 5px; letter-spacing: -1px; font-size: 1.8rem;">Piano Base</h2>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.5;">Per piccole realtà che vogliono testare il sistema.</p>
-                        <div style="padding: 20px; background: rgba(15,23,42,0.4); border-radius: 12px; border: 1px solid var(--border);">
+                        <div style="padding: 20px; background: rgba(15,23,42,0.4); border-radius: 12px; border: 1px solid var(--border); margin-top: 15px;">
                             <p style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Valore stimato</p>
                             <p style="color: #fff; font-weight: 800; font-size: 1.2rem;">€49<span style="font-size: 0.8rem; font-weight: 400;">/mese</span></p>
                             <p style="color: var(--accent-gold); font-size: 0.8rem; margin-top: 5px; font-weight: 700;">ORA IN DEMO GRATUITA</p>
@@ -184,7 +169,7 @@
                         <li>Proiezioni 30 giorni</li>
                         <li>Dati esportabili sempre</li>
                     </ul>
-                    <a href="contatti.html" class="btn-cta btn-cta-outline">Prova Gratis</a>
+                    <a href="demo.html" class="btn-cta btn-cta-outline">Prova Gratis</a>
                 </div>
  
                 <!-- PMI - FEATURED -->
@@ -195,8 +180,7 @@
                     <div>
                         <p style="color: var(--accent-gold); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Professionale</p>
                         <h2 style="color: #fff; margin-bottom: 5px; letter-spacing: -1px; font-size: 1.8rem;">Piano PMI</h2>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.5;">Gestione strutturata e decisioni basate sull'IA.</p>
-                        <div style="padding: 20px; background: rgba(212,175,55,0.1); border-radius: 12px; border: 1px solid rgba(212,175,55,0.2);">
+                        <div style="padding: 20px; background: rgba(212,175,55,0.1); border-radius: 12px; border: 1px solid rgba(212,175,55,0.2); margin-top: 15px;">
                             <p style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Valore stimato</p>
                             <p style="color: #fff; font-weight: 800; font-size: 1.2rem;">€149<span style="font-size: 0.8rem; font-weight: 400;">/mese</span></p>
                             <p style="color: var(--accent-gold); font-size: 0.8rem; margin-top: 5px; font-weight: 700;">ORA IN DEMO GRATUITA</p>
@@ -208,7 +192,7 @@
                         <li>Proiezioni 30/90 giorni</li>
                         <li>Piano d'azione prescrittivo</li>
                     </ul>
-                    <a href="contatti.html" class="btn-cta btn-cta-gold">Attiva Demo PMI</a>
+                    <a href="demo.html" class="btn-cta btn-cta-gold" style="color:#000;">Accedi alla Demo PMI</a>
                 </div>
 
                 <!-- ENTERPRISE -->
@@ -216,8 +200,7 @@
                     <div>
                         <p style="color: #a78bfa; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Custom</p>
                         <h2 style="color: #fff; margin-bottom: 5px; letter-spacing: -1px; font-size: 1.8rem;">Enterprise</h2>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.5;">Per grandi gruppi industriali e integrazioni ERP.</p>
-                        <div style="padding: 20px; background: rgba(167,139,250,0.05); border-radius: 12px; border: 1px solid rgba(167,139,250,0.2);">
+                        <div style="padding: 20px; background: rgba(167,139,250,0.05); border-radius: 12px; border: 1px solid rgba(167,139,250,0.2); margin-top: 15px;">
                             <p style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Prezzo</p>
                             <p style="color: #fff; font-weight: 800; font-size: 1.2rem;">Su Misura</p>
                             <p style="color: #a78bfa; font-size: 0.8rem; margin-top: 5px; font-weight: 700;">SOLUZIONI PERSONALIZZATE</p>
@@ -233,33 +216,33 @@
                 </div>
             </div>
 
-            <!-- CALCULATOR SECTION (QUELLA CHE TI PIACEVA) -->
-            <div style="background: linear-gradient(135deg, rgba(212,175,55,0.05) 0%, rgba(15,23,42,0.8) 100%); border: 1px solid rgba(212,175,55,0.2); border-radius: 20px; padding: 50px; margin: 80px 0;">
+            <!-- CALCULATOR SECTION -->
+            <div class="calculator-box">
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; align-items: center;">
                     <div>
                         <h2 style="color: #fff; font-size: 2rem; margin-bottom: 20px; letter-spacing: -1px;">Quanto stai perdendo oggi?</h2>
                         <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 30px;">
-                            Un magazzino non ottimizzato genera costi occulti tra il 12% e il 25% del valore totale ogni anno (scarti, spazio occupato, capitale bloccato).
+                            Un magazzino non ottimizzato genera costi occulti tra il 12% e il 25% del valore totale ogni anno.
                         </p>
-                        <div style="border-left: 3px solid var(--accent-gold); padding-left: 25px; background: rgba(255,255,255,0.03); padding: 25px; border-radius: 0 15px 15px 0;">
+                        <div style="border-left: 3px solid var(--accent-gold); padding: 25px; background: rgba(255,255,255,0.03); border-radius: 0 15px 15px 0;">
                             <p style="color: var(--accent-gold); font-weight: 800; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">CASO STUDIO REALE</p>
                             <p style="color: #fff; font-style: italic; font-size: 0.95rem; line-height: 1.6;">
-                                "Un nostro cliente nel settore alimentare, con un magazzino di €250k, ha ridotto lo scarto da scadenza del 22% nei primi 4 mesi di utilizzo, recuperando oltre €18.000."
+                                "Settore alimentare: magazzino di €250k, scarto ridotto del 22% in 4 mesi, recupero di €18.000."
                             </p>
                         </div>
                     </div>
-                    <div style="background: rgba(15,23,42,0.8); padding: 40px; border-radius: 15px; border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+                    <div style="background: rgba(15,23,42,0.8); padding: 40px; border-radius: 15px; border: 1px solid var(--border);">
                         <p style="color: #fff; font-weight: 700; margin-bottom: 20px; font-size: 1.1rem;">Esempio di Risparmio Stimato</p>
                         <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
                             <span style="color: var(--text-muted);">Valore Magazzino:</span>
-                            <span style="color: #fff; font-weight: 600;">€ 100.000</span>
+                            <span style="color: #fff;">€ 100.000</span>
                         </div>
                         <div style="display: flex; justify-content: space-between; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1);">
                             <span style="color: var(--text-muted);">Tasso spreco medio:</span>
-                            <span style="color: #fff; font-weight: 600;">15%</span>
+                            <span style="color: #fff;">15%</span>
                         </div>
                         <div style="text-align: center; padding: 25px; background: rgba(39,201,63,0.05); border-radius: 12px; border: 1px solid rgba(39,201,63,0.2);">
-                            <p style="color: #27c93f; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px;">RISPARMIO POTENZIALE RGANDJA</p>
+                            <p style="color: #27c93f; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 8px;">RISPARMIO POTENZIALE RGANDJA</p>
                             <p style="color: #27c93f; font-size: 2.2rem; font-weight: 900;">€ 15.000 <span style="font-size: 1rem; font-weight: 400;">/anno</span></p>
                         </div>
                     </div>
@@ -267,26 +250,33 @@
             </div>
 
             <!-- FAQ SECTION -->
-            <div style="margin-top: 80px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <div style="max-width: 800px; margin: 80px auto;">
                 <h2 class="text-center" style="color: #fff; margin-bottom: 40px; font-size: 2rem;">Domande Frequenti</h2>
                 <div style="display: flex; flex-direction: column; gap: 15px;">
                     <div style="background: rgba(255,255,255,0.02); padding: 25px; border-radius: 12px; border: 1px solid var(--border);">
                         <p style="color: var(--accent-gold); font-weight: 800; margin-bottom: 8px;">I miei dati sono al sicuro?</p>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Sì, utilizziamo crittografia end-to-end. I tuoi dati vengono isolati in un Secure Vault personale e sono conformi al GDPR.</p>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Sì, utilizziamo crittografia end-to-end e cifratura AES-256 come descritto nel protocollo RGD-Alpha.</p>
                     </div>
                     <div style="background: rgba(255,255,255,0.02); padding: 25px; border-radius: 12px; border: 1px solid var(--border);">
                         <p style="color: var(--accent-gold); font-weight: 800; margin-bottom: 8px;">Posso disdire quando voglio?</p>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Certamente. Non ci sono contratti vincolanti. Puoi smettere di usare il servizio in qualsiasi momento senza costi nascosti.</p>
-                    </div>
-                    <div style="background: rgba(255,255,255,0.02); padding: 25px; border-radius: 12px; border: 1px solid var(--border);">
-                        <p style="color: var(--accent-gold); font-weight: 800; margin-bottom: 8px;">Quanto tempo ci vuole per iniziare?</p>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Meno di 2 minuti. Basta caricare il tuo file Excel o CSV e il sistema elabora subito i primi risultati.</p>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Certamente. Non ci sono contratti vincolanti. Sei libero di interrompere il servizio e richiedere la cancellazione dei dati in ogni momento.</p>
                     </div>
                 </div>
-                <!-- LEGAL DISCLAIMER -->
-                <p style="text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-top: 50px; font-style: italic; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px;">
-                    Nota: I prezzi indicati rappresentano il valore commerciale stimato del servizio. In questa fase di test, l'accesso è fornito esclusivamente in modalità dimostrativa gratuita.
+                <p style="text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-top: 50px; font-style: italic;">
+                    Nota: I prezzi indicati sono puramente illustrativi. In questa fase, l'accesso è fornito in modalità dimostrativa gratuita.
                 </p>
             </div>
         </section>
     </main>
+
+    <footer class="footer container text-center" style="padding: 60px 0;">
+        <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
+        <p style="color: #fff; font-weight: 700; letter-spacing: 2px; font-size: 1rem;">© 2026 <strong>RGANDJA</strong></p>
+        <div style="margin-top: 30px; display: flex; justify-content: center; gap: 30px;">
+            <a href="privacy.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Privacy Policy</a>
+            <a href="cookies.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Cookie Policy</a>
+            <a href="contatti.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Supporto</a>
+        </div>
+    </footer>
+</body>
+</html>
