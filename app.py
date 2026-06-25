@@ -110,10 +110,10 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000, debug=True)
 
     @app.route("/report", methods=["POST"])
-def report():
-    data = request.get_json() or {}
-    email = data.get("email")
-    messaggio = data.get("messaggio")
+    def report():
+        data = request.get_json() or {}
+        email = data.get("email")
+        messaggio = data.get("messaggio")
 
     # Qui puoi integrare un servizio email (es. SendGrid, SMTP)
     print(f"Richiesta report da: {email} - Messaggio: {messaggio}")
