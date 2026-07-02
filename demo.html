@@ -75,59 +75,63 @@
         </div>
     </header>
 
-    <div class="container text-center" style="margin-top: 70px;">
-        <span class="badge-status">SIMULATION MODULE</span>
-        <h2 style="font-size: 2.5rem; letter-spacing: -1px; margin-top: 15px;">RGD-Alpha Logic Engine</h2>
-        <p style="color: #64748b; max-width: 650px; margin: 20px auto;">
-            Configura i parametri per testare la scalabilità dei modelli di Decision Intelligence.
-        </p>
-    </div>
+    <main>
 
-    <div class="terminal">
-        <!-- Overlay Riservato -->
-        <div id="paywall" class="paywall-overlay">
-            <h2 style="color:var(--accent-gold);">Accesso riservato Neural Engine</h2>
-            <p style="max-width:500px; color:#f8fafc; font-size:0.9rem; line-height:1.6;">
-                La versione completa è riservata alle aziende registrate. Inserisci la tua email per ricevere una sintesi dell'analisi tecnica sui tuoi flussi.
+        <div class="container text-center" style="margin-top: 70px;">
+            <span class="badge-status">SIMULATION MODULE</span>
+            <h2 style="font-size: 2.5rem; letter-spacing: -1px; margin-top: 15px;">RGD-Alpha Logic Engine</h2>
+            <p style="color: #64748b; max-width: 650px; margin: 20px auto;">
+                Configura i parametri per testare la scalabilità dei modelli di Decision Intelligence.
             </p>
-            <form name="demo-leads" method="POST" data-netlify="true" action="/grazie.html" style="width:100%; max-width:400px;">
-                <input type="hidden" name="form-name" value="demo-leads">
-                <input type="email" name="email" placeholder="email@tua-azienda.it" required style="margin-bottom:20px; background:#fff; color:#000;">
-                <button type="submit" class="btn-execute" style="width:100%;">RICEVI REPORT ANALISI</button>
-            </form>
-            <button onclick="document.getElementById('paywall').style.display='none'" style="background:none; border:none; color:#64748b; margin-top:20px; cursor:pointer; text-decoration:underline;">Torna alla simulazione</button>
         </div>
 
-        <div class="term-header">
-            <div class="dot" style="background:var(--term-red)"></div>
-            <div class="dot" style="background:var(--term-yellow)"></div>
-            <div class="dot" style="background:var(--term-green)"></div>
-            <span style="margin-left:15px; font-size:0.7rem; color:#4a5568; font-weight: 700;">RGD-ALPHA-SYSTEM // CORE_ANALYSIS_ACTIVE</span>
+        <div class="terminal">
+            <!-- Overlay Riservato -->
+            <div id="paywall" class="paywall-overlay">
+                <h2 style="color:var(--accent-gold);">Accesso riservato Neural Engine</h2>
+                <p style="max-width:500px; color:#f8fafc; font-size:0.9rem; line-height:1.6;">
+                    La versione completa è riservata alle aziende registrate. Inserisci la tua email per ricevere una sintesi dell'analisi tecnica sui tuoi flussi.
+                </p>
+                <form name="demo-leads" method="POST" data-netlify="true" action="/grazie.html" style="width:100%; max-width:400px;">
+                    <input type="hidden" name="form-name" value="demo-leads">
+                    <input type="email" name="email" placeholder="email@tua-azienda.it" required style="margin-bottom:20px; background:#fff; color:#000;">
+                    <button type="submit" class="btn-execute" style="width:100%;">RICEVI REPORT ANALISI</button>
+                </form>
+                <button onclick="document.getElementById('paywall').style.display='none'" style="background:none; border:none; color:#64748b; margin-top:20px; cursor:pointer; text-decoration:underline;">Torna alla simulazione</button>
+            </div>
+
+            <div class="term-header">
+                <div class="dot" style="background:var(--term-red)"></div>
+                <div class="dot" style="background:var(--term-yellow)"></div>
+                <div class="dot" style="background:var(--term-green)"></div>
+                <span style="margin-left:15px; font-size:0.7rem; color:#94a3b8; font-weight: 700;">RGD-ALPHA-SYSTEM // CORE_ANALYSIS_ACTIVE</span>
+            </div>
+
+            <div class="term-content">
+                <div class="grid-inputs">
+                    <div class="form-group">
+                        <label>Modello Operativo</label>
+                        <select id="modello-select">
+                            <option>Predittivo Alpha v1</option>
+                            <option>Ottimizzazione Stock</option>
+                            <option>Analisi Multi-Tenant</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Volume Dati (SKU)</label>
+                        <input type="number" id="volume-dati" placeholder="es. 5000">
+                    </div>
+                </div>
+                <button class="btn-execute" onclick="showPaywall()">ESEGUI SCANSIONE STRATEGICA</button>
+                
+                <div id="resultBox">
+                    <p style="color:var(--term-green)">> Analisi completata con successo.</p>
+                    <p>Solidità Operativa stimata: 88%</p>
+                </div>
+            </div>
         </div>
 
-        <div class="term-content">
-            <div class="grid-inputs">
-                <div class="form-group">
-                    <label>Modello Operativo</label>
-                    <select>
-                        <option>Predittivo Alpha v1</option>
-                        <option>Ottimizzazione Stock</option>
-                        <option>Analisi Multi-Tenant</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Volume Dati (SKU)</label>
-                    <input type="number" placeholder="es. 5000">
-                </div>
-            </div>
-            <button class="btn-execute" onclick="showPaywall()">ESEGUI SCANSIONE STRATEGICA</button>
-            
-            <div id="resultBox">
-                <p style="color:var(--term-green)">> Analisi completata con successo.</p>
-                <p>Solidità Operativa stimata: 88%</p>
-            </div>
-        </div>
-    </div>
+    </main>
 
     <script>
         function showPaywall() {
