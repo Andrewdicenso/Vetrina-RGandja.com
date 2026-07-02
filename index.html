@@ -49,14 +49,12 @@
         <div class="header-brand">
             <!-- Aggiungi width e height uguali alla dimensione reale -->
             <img src="logo.webp" alt="Logo RGandja" class="brand-logo" width="86" height="79">
-            <h1>RGandja</h1>
+            <h1>RGandja: Visione, Metodo e Sicurezza</h1>
         </div>
-            <nav class="main-nav">
+            <nav class="main-nav" aria-label="Navigazione principale">
                 <a href="index.html" class="active-nav">Home</a>
-                <a href="funzionalita.html">Funzionalità</a>
-                <a href="metodo.html">Come Funziona</a>
+                <a href="informazioni.html">Informazioni</a> 
                 <a href="prezzi.html">Piani</a>
-                <a href="chi-siamo.html">Chi Siamo</a>
                 <a href="contatti.html">Contatti</a>
             </nav>
         </div>
@@ -167,8 +165,41 @@
                     </p>
                 </div>
             </div>
-        </section>
-    </main>
+                </section> <!-- Fine 3 PILASTRI -->
+
+                <!-- NUOVA SEZIONE UNIFICATA -->
+                <section class="section container">
+                    <!-- FUNZIONE 2 -->
+                    <div class="feature-big-card" style="position: relative; background: rgba(20, 26, 35, 0.7); border-color: rgba(212,175,55,0.2);">
+                        <!-- Accessibilità: nascondiamo il numero decorativo ai lettori vocali -->
+                        <div class="feature-number" aria-hidden="true">02</div>
+                        
+                        <div class="grid-2" style="gap: 60px; align-items: center;">
+                            <div style="background: var(--glass); border-radius: 16px; padding: 35px; border: 1px solid var(--border);">
+                                <p style="color: var(--accent-gold); font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px;">Esempio di Risk Score</p>
+                                <!-- ... (resto del contenuto dei semafori) ... -->
+                            </div>
+
+                            <div>
+                                <span style="color: var(--accent-gold); font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase;">Risk Engine</span>
+                                <h2 style="color: #fff; font-size: 2rem; margin: 15px 0; letter-spacing: -1px;">Un indice di rischio per ogni prodotto.</h2>
+                                <!-- Accessibilità: colore testuale schiarito per contrasto WCAG -->
+                                <p style="color: #a1a1aa; line-height: 1.8; margin-bottom: 20px;">
+                                    Non una tabella di dati grezzi — un punteggio di rischio calcolato incrociando 
+                                    giacenza attuale, velocità di rotazione, data di scadenza e contesto aziendale.
+                                </p>
+                                <ul class="check-list">
+                                    <li>Indice pesato su più variabili (scadenza, rotazione, valore)</li>
+                                    <li>Soglie di rischio calibrate automaticamente per settore</li>
+                                    <li>Piano d'azione prescrittivo: non solo "cosa è a rischio" ma "cosa fare"</li>
+                                    <li>Dashboard War Room con vista aggregata in tempo reale</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
  
     <footer class="footer container text-center" style="padding: 60px 0;">
         <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
