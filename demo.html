@@ -105,13 +105,14 @@
                 <div class="dot" style="background:var(--term-red)"></div>
                 <div class="dot" style="background:var(--term-yellow)"></div>
                 <div class="dot" style="background:var(--term-green)"></div>
-                <span style="margin-left:15px; font-size:0.7rem; color:#94a3b8; font-weight: 700;">RGD-ALPHA-SYSTEM // CORE_ANALYSIS_ACTIVE</span>
+                <span style="margin-left:15px; font-size:0.7rem; color:#cbd5e1; font-weight: 700;">RGD-ALPHA-SYSTEM // CORE_ANALYSIS_ACTIVE</span>
             </div>
 
             <div class="term-content">
                 <div class="grid-inputs">
                     <div class="form-group">
-                        <label>Modello Operativo</label>
+                    <!-- Aggiunto 'for' che punta all'ID del select -->
+                        <label for="model-select">Modello Operativo</label>
                         <select id="model-select" name="model-select">
                             <option>Predittivo Alpha v1</option>
                             <option>Ottimizzazione Stock</option>
@@ -119,15 +120,10 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Volume Dati (SKU)</label>
-                        <input type="number" id="volume-dati" class="form-control" placeholder="es. 5000">
+                    <!-- Aggiunto 'for' che punta all'ID dell'input -->
+                        <label for="volume-dati">Volume Dati (SKU)</label>
+                        <input type="number" id="volume-dati" name="volume-dati" class="form-control" placeholder="es. 5000">
                     </div>
-                </div>
-                <button class="btn-execute" onclick="showPaywall()">ESEGUI SCANSIONE STRATEGICA</button>
-                
-                <div id="resultBox">
-                    <p style="color:var(--term-green)">> Analisi completata con successo.</p>
-                    <p>Solidità Operativa stimata: 88%</p>
                 </div>
             </div>
         </div>
