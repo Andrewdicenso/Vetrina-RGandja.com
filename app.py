@@ -3,8 +3,7 @@ from flask_cors import CORS
 from datetime import datetime
 import os
 
-app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # ---------------------------------------------------------
 # 1) ENDPOINT DI STATO
