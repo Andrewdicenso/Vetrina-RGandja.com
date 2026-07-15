@@ -1,21 +1,16 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from datetime import datetime
+import os
 
 app = Flask(__name__)
-CORS(app)  # permette alla demo locale e al sito ufficiale di chiamare l'API
-
+CORS(app)
 
 # ---------------------------------------------------------
-# 1) ENDPOINT DI STATO (homepage API)
+# 1) ENDPOINT DI STATO
 # ---------------------------------------------------------
 @app.route("/", methods=["GET"])
 def home():
-    """
-    Endpoint pubblico di stato.
-    Non contiene logica commerciale.
-    Serve solo a mostrare che l'API è attiva.
-    """
     return jsonify({
         "status": "online",
         "version": "6.2.0",
@@ -23,19 +18,12 @@ def home():
         "timestamp": datetime.utcnow().isoformat()
     })
 
-
 # ---------------------------------------------------------
 # 2) ENDPOINT DI ANALISI DIMOSTRATIVA
 # ---------------------------------------------------------
 @app.route("/calcola", methods=["POST"])
 def calcola():
-    """
-    Questo endpoint viene chiamato dalla tua demo.
-    Restituisce una simulazione parziale, NON una consulenza.
-    Nessun prezzo, nessuna vendita, nessuna proposta commerciale.
-    """
     data = request.get_json() or {}
-
     algoritmo = data.get("algoritmo", "RGD-ALPHA")
     budget = float(data.get("budget", 0) or 0)
     ore_assenze = float(data.get("ore_assenze", 0) or 0)
@@ -43,9 +31,6 @@ def calcola():
     metri_quadri = float(data.get("metri_quadri", 0) or 0)
     num_dipendenti = int(data.get("num_dipendenti", 0) or 0)
 
-    # ---------------------------------------------------------
-    # MINI MODELLO DIMOSTRATIVO (SEMPLIFICATO)
-    # ---------------------------------------------------------
     intensita_uso = 0
     if num_dipendenti > 0 and metri_quadri > 0:
         intensita_uso = (num_dipendenti / metri_quadri) * 100
@@ -68,64 +53,35 @@ def calcola():
         livello = "Alto"
         sintesi = "Il modello rileva un potenziale spreco energetico significativo."
 
-    # ---------------------------------------------------------
-    # RISULTATO PARZIALE (VETRINA)
-    # ---------------------------------------------------------
     risultato_html = f"""
         <div style='font-size:0.95rem; line-height:1.6;'>
             <strong>Analisi dimostrativa RGandja</strong><br><br>
-
             <strong>Algoritmo:</strong> {algoritmo}<br>
             <strong>Budget indicativo:</strong> {budget:,.2f} €<br>
             <strong>Dipendenti:</strong> {num_dipendenti}<br>
             <strong>Superficie:</strong> {metri_quadri:,.0f} m²<br>
             <strong>Ore di assenza:</strong> {ore_assenze:,.1f} h<br>
             <strong>Consumo standby:</strong> {standby_watt:,.0f} W<br><br>
-
             <strong>Livello di spreco stimato:</strong> {livello} ({rischio_spreco:,.1f}%)<br>
             {sintesi}<br><br>
-
-            <em>
-                Nota: questa è una simulazione dimostrativa e non costituisce
-                consulenza tecnica o proposta commerciale. Il sistema completo
-                utilizza parametri aggiuntivi e modelli avanzati non inclusi
-                nella versione di anteprima.
-            </em>
+            <em>Nota: questa è una simulazione dimostrativa.</em>
         </div>
     """
-
-    # ---------------------------------------------------------
-    # PAYWALL (ATTIVA LA PARTE OSCURATA DELLA DEMO)
-    # ---------------------------------------------------------
     return jsonify({
         "risultato": risultato_html,
         "is_premium_locked": True
     })
 
-
 # ---------------------------------------------------------
-# 3) AVVIO LOCALE (non usato su Render)
+# 3) ENDPOINT REPORT
 # ---------------------------------------------------------
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000, debug=True)
-
-
 @app.route("/report", methods=["POST"])
 def report():
-    """
-    Riceve i dati dal form di demo.html
-    """
     data = request.get_json() or {}
-    
-    # Recuperiamo tutti i campi inviati dal tuo JavaScript
     email = data.get("email")
     ragione_sociale = data.get("ragione_sociale", "N/D")
-    settore = data.get("settore")
-    fatturato = data.get("fatturato")
-    dipendenti = data.get("dipendenti")
     piano = data.get("piano_suggerito")
 
-    # Stampa nei log di Render (così vedi che i dati arrivano)
     print(f"--- NUOVA ANALISI RICEVUTA ---")
     print(f"Email: {email}")
     print(f"Azienda: {ragione_sociale}")
@@ -134,14 +90,13 @@ def report():
 
     return jsonify({
         "status": "success",
-        "message": "Report demo generato. Verrai reindirizzato alla pagina dei piani suggeriti.",
+        "message": "Report demo generato.",
         "nota": "Dati registrati correttamente nel sistema."
     })
 
-    import os
-
+# ---------------------------------------------------------
+# 4) AVVIO UNICO
+# ---------------------------------------------------------
 if __name__ == "__main__":
-    # Tenta di leggere la porta dalle variabili d'ambiente (default 8000)
     port = int(os.environ.get("PORT", 8000))
     app.run(host="0.0.0.0", port=port, debug=True)
-
