@@ -201,3 +201,29 @@
     </script>
 </body>
 </html>
+
+<script>
+document.getElementById('demo-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Blocca l'invio classico che causa l'errore 405
+
+    const email = document.getElementById('email-input').value;
+    
+    // Sostituisci con l'URL reale del tuo backend su Render
+    const backendUrl = "https://TUO-PROGETTO.onrender.com/report"; 
+
+    fetch(backendUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Se tutto è ok, reindirizza alla pagina di ringraziamento
+        window.location.href = "grazie.html";
+    })
+    .catch(error => {
+        console.error("Errore di connessione con la War Room:", error);
+        alert("Errore nel sistema. Riprova più tardi.");
+    });
+});
+</script>
