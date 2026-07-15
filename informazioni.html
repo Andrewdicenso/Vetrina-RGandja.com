@@ -1,83 +1,102 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6TTVMQFNY6"></script>
+<html lang="it" ml-update="aware"><head>
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-6TTVMQFNY6"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-6TTVMQFNY6');
     </script>
- 
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocollo RGD-Alpha | Come Funziona la War Room rgandja</title>
-    <meta name="description" content="Scopri il protocollo RGD-Alpha: 3 step dalla scansione strategica al report certificato per la sicurezza del tuo magazzino.">
- 
-    <link rel="icon" type="image/png" href="logo.webp">
+    <title>Chi Siamo | RGandja - Decision Intelligence &amp; Strategy</title>
+    
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
     <style>
-        .step-card {
-            background: rgba(15, 23, 42, 0.5);
-            padding: 60px 45px;
-            border-radius: 20px;
+        .profile-card {
+            background: rgba(15, 23, 42, 0.8);
             border: 1px solid var(--border);
-            position: relative;
-            transition: all 0.4s ease;
-            overflow: hidden;
-            height: 100%;
+            border-right: 4px solid var(--accent-gold) !important;
+            padding: 50px;
+            box-shadow: var(--shadow-premium);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: 4px 20px 20px 4px;
         }
-        .step-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent-gold);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-        }
-        .step-num {
-            font-size: 7rem;
-            font-weight: 900;
-            color: rgba(212, 175, 55, 0.04);
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            pointer-events: none;
-            line-height: 1;
-        }
-        .step-tag {
-            display: inline-block;
-            padding: 6px 14px;
-            background: rgba(39, 201, 63, 0.1);
-            color: #27c93f;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border: 1px solid rgba(39, 201, 63, 0.2);
-        }
-        .badge-status {
-            border: 1px solid var(--accent-gold);
-            padding: 6px 18px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            letter-spacing: 1.5px;
-            font-weight: 800;
-            text-transform: uppercase;
+        .founder-title {
             color: var(--accent-gold);
-            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 15px;
         }
-        .text-center { text-align: center; }
+        .quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border);
+            line-height: 1.7;
+        }
+
+        #cookie-banner {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--accent-gold);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 9999;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+        #cookie-banner p { color: #fff; font-size: 0.9rem; margin: 0; max-width: 70%; }
+        #cookie-banner .btn-accept {
+            background: var(--accent-gold);
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
     </style>
 </head>
-<body>
- 
+<body data-new-gr-c-s-check-loaded="14.1138.0" data-gr-ext-installed="">
+
+    <div id="cookie-banner" style="display: none;">
+        <p>Utilizziamo strumenti di analisi per migliorare l'esperienza utente e ottimizzare i nostri servizi digitali. <a href="/cookies" style="color:var(--accent-gold)">Informativa Estesa</a>.</p>
+        <button class="btn-accept" onclick="acceptCookies()">Accetto</button>
+    </div>
+
+    <script>
+        function acceptCookies() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            localStorage.setItem('cookieConsent', 'true');
+        }
+        if (localStorage.getItem('cookieConsent') === 'true') {
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+    </script>
+
     <header class="header">
         <div class="header-inner container">
             <div class="header-brand">
                 <img src="logo.webp" alt="Logo RGandja" class="brand-logo">
-                <h1>RGandja:<br><span style="color: var(--accent-gold);"></span></h1>
+                <h1>RGandja</h1>
             </div>
-            <nav class="main-nav" aria-label="Navigazione principale">
+            <nav class="main-nav">
                 <a href="index.html">Home</a>
                 <a href="informazioni.html" class="active-nav">Informazioni</a> 
                 <a href="prezzi.html">Piani</a>
@@ -85,167 +104,98 @@
             </nav>
         </div>
     </header>
- 
+
     <main>
         <section class="hero-premium">
             <div class="container text-center">
-                <span class="badge-status">PROTOCOLLO RGD-ALPHA</span>
-                <h1 style="margin-top: 25px;">Ingestione, Analisi, Azione.<br><span style="color: var(--accent-gold);">La scienza del controllo inventario.</span></h1>
-                <p class="hero-subtitle" style="max-width: 750px; margin: 25px auto;">
-                    Il metodo RGandja trasforma il caos dei dati grezzi in un percorso decisionale certificato. 
-                    Dalla sicurezza AES-256 alla scansione predittiva: ecco come proteggiamo il tuo business.
+                <span class="badge-status">STRATEGIC VISION 2026</span>
+                <h1>Oltre l'Analisi, Verso l'Efficienza</h1>
+                <p class="hero-subtitle">
+                    RGandja trasforma flussi di dati complessi in percorsi decisionali chiari. 
+                    Uniamo esperienza industriale e tecnologie di calcolo avanzate per supportare lo sviluppo del business moderno.
                 </p>
             </div>
         </section>
- 
-        <!-- 3 STEPS -->
-        <section class="section container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; margin-top: 20px;">
- 
-                <div class="step-card">
-                    <div class="step-num">1</div>
-                    <span class="step-tag">Ingestione</span>
-                    <div style="font-size: 3rem; margin-bottom: 20px;">📂</div>
-                    <h2 style="color: #fff; font-size: 2.5rem; margin-bottom: 30px; letter-spacing: -1px;">Il Nostro Approccio</h2> 
-                    <p style="color: var(--text-muted); line-height: 1.8;">
-                        Carica il tuo file CSV o Excel nel tuo <strong>Secure Vault personale</strong>. 
-                        Il sistema attiva un'analisi atomica immediata: riconosce asset, lotti e scadenze senza configurazione manuale.
-                    </p>
-                    <p style="color: var(--text-muted); line-height: 1.8; margin-top: 15px; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 15px;">
-                        <em>Tecnologia: Import universale multi-tenant con audit trail completo.</em>
-                    </p>
-                </div>
- 
-                <div class="step-card" style="border-color: rgba(212,175,55,0.3); background: rgba(20,26,35,0.7);">
-                    <div class="step-num">2</div>
-                    <span class="step-tag" style="background: rgba(212,175,55,0.1); color: var(--accent-gold); border-color: rgba(212,175,55,0.2);">Analisi</span>
-                    <div style="font-size: 3rem; margin-bottom: 20px;">⚡</div>
-                    <h2 style="color: #fff; font-size: 2.5rem; margin-bottom: 30px; letter-spacing: -1px;">Il Nostro Approccio</h2>
-                    <p style="color: #e2e8f0; line-height: 1.8;">
-                        Il motore predittivo calcola i tuoi <strong>Indicatori Vitali</strong>: Solidità Operativa e Rischio Medio. 
-                        Incrocia momentum di vendita e proiezioni a 30/90 giorni per identificare ogni anomalia.
-                    </p>
-                    <p style="color: #e2e8f0; line-height: 1.8; margin-top: 15px; font-size: 0.85rem; border-top: 1px solid rgba(212,175,55,0.1); padding-top: 15px;">
-                        <em>Tecnologia: Risk Engine pesato con calcolo predittivo in tempo reale.</em>
-                    </p>
-                </div>
- 
-                <div class="step-card">
-                    <div class="step-num">3</div>
-                    <span class="step-tag" style="background: rgba(99,179,237,0.1); color: #63b3ed; border-color: rgba(99,179,237,0.2);">Certificazione</span>
-                    <div style="font-size: 3rem; margin-bottom: 20px;">🎯</div>
-                    <h2 style="color: #fff; font-size: 2.5rem; margin-bottom: 30px; letter-spacing: -1px;">Report Certificato</h2>
-                    <p style="color: var(--text-muted); line-height: 1.8;">
-                        Accedi alla tua <strong>War Room</strong> per visualizzare i risultati. 
-                        Genera un certificato di analisi cifrato scaricabile che racchiude il piano d'azione prescrittivo per la direzione aziendale.
-                    </p>
-                    <p style="color: var(--text-muted); line-height: 1.8; margin-top: 15px; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 15px;">
-                        <em>Tecnologia: Cifratura AES-256 e archiviazione sicura su hosting EU.</em>
-                    </p>
-                </div>
- 
+
+        <section class="section container grid-2">
+            <div class="info-block">
+                <h2 style="color: #fff; font-size: 2.5rem; margin-bottom: 30px; letter-spacing: -1px;">Il Nostro Approccio</h2>
+                <p style="margin-bottom: 20px; font-size: 1.1rem; color: var(--text-muted);">
+                    In un panorama informativo spesso frammentato, <strong>RGANDJA ENTERPRISE</strong> si pone come partner per la chiarezza operativa: 
+                    <span class="text-gold" style="color:var(--accent-gold); font-weight:700;">"La qualità di una decisione dipende dalla qualità del dato analizzato"</span>. 
+                </p>
+                <p style="margin-bottom: 20px; line-height: 1.8;">
+                    Il <strong>Protocollo RGD-Alpha</strong> è una metodologia di lavoro studiata per le imprese che desiderano ottimizzare le proprie risorse. Attraverso l'analisi dei flussi interni, identifichiamo i punti di forza e le aree di miglioramento, fornendo ai manager strumenti basati su evidenze oggettive e scenari predittivi affidabili.
+                </p>
+                <p style="line-height: 1.8;">
+                    Operiamo con un'infrastruttura tecnologica all'avanguardia situata ad <strong>Atene</strong>, che funge da Hub logistico e di calcolo. Questo ci permette di gestire volumi di dati importanti garantendo standard elevati di riservatezza, sicurezza informatica e rispetto delle normative europee sul trattamento delle informazioni aziendali.
+                </p>
+            </div>
+            <div class="profile-card">
+                <span class="founder-title">Executive Philosophy</span>
+                <h3 style="font-size: 2.8rem; color: #fff; margin: 0; letter-spacing: -1px;">RGandja</h3>
+                <p style="color: var(--accent-gold); font-weight: 700; margin-bottom: 10px; text-transform: uppercase; font-size: 0.85rem;">Business Logic Architect</p>
+                <p class="quote">
+                    "Il nostro impegno è fornire una visione lucida e strumenti analitici robusti, affinché ogni impresa possa affrontare la complessità dei mercati con maggiore consapevolezza e serenità operativa."
+                </p>
             </div>
         </section>
- 
-        <!-- DIFFERENZA CHIAVE -->
-        <section class="section" style="background: #050810; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 100px 0;">
+
+        <section class="section" style="background: #050810; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
             <div class="container">
-                <div class="grid-2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); align-items: center; gap: 80px;">
-                    <div>
-                        <span style="color: var(--accent-gold); font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase;">La vera differenza</span>
-                        <h2 style="color: #fff; font-size: 2.2rem; margin: 15px 0 25px; letter-spacing: -1px;">
-                            Da reattivo a proattivo.<br>
-                            <span style="color: var(--accent-gold);">È questo che cambia tutto.</span>
-                        </h2>
-                        <p style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 25px;">
-                            I gestionali tradizionali registrano il passato. RGandja anticipa il futuro. 
-                            Grazie al protocollo <strong>Alpha</strong>, ogni dato caricato diventa una difesa contro la perdita di capitale.
-                        </p>
-                        <div style="border-left: 4px solid var(--accent-gold); padding: 20px 25px; background: rgba(212,175,55,0.05); border-radius: 0 12px 12px 0;">
-                            <p style="color: var(--accent-gold); font-weight: 700; font-style: italic; font-size: 1.1rem; margin: 0; line-height: 1.6;">
-                                "Non gestiamo solo magazzini. Proteggiamo la continuità operativa delle aziende."
-                            </p>
-                        </div>
+                <h2 class="text-center" style="margin-bottom: 60px; color: var(--accent-gold);">Valori Fondanti del Modello RGandja</h2>
+                <div class="grid-3">
+                    <div class="card-expert text-center">
+                        <div style="font-size: 2.5rem; margin-bottom: 20px;">🤝</div>
+                        <h3 style="color: #fff; margin-bottom: 15px;">Trasparenza</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">Costruiamo percorsi logici chiari e verificabili. Ogni analisi è motivata da dati concreti per ridurre l'incertezza nella gestione dei processi.</p>
                     </div>
-                    <div style="display: flex; flex-direction: column; gap: 20px;">
-                        <div style="padding: 30px; border-radius: 16px; background: rgba(255,95,86,0.05); border: 1px solid rgba(255,95,86,0.15);">
-                            <p style="color: #ff5f56; font-size: 0.75rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;">❌ Metodo Tradizionale</p>
-                            <p style="color: var(--text-muted); line-height: 1.7; font-size: 0.95rem;">Scopri le scadenze quando la merce è già da buttare. Dati isolati in fogli Excel vulnerabili. Zero proiezioni strategiche.</p>
-                        </div>
-                        <div style="padding: 30px; border-radius: 16px; background: rgba(39,201,63,0.05); border: 1px solid rgba(39,201,63,0.15);">
-                            <p style="color: #27c93f; font-size: 0.75rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;">✅ Protocollo RGD-ALPHA</p>
-                            <p style="color: #fff; line-height: 1.7; font-size: 0.95rem;">Previsioni a 90 giorni per agire d'anticipo. Cifratura AES-256 dei segreti aziendali. Piano d'azione prescrittivo automatico.</p>
-                        </div>
+                    <div class="card-expert text-center">
+                        <div style="font-size: 2.5rem; margin-bottom: 20px;">⚡</div>
+                        <h3 style="color: #fff; margin-bottom: 15px;">Ottimizzazione</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">Utilizziamo sistemi di calcolo ad alte prestazioni per individuare sprechi e inefficienze, trasformandoli in nuove opportunità di crescita per l'azienda.</p>
                     </div>
-                </div>
-            </div>
-        </section>
-        <section class="section container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); align-items: center; gap: 80px;">
-                <div class="info-block">
-                    <h2 style="color: #fff; font-size: 2.5rem; margin-bottom: 30px; letter-spacing: -1px;">Il Nostro Approccio</h2>
-                    <p style="margin-bottom: 20px; font-size: 1.1rem; color: var(--text-muted);">
-                        In un panorama informativo spesso frammentato, <strong>RGANDJA</strong> si pone come partner per la chiarezza operativa. 
-                    </p>
-                    <p style="margin-bottom: 20px; line-height: 1.8; color: var(--text-muted);">
-                        Il <strong>Protocollo RGD-Alpha</strong> è una metodologia di lavoro studiata per le imprese che desiderano ottimizzare le proprie risorse. Attraverso l'analisi predittiva, identifichiamo i rischi e forniamo strumenti basati su evidenze oggettive.
-                    </p>
-                    <p style="line-height: 1.8; color: var(--text-muted);">
-                        Operiamo con un'infrastruttura tecnologica all'avanguardia situata ad <strong>Atene</strong>, Hub strategico di calcolo per le nostre operazioni internazionali, garantendo standard elevati di riservatezza e sicurezza informatica AES-256.
-                    </p>
-                </div>
-                <div class="profile-card">
-                    <span class="founder-title">Executive Philosophy</span>
-                    <h3 style="font-size: 2.8rem; color: #fff; margin: 0; letter-spacing: -1px;">RGandja</h3>
-                    <p style="color: var(--accent-gold); font-weight: 700; margin-bottom: 10px; text-transform: uppercase; font-size: 0.85rem;">Business Logic Architect</p>
-                    <p class="quote">
-                        "Il nostro impegno è fornire una visione lucida e strumenti analitici robusti, affinché ogni impresa possa affrontare la complessità dei mercati con maggiore consapevolezza e serenità operativa."
-                    </p>
+                    <div class="card-expert text-center">
+                        <div style="font-size: 2.5rem; margin-bottom: 20px;">📂</div>
+                        <h3 style="color: #fff; margin-bottom: 15px;">Affidabilità</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">Il protocollo RGD-Alpha integra le migliori pratiche di sicurezza industriale, proteggendo la proprietà intellettuale e la privacy dei nostri partner.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="section" style="background: #050810; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 100px 0;">
-            <div class="container">
-                <h2 class="text-center" style="margin-bottom: 60px; color: var(--accent-gold); font-size: 2rem;">Valori Fondanti del Modello RGandja</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
-                    <div class="card-expert text-center" style="background: rgba(15,23,42,0.4); padding: 40px; border-radius: 16px; border: 1px solid var(--border);">
-                        <div style="font-size: 2.5rem; margin-bottom: 20px;">🤝</div>
-                        <h3 style="color: #fff; margin-bottom: 15px;">Trasparenza</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Costruiamo percorsi logici chiari e verificabili. Ogni analisi è motivata da dati concreti per ridurre l'incertezza nella gestione.</p>
-                    </div>
-                    <div class="card-expert text-center" style="background: rgba(15,23,42,0.4); padding: 40px; border-radius: 16px; border: 1px solid var(--border);">
-                        <div style="font-size: 2.5rem; margin-bottom: 20px;">⚡</div>
-                        <h3 style="color: #fff; margin-bottom: 15px;">Ottimizzazione</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Utilizziamo sistemi di calcolo ad alte prestazioni per individuare sprechi, trasformandoli in opportunità di crescita.</p>
-                    </div>
-                    <div class="card-expert text-center" style="background: rgba(15,23,42,0.4); padding: 40px; border-radius: 16px; border: 1px solid var(--border);">
-                        <div style="font-size: 2.5rem; margin-bottom: 20px;">🛡️</div>
-                        <h3 style="color: #fff; margin-bottom: 15px;">Affidabilità</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Il protocollo RGD-Alpha integra le migliori pratiche di sicurezza industriale, proteggendo la proprietà intellettuale dei partner.</p>
-                    </div>
+        <section class="section container">
+            <div class="card-expert text-center" style="padding: 80px 40px; background: radial-gradient(circle, #0f172a 0%, #020617 100%); border: 1px solid var(--border);">
+                <h2 style="color: #fff; font-size: 2.2rem; letter-spacing: -1px;">Supporto alla Crescita</h2>
+                <p style="max-width: 800px; margin: 30px auto; color: var(--text-muted); line-height: 1.8; font-size: 1.15rem;">
+                    Semplifichiamo la gestione del rischio attraverso l'innovazione tecnologica. La nostra consulenza strategica aiuta le aziende a navigare il cambiamento con un metodo solido e una visione lungimirante.
+                </p>
+                <div style="margin-top: 45px;">
+                    <a class="btn btn-gold" href="/contatti">direzione@rgandja.it</a>
                 </div>
             </div>
         </section>
-        
-        <!-- CTA FINALE -->
-        <section class="section container text-center" style="padding: 100px 0;">
-            <h2 style="color: #fff; font-size: 2.2rem; margin-bottom: 25px;">Sperimenta il metodo oggi.</h2>
-            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 40px; line-height: 1.7;">
-                Carica il tuo file per una diagnosi gratuita. Scopri la solidità del tuo magazzino in meno di 120 secondi.
-            </p>
-            <a href="demo.html" class="btn btn-gold" style="padding: 20px 45px; text-decoration: none; border-radius: 8px; font-weight: bold;">Inizia la Scansione Gratuita</a>
-        </section>
     </main>
- 
-    <footer class="footer container text-center" style="padding: 60px 0;">
+
+    <footer class="footer container text-center">
         <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
-        <p style="color: #fff; font-weight: 700; letter-spacing: 2px; font-size: 1rem;">© 2026 <strong>RGANDJA</strong> · by RGandja Enterprise</p>
-        <div style="margin-top: 30px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
-            <a href="privacy.html" style="color: #a1a1aa; font-size: 0.85rem; text-decoration: none;">Privacy Policy</a>
-            <a href="cookies.html" style="color: #a1a1aa; font-size: 0.85rem; text-decoration: none;">Cookie Policy</a>
-            <a href="contatti.html" style="color: #a1a1aa; font-size: 0.85rem; text-decoration: none;">Supporto</a>
-        </div>
+        <p style="color: var(--text-main); font-weight: 600; letter-spacing: 1px;">© 2026 <strong>RGANDJA ENTERPRISE</strong></p>
+        
+        <!-- DATI FISCALI E SEDE - NASCOSTI PER VERSIONE VETRINA -->
+        <!-- 
+        <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-muted);">
+            Ragione Sociale: RGANDJA ENTERPRISE ΜΟΝΟΠΡΟΣΩΠΗ ΙΚΕ<br>
+            VAT (AFM): EL803131007 | G.E.MI.: 190286401000<br>
+            Sede: Sepolion 42, GR 104 45, Atene, Grecia
+        </p>
+        -->
+
+        <p style="margin: 25px 0;">
+            <a href="/privacy" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Privacy Policy</a> | 
+            <a href="/cookies" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Cookie Policy</a> | 
+            <a href="/contatti" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Richiedi Dati Legali</a>
+        </p>
     </footer>
-</body>
-</html>
+
+
+</body><div></div><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

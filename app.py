@@ -109,17 +109,39 @@ def calcola():
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000, debug=True)
 
-    @app.route("/report", methods=["POST"])
-    def report():
-        data = request.get_json() or {}
-        email = data.get("email")
-        messaggio = data.get("messaggio")
 
-    # Qui puoi integrare un servizio email (es. SendGrid, SMTP)
-    print(f"Richiesta report da: {email} - Messaggio: {messaggio}")
+@app.route("/report", methods=["POST"])
+def report():
+    """
+    Riceve i dati dal form di demo.html
+    """
+    data = request.get_json() or {}
+    
+    # Recuperiamo tutti i campi inviati dal tuo JavaScript
+    email = data.get("email")
+    ragione_sociale = data.get("ragione_sociale", "N/D")
+    settore = data.get("settore")
+    fatturato = data.get("fatturato")
+    dipendenti = data.get("dipendenti")
+    piano = data.get("piano_suggerito")
+
+    # Stampa nei log di Render (così vedi che i dati arrivano)
+    print(f"--- NUOVA ANALISI RICEVUTA ---")
+    print(f"Email: {email}")
+    print(f"Azienda: {ragione_sociale}")
+    print(f"Piano Suggerito: {piano}")
+    print(f"------------------------------")
 
     return jsonify({
-        "status": "ricevuto",
-        "nota": "Il tuo messaggio è stato registrato. Il team RGandja ti contatterà per approfondire."
+        "status": "success",
+        "message": "Report demo generato. Verrai reindirizzato alla pagina dei piani suggeriti.",
+        "nota": "Dati registrati correttamente nel sistema."
     })
+
+    import os
+
+if __name__ == "__main__":
+    # Tenta di leggere la porta dalle variabili d'ambiente (default 8000)
+    port = int(os.environ.get("PORT", 8000))
+    app.run(host="0.0.0.0", port=port, debug=True)
 
