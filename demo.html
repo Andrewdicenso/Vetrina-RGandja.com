@@ -149,9 +149,9 @@
                 <p style="max-width:500px; color:#ffffff; font-size:0.9rem; line-height:1.6;">
                     La versione completa è riservata alle aziende registrate. Inserisci la tua email per ricevere una sintesi dell'analisi tecnica sui tuoi flussi.
                 </p>
-                <form name="demo-leads" method="POST" data-netlify="true" action="/grazie.html" style="width:100%; max-width:400px;">
+                <form name="demo-leads" id="demo-form" style="width:100%; max-width:400px;">
                     <input type="hidden" name="form-name" value="demo-leads">
-                    <input type="email" name="email" placeholder="email@tua-azienda.it" required style="margin-bottom:20px; background:#ffffff; color:#000000;" aria-label="Inserisci la tua email">
+                    <input type="email" name="email" id="email-input" placeholder="email@tua-azienda.it" required style="margin-bottom:20px; background:#ffffff; color:#000000;">
                     <button type="submit" class="btn-execute">RICEVI REPORT ANALISI</button>
                 </form>
                 <button onclick="document.getElementById('paywall').style.display='none'" style="background:none; border:none; color:#cbd5e1; margin-top:20px; cursor:pointer; text-decoration:underline;">Torna alla simulazione</button>
