@@ -1,0 +1,11 @@
+# Editor e SO
+.vscode/
+.DS_Store
+Thumbs.db
+
+# File temporanei Python
+__pycache__/
+*.pyc
+
+# Cartelle di backup locali
+archive/

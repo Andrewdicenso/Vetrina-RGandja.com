@@ -8,14 +8,15 @@
       gtag('js', new Date());
       gtag('config', 'G-6TTVMQFNY6');
     </script>
- 
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piani e Modelli di analisi | rgandja</title>
-    <meta name="description" content="Scegli il piano rgandja adatto alla tua azienda. Calcola il risparmio stimato e inizia gratis.">
- 
+    <title>Piani e Modelli di Analisi | RGandja Neural Engine</title>
+    <meta name="description" content="Scegli il piano RGandja adatto alla tua azienda. Calcola il risparmio stimato e richiedi l'accesso alla versione dimostrativa gratuita.">
+
     <link rel="icon" type="image/png" href="logo.webp">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
     <style>
         .pricing-card {
             background: var(--glass);
@@ -84,19 +85,10 @@
             color: #000;
             border: none;
         }
-        .badge-status {
-            border: 1px solid var(--accent-gold);
-            padding: 6px 18px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            letter-spacing: 1.5px;
-            font-weight: 800;
-            text-transform: uppercase;
-            color: var(--accent-gold);
-            display: inline-block;
+        .btn-cta-gold:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
         }
-        .text-center { text-align: center; }
-        
         .calculator-box {
             background: linear-gradient(135deg, rgba(212,175,55,0.05) 0%, rgba(15,23,42,0.8) 100%);
             border: 1px solid rgba(212,175,55,0.2);
@@ -104,22 +96,19 @@
             padding: 50px;
             margin: 80px 0;
         }
-        #cookie-banner {
-            position: fixed; bottom: 20px; left: 20px; right: 20px;
-            background: rgba(15, 23, 42, 0.95); border: 1px solid var(--accent-gold);
-            padding: 15px 25px; display: flex; justify-content: space-between;
-            align-items: center; z-index: 9999; border-radius: 8px;
-            backdrop-filter: blur(10px);
-        }
     </style>
 </head>
 <body>
- 
-    <div id="cookie-banner" style="display: none;">
-        <p style="color: #fff; font-size: 0.85rem; margin: 0;">Utilizziamo cookie tecnici. <a href="cookies.html" style="color:var(--accent-gold)">Cookie Policy</a>.</p>
-        <button onclick="document.getElementById('cookie-banner').style.display='none'" style="background:var(--accent-gold); border:none; padding:8px 20px; border-radius:4px; font-weight:900; cursor:pointer;">ACCONSENTO</button>
+
+    <!-- BANNER COOKIE (COMPLIANCE GDPR) -->
+    <div id="cookie-banner">
+        <p style="color: #fff; font-size: 0.9rem; margin: 0; line-height: 1.5; max-width: 75%;">
+            Utilizziamo cookie tecnici per il funzionamento del sito e cookie analitici anonimi per migliorare l'esperienza.
+            Nessun dato sensibile viene ceduto a terze parti. <a href="cookies.html" style="color:var(--accent-gold); text-decoration: underline;">Informativa Cookie</a>.
+        </p>
+        <button onclick="acceptCookies()" style="background:var(--accent-gold); border:none; padding:12px 30px; border-radius:4px; font-weight:900; cursor:pointer; font-size: 0.85rem; letter-spacing: 1px;">ACCONSENTO</button>
     </div>
- 
+
     <header class="header">
         <div class="header-inner container">
             <div class="header-brand">
@@ -128,28 +117,28 @@
             </div>
             <nav class="main-nav" aria-label="Navigazione principale">
                 <a href="index.html">Home</a>
-                <a href="informazioni.html">Informazioni</a>
+                <a href="about.html">Informazioni</a>
                 <a href="prezzi.html" class="active-nav">Piani</a>
                 <a href="contatti.html">Contatti</a>
             </nav>
         </div>
     </header>
- 
+
     <main>
         <section class="hero-premium">
             <div class="container text-center">
                 <span class="badge-status">INVESTIMENTO E VALORE</span>
                 <h1 style="margin-top: 25px;">Scegli il piano<br><span style="color: var(--accent-gold);">giusto per la tua azienda.</span></h1>
                 <p class="hero-subtitle" style="max-width: 650px; margin: 25px auto;">
-                    Recupera capitale bloccato e riduci gli scarti. Inizia gratis, 
+                    Recupera capitale bloccato e riduci gli scarti. Inizia gratis,
                     <strong>disdici quando vuoi</strong> ed esporta i tuoi dati in ogni momento.
                 </p>
             </div>
         </section>
- 
+
         <section class="container section">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 30px; margin-top: 40px; align-items: start;">
- 
+
                 <!-- STARTER -->
                 <div class="pricing-card">
                     <div>
@@ -167,9 +156,9 @@
                         <li>Proiezioni 30 giorni</li>
                         <li>Dati esportabili sempre</li>
                     </ul>
-                    <a href="demo.html" class="btn-cta btn-cta-outline">Prova Gratis</a>
+                    <a href="contatti.html?piano=starter" class="btn-cta btn-cta-outline">Richiedi Demo Base</a>
                 </div>
- 
+
                 <!-- PMI - FEATURED -->
                 <div class="pricing-card featured-card">
                     <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%);">
@@ -190,7 +179,7 @@
                         <li>Proiezioni 30/90 giorni</li>
                         <li>Piano d'azione prescrittivo</li>
                     </ul>
-                    <a href="demo.html" class="btn-cta btn-cta-gold" style="color:#000;">Accedi alla Demo PMI</a>
+                    <a href="contatti.html?piano=pmi" class="btn-cta btn-cta-gold">Accedi alla Demo PMI</a>
                 </div>
 
                 <!-- ENTERPRISE -->
@@ -205,12 +194,12 @@
                         </div>
                     </div>
                     <ul class="feature-list">
-                        <li>Integrazione API (SAP, Oracle)</li>
+                        <li>Integrazione API / CSV Avanzata</li>
                         <li>IA addestrata su dati custom</li>
                         <li>Account Manager dedicato</li>
                         <li>Supporto Prioritario h24</li>
                     </ul>
-                    <a href="contatti.html" class="btn-cta btn-cta-outline" style="border-color: #a78bfa; color: #a78bfa;">Contatta Sales</a>
+                    <a href="contatti.html?piano=enterprise" class="btn-cta btn-cta-outline" style="border-color: #a78bfa; color: #a78bfa;">Contatta Sales</a>
                 </div>
             </div>
 
@@ -261,7 +250,7 @@
                     </div>
                 </div>
                 <p style="text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-top: 50px; font-style: italic;">
-                    Nota: I prezzi indicati sono puramente illustrativi. In questa fase, l'accesso è fornito in modalità dimostrativa gratuita.
+                    Nota: I prezzi indicati sono stimati per la futura commercializzazione. In questa fase l'accesso è erogato su richiesta in modalità dimostrativa o consulenziale.
                 </p>
             </div>
         </section>
@@ -269,12 +258,28 @@
 
     <footer class="footer container text-center" style="padding: 60px 0;">
         <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
-        <p style="color: #fff; font-weight: 700; letter-spacing: 2px; font-size: 1rem;">© 2026 <strong>RGANDJA</strong></p>
-        <div style="margin-top: 30px; display: flex; justify-content: center; gap: 30px;">
+        <p style="color: #fff; font-weight: 700; letter-spacing: 2px; font-size: 1rem;">© 2026 <strong>RGANDJA NEURAL ENGINE</strong></p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 5px;">Independent Software Development · Athens, Greece (EU)</p>
+        <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">Prestazione occasionale / Consulenza professionale con Ritenuta d'Acconto IT/UE</p>
+        <div style="margin-top: 30px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+            <a href="index.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Home</a>
             <a href="privacy.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Privacy Policy</a>
             <a href="cookies.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Cookie Policy</a>
             <a href="contatti.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Supporto</a>
         </div>
     </footer>
+
+    <!-- SCRIPT COOKIE CONSENT -->
+    <script>
+        function acceptCookies() {
+            const banner = document.getElementById('cookie-banner');
+            banner.style.opacity = '0';
+            setTimeout(() => { banner.style.display = 'none'; }, 400);
+            localStorage.setItem('cookieConsent', 'true');
+        }
+        if (localStorage.getItem('cookieConsent') === 'true') {
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+    </script>
 </body>
 </html>

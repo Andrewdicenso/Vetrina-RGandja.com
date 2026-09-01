@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6TTVMQFNY6"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -13,108 +14,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sandbox Analisi | RGandja - Advanced Strategy</title>
     <meta name="description" content="Esegui una simulazione di analisi strategica del tuo inventario con il protocollo RGD-Alpha.">
-    
+
     <link rel="icon" type="image/png" href="logo.webp">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+
     <style>
-        :root { 
-            --terminal-bg: #0a0e14; 
+        :root {
+            --terminal-bg: #0a0e14;
             --term-red: #ff5f56;
             --term-yellow: #ffbd2e;
             --term-green: #27c93f;
-            --accent-gold: #d4af37; /* Colore oro standard */
+            --accent-gold: #d4af37;
         }
         body { background: #05070a; font-family: 'Fira Code', monospace; color: white; margin: 0; }
-        
-        .terminal { 
-            background: var(--terminal-bg); 
-            border: 1px solid #1a2332; 
-            border-radius: 12px; 
-            max-width: 950px; 
-            margin: 60px auto; 
-            position: relative; 
-            overflow: hidden; 
+
+        .terminal {
+            background: var(--terminal-bg);
+            border: 1px solid #1a2332;
+            border-radius: 12px;
+            max-width: 950px;
+            margin: 40px auto 80px;
+            position: relative;
+            overflow: hidden;
             box-shadow: 0 40px 100px rgba(0,0,0,0.9);
         }
-        
-        .term-header { 
-            background: #161b22; 
-            padding: 15px 20px; 
-            display: flex; 
-            gap: 10px; 
-            align-items: center; 
+
+        .term-header {
+            background: #161b22;
+            padding: 15px 20px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
             border-bottom: 1px solid #2d3748;
         }
-        
+
         .dot { width: 12px; height: 12px; border-radius: 50%; }
         .term-content { padding: 40px; }
-        .grid-inputs { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 30px; }
-        
-        /* FIX ETICHETTE: Colore oro con contrasto sufficiente */
-        .form-group label { 
-            display: block; 
-            margin-bottom: 10px; 
-            color: var(--accent-gold); 
-            font-size: 0.75rem; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            font-weight: 700; 
+        .grid-inputs { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 20px; }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--accent-gold);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
         }
 
-        /* FIX INPUT E SELECT: Testo bianco su sfondo scuro per leggibilità totale */
-        input, select { 
-            width: 100%; 
-            padding: 14px; 
-            background: #161b22; 
-            border: 1px solid #30363d; 
-            color: #ffffff !important; 
-            border-radius: 8px; 
-            font-family: 'Fira Code', monospace; 
-            font-size: 0.9rem; 
+        input, select {
+            width: 100%;
+            padding: 14px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            color: #ffffff !important;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
             box-sizing: border-box;
         }
 
-        .paywall-overlay { 
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(5, 7, 10, 0.98); 
-            display: none; flex-direction: column; justify-content: center; align-items: center; 
+        .paywall-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5, 7, 10, 0.98);
+            display: none; flex-direction: column; justify-content: center; align-items: center;
             z-index: 1000; text-align: center; padding: 40px; box-sizing: border-box;
         }
 
-        /* FIX PULSANTE: Testo NERO su sfondo ORO per contrasto perfetto */
-        .btn-execute { 
-            background: var(--accent-gold) !important; 
-            color: #000000 !important; 
-            border: none; 
-            padding: 22px 40px; 
-            border-radius: 8px; 
-            font-weight: 900; 
-            cursor: pointer; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
+        .btn-execute {
+            background: var(--accent-gold) !important;
+            color: #000000 !important;
+            border: none;
+            padding: 22px 40px;
+            border-radius: 8px;
+            font-weight: 900;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             width: 100%;
+            transition: opacity 0.2s;
+        }
+        .btn-execute:hover { opacity: 0.9; }
+
+        #resultBox {
+            margin-top: 30px;
+            padding: 25px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            background: rgba(212, 175, 55, 0.02);
+            display: none;
         }
 
-        #resultBox { margin-top: 30px; padding: 25px; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 10px; background: rgba(212, 175, 55, 0.02); display: none; }
-        
-        .badge-status { 
-            border: 1px solid var(--accent-gold); 
-            padding: 6px 18px; 
-            border-radius: 20px; 
-            font-size: 0.75rem; 
-            letter-spacing: 1.5px; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            color: var(--accent-gold); 
-            display: inline-block; 
+        .badge-status {
+            border: 1px solid var(--accent-gold);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            display: inline-block;
         }
 
-        /* FIX INPUT FILE: Testo visibile */
-        input[type="file"] {
-            color: #ffffff;
-            padding: 10px 0;
-        }
+        input[type="file"] { color: #ffffff; padding: 10px 0; }
     </style>
 </head>
 <body>
@@ -127,7 +131,7 @@
             </div>
             <nav class="main-nav" aria-label="Navigazione principale">
                 <a href="index.html">Home</a>
-                <a href="informazioni.html">Informazioni</a> 
+                <a href="informazioni.html">Informazioni</a>
                 <a href="prezzi.html">Piani</a>
                 <a href="contatti.html">Contatti</a>
             </nav>
@@ -135,7 +139,7 @@
     </header>
 
     <main>
-        <div class="container text-center" style="margin-top: 70px;">
+        <div class="container text-center" style="margin-top: 50px;">
             <span class="badge-status">SIMULATION MODULE</span>
             <h2 style="font-size: 2.5rem; letter-spacing: -1px; margin-top: 15px;">RGD-Alpha Logic Engine</h2>
             <p style="color: #cbd5e1; max-width: 650px; margin: 20px auto;">
@@ -144,19 +148,20 @@
         </div>
 
         <div class="terminal">
+            <!-- OVERLAY CONVERSIONE LEAD / WAR ROOM ACCESS -->
             <div id="paywall" class="paywall-overlay">
-                <h2 style="color:var(--accent-gold);">Accesso riservato Neural Engine</h2>
-                <p style="max-width:500px; color:#ffffff; font-size:0.9rem; line-height:1.6;">
-                    La versione completa è riservata alle aziende registrate. Inserisci la tua email per ricevere una sintesi dell'analisi tecnica sui tuoi flussi.
+                <h2 style="color:var(--accent-gold); margin-bottom: 10px;">Accesso Riservato Neural Engine</h2>
+                <p style="max-width:520px; color:#ffffff; font-size:0.9rem; line-height:1.6; margin-bottom: 25px;">
+                    La scansione euristica locale è stata completata. Inserisci la tua email per sincronizzare i dati con la <strong>War Room su Streamlit</strong> e scaricare il report completo.
                 </p>
-                <form name="demo-leads" id="demo-form" style="width:100%; max-width:400px;">
-                    <input type="hidden" name="form-name" value="demo-leads">
+                <form id="demo-leads-form" style="width:100%; max-width:400px;">
                     <input type="email" name="email" id="email-input" placeholder="email@tua-azienda.it" required style="margin-bottom:20px; background:#ffffff; color:#000000;">
-                    <button type="submit" class="btn-execute">RICEVI REPORT ANALISI</button>
+                    <button type="submit" class="btn-execute" id="btn-lead">ACCEDI ALLA WAR ROOM STREAMLIT</button>
                 </form>
-                <button onclick="document.getElementById('paywall').style.display='none'" style="background:none; border:none; color:#cbd5e1; margin-top:20px; cursor:pointer; text-decoration:underline;">Torna alla simulazione</button>
+                <button onclick="document.getElementById('paywall').style.display='none'" style="background:none; border:none; color:#cbd5e1; margin-top:20px; cursor:pointer; text-decoration:underline;">Torna ai parametri di simulazione</button>
             </div>
 
+            <!-- TERMINAL HEADER -->
             <div class="term-header">
                 <div class="dot" style="background:var(--term-red)"></div>
                 <div class="dot" style="background:var(--term-yellow)"></div>
@@ -164,47 +169,125 @@
                 <span style="margin-left:15px; font-size:0.7rem; color:#cbd5e1; font-weight: 700;">RGD-ALPHA-SYSTEM // CORE_ANALYSIS_ACTIVE</span>
             </div>
 
+            <!-- TERMINAL CONTENT / INPUT FORM -->
             <div class="term-content">
-                <div class="grid-inputs">
-                    <div class="form-group">
-                        <label for="model-select">Modello Operativo</label>
-                        <select id="model-select" name="model-select">
-                            <option>Predittivo Alpha v1</option>
-                            <option>Ottimizzazione Stock</option>
-                            <option>Analisi Multi-Tenant</option>
-                        </select>
+                <form id="simulation-form">
+                    <div class="grid-inputs">
+                        <div class="form-group">
+                            <label for="model-select">Modello Operativo</label>
+                            <select id="model-select">
+                                <option value="RGD-ALPHA-v1">Predittivo Alpha v1</option>
+                                <option value="RGD-STOCK-OPT">Ottimizzazione Stock</option>
+                                <option value="RGD-MULTI-TENANT">Analisi Multi-Tenant</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="volume-dati">Volume Dati (SKU)</label>
+                            <input type="number" id="volume-dati" placeholder="es. 5000" value="5000">
+                        </div>
+                        <div class="form-group">
+                            <label for="budget">Budget Indicativo (€)</label>
+                            <input type="number" id="budget" placeholder="es. 25000" value="25000">
+                        </div>
+                        <div class="form-group">
+                            <label for="standby_watt">Consumo Standby (Watt)</label>
+                            <input type="number" id="standby_watt" placeholder="es. 800" value="800">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="volume-dati">Volume Dati (SKU)</label>
-                        <input type="number" id="volume-dati" name="volume-dati" placeholder="es. 5000">
+
+                    <div class="form-group" style="margin-top: 10px; margin-bottom: 30px; padding: 20px; border: 1px dashed #30363d; border-radius: 8px; background: rgba(255,255,255,0.02);">
+                        <label for="file-upload" style="color: var(--accent-gold); font-size: 0.75rem;">
+                            Carica Dataset Proprietario (CSV/JSON)
+                        </label>
+                        <input type="file" id="file-upload" accept=".csv, .json">
                     </div>
-                </div>
 
-                <div class="form-group" style="margin-top: 10px; margin-bottom: 30px; padding: 20px; border: 1px dashed #30363d; border-radius: 8px; background: rgba(255,255,255,0.02);">
-                    <label for="file-upload" style="color: var(--accent-gold); font-size: 0.75rem;">
-                        Carica Dataset Proprietario (CSV/JSON)
-                    </label>
-                    <input type="file" id="file-upload" name="file-upload" accept=".csv, .json">
-                </div>
+                    <button type="submit" class="btn-execute" id="btn-scan">
+                        ESEGUI SCANSIONE STRATEGICA
+                    </button>
+                </form>
 
-                <button class="btn-execute" onclick="showPaywall()">
-                    ESEGUI SCANSIONE STRATEGICA
-                </button>
+                <!-- OUTPUT RISULTATO DINAMICO DAL BACKEND FLASK -->
+                <div id="resultBox"></div>
             </div>
         </div>
     </main>
 
     <script>
-        function showPaywall() {
-            document.getElementById('paywall').style.display = 'flex';
-        }
+        const API_URL = "http://localhost:8000"; // Sostituire con l'URL Flask in produzione (es. Render/Heroku)
+        const WAR_ROOM_URL = "https://rgd-warroom-app.onrender.com/";
+
+        // 1. Invio della simulazione al backend Python /calcola
+        document.getElementById('simulation-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btn-scan');
+            btn.innerText = "ELABORAZIONE EURISTICA IN CORSO...";
+            btn.disabled = true;
+
+            const payload = {
+                algoritmo: document.getElementById('model-select').value,
+                budget: document.getElementById('budget').value,
+                standby_watt: document.getElementById('standby_watt').value,
+                metri_quadri: document.getElementById('volume-dati').value / 10 // Ponderazione stimata per la demo
+            };
+
+            try {
+                const res = await fetch(`${API_URL}/calcola`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+
+                if (res.ok) {
+                    const resultBox = document.getElementById('resultBox');
+                    resultBox.innerHTML = data.risultato + `
+                        <div style="margin-top:20px; text-align:center;">
+                            <button onclick="document.getElementById('paywall').style.display='flex'" class="btn-execute" style="width:auto; padding:12px 25px; font-size:0.8rem;">
+                                APRI WAR ROOM COMPLETA SU STREAMLIT ➔
+                            </button>
+                        </div>
+                    `;
+                    resultBox.style.display = 'block';
+                    resultBox.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    alert("Errore nell'elaborazione: " + (data.error || "Parametri non validi"));
+                }
+            } catch (err) {
+                // Fallback se il backend local/remote non risponde: mostra l'overlay direttamente
+                document.getElementById('paywall').style.display = 'flex';
+            } finally {
+                btn.innerText = "ESEGUI SCANSIONE STRATEGICA";
+                btn.disabled = false;
+            }
+        });
+
+        // 2. Invio Lead a /report e Redirect Diretto alla War Room su Render
+        document.getElementById('demo-leads-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btnLead = document.getElementById('btn-lead');
+            const email = document.getElementById('email-input').value;
+
+            btnLead.innerText = "AUTORIZZAZIONE IN CORSO...";
+            btnLead.disabled = true;
+
+            try {
+                await fetch(`${API_URL}/report`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: email,
+                        ragione_sociale: "Lead Demo Sandbox",
+                        piano_suggerito: "Piano PMI - Live War Room"
+                    })
+                });
+            } catch (err) {
+                console.warn("Registrazione lead offline, reindirizzamento forzato alla War Room.");
+            } finally {
+                // Reindirizzamento effettivo alla War Room Streamlit
+                window.location.href = WAR_ROOM_URL;
+            }
+        });
     </script>
 </body>
 </html>
-
-<script>
-document.getElementById('demo-form').addEventListener('submit', function(e) {
-    e.preventDefault(); 
-    window.location.href = "https://rgd-warroom-app.onrender.com/"; 
-});
-</script>

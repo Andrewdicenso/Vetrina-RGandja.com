@@ -8,12 +8,12 @@
       gtag('js', new Date());
       gtag('config', 'G-6TTVMQFNY6');
     </script>
- 
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contatti | Protocollo RGD-Alpha — Parliamo del tuo progetto</title>
     <meta name="description" content="Hai domande su RGandja? Richiedi una demo personalizzata o una scansione strategica del tuo inventario.">
- 
+
     <link rel="icon" type="image/png" href="logo.webp">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
@@ -53,36 +53,22 @@
             gap: 8px; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px;
             font-weight: 700; font-family: 'Fira Code', monospace;
         }
-        .badge-status {
-            border: 1px solid var(--accent-gold);
-            padding: 6px 18px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            letter-spacing: 1.5px;
-            font-weight: 800;
-            text-transform: uppercase;
-            color: var(--accent-gold);
-            display: inline-block;
-        }
-        #cookie-banner {
-            position: fixed; bottom: 20px; left: 20px; right: 20px;
-            background: rgba(15, 23, 42, 0.95); border: 1px solid var(--accent-gold);
-            padding: 15px 25px; display: flex; justify-content: space-between;
-            align-items: center; z-index: 9999; border-radius: 8px;
-            backdrop-filter: blur(10px);
-        }
         @media (max-width: 768px) {
             .grid-contact-fields { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
- 
-    <div id="cookie-banner" style="display: none;">
-        <p style="color: #fff; font-size: 0.85rem; margin: 0;">Utilizziamo cookie tecnici necessari al funzionamento del sito. <a href="cookies.html" style="color:var(--accent-gold)">Cookie Policy</a>.</p>
-        <button onclick="document.getElementById('cookie-banner').style.display='none'" style="background: var(--accent-gold); border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold;">Accetto</button>
+
+    <!-- BANNER COOKIE (COMPLIANCE GDPR) -->
+    <div id="cookie-banner">
+        <p style="color: #fff; font-size: 0.9rem; margin: 0; line-height: 1.5; max-width: 75%;">
+            Utilizziamo cookie tecnici per il funzionamento del sito e cookie analitici anonimi per migliorare l'esperienza.
+            Nessun dato sensibile viene ceduto a terze parti. <a href="cookies.html" style="color:var(--accent-gold); text-decoration: underline;">Informativa Cookie</a>.
+        </p>
+        <button onclick="acceptCookies()" style="background:var(--accent-gold); border:none; padding:12px 30px; border-radius:4px; font-weight:900; cursor:pointer; font-size: 0.85rem; letter-spacing: 1px;">ACCONSENTO</button>
     </div>
- 
+
     <header class="header">
         <div class="header-inner container">
             <div class="header-brand">
@@ -91,32 +77,32 @@
             </div>
             <nav class="main-nav" aria-label="Navigazione principale">
                 <a href="index.html">Home</a>
-                <a href="informazioni.html">Informazioni</a>
+                <a href="about.html">Informazioni</a>
                 <a href="prezzi.html">Piani</a>
                 <a href="contatti.html" class="active-nav">Contatti</a>
             </nav>
         </div>
     </header>
- 
+
     <main style="padding-top: 80px;">
         <section class="hero-premium">
             <div class="container text-center">
                 <span class="badge-status">DIREZIONE STRATEGICA</span>
                 <h1 style="font-size: 3rem; margin-top: 20px;">Parla con noi.<br><span style="color: var(--accent-gold);">Risposta garantita entro 24 ore.</span></h1>
                 <p class="hero-subtitle" style="max-width: 650px; margin: 25px auto;">
-                    Hai domande su RGandja? Vuoi capire se fa al caso tuo? 
+                    Hai domande su RGandja? Vuoi capire se fa al caso tuo?
                     Vuoi una demo personalizzata? Siamo costruttori — non commerciali. Parla direttamente con chi ha costruito il prodotto.
                 </p>
             </div>
         </section>
- 
+
         <section class="section container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; padding-bottom: 100px;">
- 
+
             <!-- SIDEBAR -->
             <div style="display: flex; flex-direction: column; gap: 25px;">
                 <div class="card-expert" style="background: rgba(10, 14, 20, 0.8); border: 1px solid var(--border); padding: 35px; border-radius: 16px; border-top: 3px solid var(--accent-gold);">
                     <p style="color: var(--accent-gold); font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px;">Global Operations</p>
-                    <h3 style="color:#fff; margin-bottom: 15px; letter-spacing: -0.5px; font-size: 1.3rem;">RGandja Enterprise</h3>
+                    <h3 style="color:#fff; margin-bottom: 15px; letter-spacing: -0.5px; font-size: 1.3rem;">RGandja Neural Engine</h3>
                     <p style="color: #a0aec0; line-height: 1.8; margin-bottom: 15px; font-size: 0.9rem;">
                         Hub Tecnologico e di Calcolo<br>
                         <strong style="color: #fff;">Athens, Greece — European Union</strong>
@@ -128,7 +114,7 @@
                         📧 <a href="mailto:info@rgandja.com" style="color: var(--accent-gold); text-decoration: none;">info@rgandja.com</a>
                     </p>
                 </div>
- 
+
                 <div class="card-expert" style="background: rgba(15, 23, 42, 0.4); border: 1px solid var(--border); padding: 30px; border-radius: 16px;">
                     <h3 style="color:#fff; margin-bottom: 12px; font-size: 1rem;">Obiettivi del Contatto</h3>
                     <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
@@ -139,7 +125,7 @@
                             <span style="color: var(--accent-gold); flex-shrink: 0;">→</span> Demo personalizzata del sistema RGD-Alpha
                         </li>
                         <li style="font-size: 0.88rem; color: #a0aec0; display: flex; gap: 10px; align-items: flex-start;">
-                            <span style="color: var(--accent-gold); flex-shrink: 0;">→</span> Integrazione Enterprise (API / SAP)
+                            <span style="color: var(--accent-gold); flex-shrink: 0;">→</span> Integrazione Enterprise (API / CSV)
                         </li>
                         <li style="font-size: 0.88rem; color: #a0aec0; display: flex; gap: 10px; align-items: flex-start;">
                             <span style="color: var(--accent-gold); flex-shrink: 0;">→</span> Accesso al Programma Early Adopter
@@ -147,17 +133,17 @@
                     </ul>
                 </div>
             </div>
- 
+
             <!-- FORM -->
             <div class="card-expert" style="background: rgba(10, 14, 20, 0.95); border: 1px solid var(--border); padding: 45px; border-radius: 16px;">
                 <form name="contact-rgandja" method="POST" data-netlify="true" action="/grazie.html" id="contact-form">
                     <input type="hidden" name="form-name" value="contact-rgandja">
- 
+
                     <div class="form-group" style="margin-bottom: 22px;">
                         <label>Nome / Azienda</label>
                         <input type="text" name="azienda" class="form-control" placeholder="Inserisci il tuo nome o ragione sociale" required>
                     </div>
- 
+
                     <div class="grid-contact-fields">
                         <div class="form-group" style="margin-bottom: 22px;">
                             <label>Email Professionale</label>
@@ -173,42 +159,56 @@
                             </select>
                         </div>
                     </div>
- 
+
                     <div class="form-group">
                         <label>Note sul tuo magazzino (opzionale)</label>
                         <textarea name="messaggio" class="form-control" rows="4" placeholder="Parlaci brevemente del tuo settore o delle criticità che vuoi risolvere..."></textarea>
                     </div>
- 
+
                     <div class="checkbox-group">
                         <input type="checkbox" required id="privacy">
                         <label for="privacy">
                             Dichiaro di aver letto la <a href="privacy.html" style="color:var(--accent-gold)">Privacy Policy</a> e autorizzo il trattamento dei dati per la gestione della richiesta tecnica.
                         </label>
                     </div>
- 
+
                     <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 30px; padding: 18px; border: none; border-radius: 8px; font-weight: 900; cursor: pointer; text-transform: uppercase; letter-spacing: 2px;">
                         Invia Richiesta Diagnosi
                     </button>
- 
+
                     <div class="security-status" style="color: #a1a1aa;">
                         <span style="color: #27c93f;">●</span> CRITTOGRAFIA SSL ATTIVA | TRASMISSIONE DATI PROTETTA
                     </div>
                 </form>
             </div>
- 
+
         </section>
     </main>
- 
+
     <footer class="footer container text-center" style="padding: 60px 0;">
         <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
-        <p style="color: #fff; font-weight: 700; letter-spacing: 2px; font-size: 1rem;">© 2026 <strong>RGANDJA ENTERPRISE</strong></p>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">Security & Compliance Operations</p>
+        <p style="color: #fff; font-weight: 700; letter-spacing: 2px; font-size: 1rem;">© 2026 <strong>RGANDJA NEURAL ENGINE</strong></p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 5px;">Independent Software Development · Athens, Greece (EU)</p>
+        <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">Prestazione occasionale / Consulenza professionale con Ritenuta d'Acconto IT/UE</p>
         <div style="margin-top: 30px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
-            <a href="privacy.html" style="color: #a1a1aa; font-size: 0.85rem; text-decoration: none;">Privacy Policy</a>
-            <a href="cookies.html" style="color: #a1a1aa; font-size: 0.85rem; text-decoration: none;">Cookie Policy</a>
-            <a href="contatti.html" style="color: #a1a1aa; font-size: 0.85rem; text-decoration: none;">Supporto</a>
+            <a href="index.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Home</a>
+            <a href="privacy.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Privacy Policy</a>
+            <a href="cookies.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Cookie Policy</a>
+            <a href="contatti.html" style="color: var(--accent-gold); font-size: 0.85rem; text-decoration: none;">Supporto</a>
         </div>
     </footer>
- 
+
+    <!-- SCRIPT COOKIE CONSENT -->
+    <script>
+        function acceptCookies() {
+            const banner = document.getElementById('cookie-banner');
+            banner.style.opacity = '0';
+            setTimeout(() => { banner.style.display = 'none'; }, 400);
+            localStorage.setItem('cookieConsent', 'true');
+        }
+        if (localStorage.getItem('cookieConsent') === 'true') {
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+    </script>
 </body>
 </html>

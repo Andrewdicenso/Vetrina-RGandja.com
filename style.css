@@ -1,22 +1,37 @@
 /* ============================================================
-    RGANDJA NEURAL ENGINE - OFFICIAL DESIGN SYSTEM 2026
-    Architect: Andrew Di Censo & AI Master Integration
-    Version: 6.0.0 - Premium Deployment (Athens HQ)
+   RGANDJA NEURAL ENGINE - OFFICIAL DESIGN SYSTEM 2026
+   Architect: Andrew Di Censo & AI Master Integration
+   Version: 6.0.0 - Premium Deployment (Athens HQ)
    ============================================================ */
 
 :root {
-    /* ... altre variabili ... */
-    
-    /* Superfici e Testi */
-    --bg-app: #020617;   /* Sfondo scuro professionale */
-    --text-main: #FFFFFF; /* CAMBIA IN BIANCO PURO per massimo contrasto su sfondo scuro */
-    --text-muted: #CBD5E1; /* Grigio chiaro leggibile per testi secondari */
-    
-    /* ... resto del codice ... */
+    /* Palette Core - Profondità Aumentata */
+    --primary: #0f172a;
+    --accent: #10b981;         /* Tech Green */
+    --accent-gold: #d4af37;    /* RGandja Premium Gold */
+    --accent-gold-dark: #b8860b;
+    --accent-gold-light: #f2d472;
+
+    /* Superfici e Testi - Massimo Contrasto & Leggibilità */
+    --bg-app: #020617;
+    --text-main: #FFFFFF;      /* Bianco puro per massimo contrasto */
+    --text-muted: #CBD5E1;     /* Grigio chiaro ben visibile su fondo scuro */
+    --glass: rgba(15, 23, 42, 0.65);
+    --border: rgba(255, 255, 255, 0.08);
+    --gold-glow: rgba(212, 175, 55, 0.15);
+
+    /* Elevazione & Moto - Curve Professionali */
+    --shadow-premium: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+    --transition-smooth: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 /* 1. RESET & FONDAMENTALI */
-* { margin: 0; padding: 0; box-sizing: border-box; outline-color: var(--accent-gold); }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline-color: var(--accent-gold);
+}
 
 html {
     scroll-behavior: smooth;
@@ -37,7 +52,7 @@ body {
 
 /* 2. HEADER & NAVIGATION - Look "Command Center" */
 .header {
-    background: rgba(2, 6, 23, 0.7);
+    background: rgba(2, 6, 23, 0.75);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-bottom: 1px solid var(--border);
@@ -60,8 +75,8 @@ body {
 }
 
 .header-brand { display: flex; align-items: center; gap: 15px; }
-.brand-logo { 
-    height: 45px; 
+.brand-logo {
+    height: 45px;
     filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.2));
     transition: var(--transition-smooth);
 }
@@ -104,7 +119,7 @@ body {
     margin-bottom: 35px;
     background: linear-gradient(180deg, #FFFFFF 0%, #94a3b8 100%);
     -webkit-background-clip: text;
-    background-clip: text; 
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -3px;
 }
@@ -130,6 +145,7 @@ body {
     transition: var(--transition-smooth);
     position: relative;
     overflow: hidden;
+    height: 100%;
 }
 
 .card-expert::before {
@@ -161,8 +177,8 @@ input, select, textarea {
     transition: var(--transition-smooth);
 }
 
-input:focus, select:focus, textarea:focus { 
-    border-color: var(--accent-gold); 
+input:focus, select:focus, textarea:focus {
+    border-color: var(--accent-gold);
     box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
     background: #0f172a;
 }
@@ -181,6 +197,7 @@ input:focus, select:focus, textarea:focus {
     text-decoration: none;
     font-size: 0.75rem;
     border: none;
+    cursor: pointer;
 }
 
 .btn-gold {
@@ -200,6 +217,7 @@ input:focus, select:focus, textarea:focus {
     border: 1px solid var(--border);
     color: #fff;
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .btn-outline:hover {
@@ -208,7 +226,50 @@ input:focus, select:focus, textarea:focus {
     background: rgba(212, 175, 55, 0.05);
 }
 
-/* 7. FOOTER */
+/* 7. COMPONENTI UI SPECIALI (Badge, Feature Lists, Cookie Banner) */
+@keyframes pulse-gold {
+    0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+.badge-status {
+    animation: pulse-gold 2s infinite;
+    border: 1px solid var(--accent-gold);
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    display: inline-block;
+}
+
+.feature-list { list-style: none; padding: 0; margin-top: 20px; }
+.feature-list li { margin-bottom: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 10px; }
+.feature-list li::before { content: "✦"; color: var(--accent-gold); }
+
+#cookie-banner {
+    position: fixed;
+    bottom: 25px; left: 25px; right: 25px;
+    background: rgba(10, 14, 20, 0.98);
+    border: 1px solid var(--accent-gold);
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10000;
+    border-radius: 12px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 15px 60px rgba(0,0,0,0.8);
+    transition: opacity 0.4s ease;
+}
+
+.text-center { text-align: center; }
+
+/* 8. FOOTER */
 .footer {
     padding: 120px 0 60px;
     background: #010307;
@@ -216,14 +277,14 @@ input:focus, select:focus, textarea:focus {
 }
 
 .intro-piani h2 {
-    background: linear-gradient(90deg, rgba(212,175,55,0.15) 0%, rgba(212,175,55,0) 100%);
+    background: linear-gradient(90deg, #FFFFFF 0%, var(--accent-gold-light) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
 }
 
-/* 8. ANIMAZIONI UTILITY */
+/* 9. ANIMAZIONI UTILITY */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
@@ -231,7 +292,7 @@ input:focus, select:focus, textarea:focus {
 
 .animate-in { animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
 
-/* 9. RESPONSIVE MASTER */
+/* 10. RESPONSIVE MASTER */
 @media (max-width: 1024px) {
     .container { padding: 0 30px; }
     .grid-3 { grid-template-columns: repeat(2, 1fr); }
@@ -242,4 +303,6 @@ input:focus, select:focus, textarea:focus {
     .main-nav { display: none; }
     .hero-premium { padding: 120px 0 80px; }
     .btn { width: 100%; }
+    #cookie-banner { flex-direction: column; gap: 15px; text-align: center; left: 15px; right: 15px; bottom: 15px; }
+    #cookie-banner p { max-width: 100% !important; }
 }

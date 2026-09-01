@@ -17,7 +17,13 @@
     <link rel="icon" type="image/png" href="logo.webp">
     <link rel="stylesheet" href="style.css">
     <style>
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
         .badge-status {
+            animation: pulse-gold 2s infinite;
             border: 1px solid var(--accent-gold);
             padding: 6px 18px;
             border-radius: 20px;
@@ -39,21 +45,49 @@
             border-radius: 20px;
             border: 1px solid var(--border);
             height: 100%;
+            transition: all 0.3s ease;
+        }
+        .card-expert:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+        }
+        #cookie-banner {
+            position: fixed;
+            bottom: 25px; left: 25px; right: 25px;
+            background: rgba(10, 14, 20, 0.98);
+            border: 1px solid var(--accent-gold);
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10000;
+            border-radius: 12px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 15px 60px rgba(0,0,0,0.8);
+            transition: opacity 0.4s ease;
         }
     </style>
 </head>
 <body>
 
+    <!-- BANNER COOKIE (COMPLIANCE GDPR) -->
+    <div id="cookie-banner">
+        <p style="color: #fff; font-size: 0.9rem; margin: 0; line-height: 1.5; max-width: 75%;">
+            Utilizziamo cookie tecnici per il funzionamento del sito e cookie analitici anonimi per migliorare l'esperienza.
+            Nessun dato sensibile viene ceduto a terze parti. <a href="cookies.html" style="color:var(--accent-gold); text-decoration: underline;">Informativa Cookie</a>.
+        </p>
+        <button onclick="acceptCookies()" style="background:var(--accent-gold); border:none; padding:12px 30px; border-radius:4px; font-weight:900; cursor:pointer; font-size: 0.85rem; letter-spacing: 1px;">ACCONSENTO</button>
+    </div>
+
     <header class="header">
-    <div class="header-inner container">
-        <div class="header-brand">
-            <!-- Aggiungi width e height uguali alla dimensione reale -->
-            <img src="logo.webp" alt="Logo RGandja" class="brand-logo">
-            <h1>RGandja</h1>
-        </div>
+        <div class="header-inner container">
+            <div class="header-brand">
+                <img src="logo.webp" alt="Logo RGandja" class="brand-logo">
+                <h1>RGandja</h1>
+            </div>
             <nav class="main-nav" aria-label="Navigazione principale">
                 <a href="index.html" class="active-nav">Home</a>
-                <a href="informazioni.html">Informazioni</a>
+                <a href="about.html">Informazioni</a>
                 <a href="prezzi.html">Piani</a>
                 <a href="contatti.html">Contatti</a>
             </nav>
@@ -95,7 +129,7 @@
                     </p>
                     <ul class="feature-list">
                         <li><strong>Ingestione Universale:</strong> Elaborazione atomica di CSV/Excel senza configurazione.</li>
-                        <li><strong>Risk Engine Predictivo:</strong> Algoritmi proprietari per la proiezione dell'impatto a 30/90gg.</li>
+                        <li><strong>Risk Engine Predittivo:</strong> Algoritmi proprietari per la proiezione dell'impatto a 30/90gg.</li>
                         <li><strong>Certificazione Report:</strong> Ogni analisi produce un report cifrato scaricabile.</li>
                     </ul>
                 </div>
@@ -131,7 +165,7 @@
         </section>
 
         <!-- I 3 PILASTRI -->
-        <section class="section container" style="margin-top: 80px; padding-bottom: 100px;">
+        <section class="section container" style="margin-top: 80px;">
             <div class="text-center" style="margin-bottom: 60px;">
                 <h2 style="font-size: 2.2rem; color: #fff;">L'architettura RGD-Alpha</h2>
                 <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto;">Progettata per l'Enterprise, ottimizzata per l'imprenditore che cerca la verità nei dati.</p>
@@ -162,13 +196,46 @@
                     </p>
                 </div>
             </div>
-        </section> <!-- Fine 3 PILASTRI -->
+        </section>
 
-                <!-- NUOVA SEZIONE UNIFICATA -->
+        <!-- PER CHI È -->
+        <section class="section" style="background: rgba(15, 23, 42, 0.5); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 0; margin-top: 80px;">
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 60px;">
+                    <h2 class="section-title" style="font-size: 2.2rem; color: #fff;">Per chi è RGandja</h2>
+                    <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Se hai un magazzino, hai un problema che puoi risolvere oggi.</p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+                    <div style="padding: 35px; border: 1px solid var(--border); border-radius: 16px; background: rgba(15,23,42,0.4);">
+                        <div style="font-size: 2rem; margin-bottom: 15px;">🍕</div>
+                        <h4 style="color: #fff; margin-bottom: 10px;">Settore Alimentare</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
+                            Scadenze, lotti, HACCP. RGandja monitora ogni prodotto deperibile e ti avvisa prima che diventi un costo o una sanzione.
+                        </p>
+                    </div>
+                    <div style="padding: 35px; border: 1px solid var(--border); border-radius: 16px; background: rgba(15,23,42,0.4);">
+                        <div style="font-size: 2rem; margin-bottom: 15px;">🏭</div>
+                        <h4 style="color: #fff; margin-bottom: 10px;">Manifattura & Logistica</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
+                            Componenti fermi, lead time e saturazione del magazzino. Ottimizza il capitale circolante e anticipa i colli di bottiglia.
+                        </p>
+                    </div>
+                    <div style="padding: 35px; border: 1px solid var(--border); border-radius: 16px; background: rgba(15,23,42,0.4);">
+                        <div style="font-size: 2rem; margin-bottom: 15px;">🛒</div>
+                        <h4 style="color: #fff; margin-bottom: 10px;">Retail & Distribuzione</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
+                            Gestisci categorie di prodotti con stagionalità e rotazione variabile. Riduci l'invenduto e migliora i margini.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINALE -->
         <section class="section container text-center" style="padding: 120px 20px;">
-            <h2 class="section-title">Pronto a smettere di perdere soldi<br>per merce ferma o scaduta?</h2>
+            <h2 class="section-title" style="font-size: 2.2rem; color: #fff;">Pronto a smettere di perdere soldi<br>per merce ferma o scaduta?</h2>
             <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 50px; font-size: 1.1rem; line-height: 1.7;">
-                Carica il tuo primo file e vedi cosa rgandja trova nel tuo inventario.
+                Carica il tuo primo file e vedi cosa RGandja trova nel tuo inventario.
                 Gratis, senza impegno, in due minuti.
             </p>
             <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
@@ -177,17 +244,32 @@
             </div>
             <p style="margin-top: 20px; font-size: 0.8rem; color: var(--text-muted);">Sede operativa ad Atene, UE · Dati protetti GDPR · Crittografia end-to-end</p>
         </section>
-
     </main>
 
     <footer class="footer container text-center" style="padding: 60px 0;">
         <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
-        <p style="color: #fff; font-weight: 700; letter-spacing: 2px; font-size: 1rem;">© 2026 <strong>RGANDJA</strong> · by RGandja Enterprise</p>
+        <p style="color: #fff; font-weight: 700; letter-spacing: 2px; font-size: 1rem;">© 2026 <strong>RGANDJA NEURAL ENGINE</strong></p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 5px;">Independent Software Development · Athens, Greece (EU)</p>
+        <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">Prestazione occasionale / Consulenza professionale con Ritenuta d'Acconto IT/UE</p>
         <div style="margin-top: 30px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+            <a href="index.html" style="color: var(--accent-gold); font-size: 0.85rem; text-decoration: none;">Home</a>
             <a href="privacy.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Privacy Policy</a>
             <a href="cookies.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Cookie Policy</a>
             <a href="contatti.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Supporto</a>
         </div>
     </footer>
+
+    <!-- SCRIPT COOKIE CONSENT -->
+    <script>
+        function acceptCookies() {
+            const banner = document.getElementById('cookie-banner');
+            banner.style.opacity = '0';
+            setTimeout(() => { banner.style.display = 'none'; }, 400);
+            localStorage.setItem('cookieConsent', 'true');
+        }
+        if (localStorage.getItem('cookieConsent') === 'true') {
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+    </script>
 </body>
-</html
+</html>

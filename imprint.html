@@ -10,11 +10,13 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Note Legali & Imprint | RGandja Enterprise</title>
-    
+    <title>Note Legali & Imprint | RGandja Neural Engine</title>
+
     <link rel="icon" type="image/webp" href="logo.webp">
     <link rel="apple-touch-icon" href="logo.webp">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+
     <style>
         .imprint-grid {
             display: grid;
@@ -33,6 +35,7 @@
             font-weight: 800;
             border-bottom: 1px solid var(--border);
             padding-bottom: 12px;
+            font-family: 'Fira Code', monospace;
         }
 
         .imprint-block p {
@@ -52,7 +55,7 @@
         }
 
         .imprint-block a:hover { color: var(--accent-gold); }
-        
+
         .full-width {
             grid-column: 1 / -1;
             background: rgba(255,255,255,0.02);
@@ -73,42 +76,18 @@
             display: inline-block;
             padding: 5px 12px;
             border: 1px solid #4a5568;
-            color: #4a5568;
+            color: #a0aec0;
             font-size: 0.65rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 20px;
+            font-family: 'Fira Code', monospace;
         }
 
-        .bank-info-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .bank-info-list li {
-            margin-bottom: 10px;
-            color: var(--text-muted);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-        }
-        .bank-info-list span.code {
-            font-family: monospace;
-            color: #fff;
-            background: rgba(255,255,255,0.05);
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-left: 10px;
-            font-size: 1rem;
-        }
-        .bank-info-list strong {
-            color: var(--accent-gold);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            width: 120px;
-            display: inline-block;
+        .active-nav {
+            color: var(--accent-gold) !important;
+            font-weight: bold;
         }
 
         @media (max-width: 768px) {
@@ -119,17 +98,25 @@
 </head>
 <body>
 
+    <!-- BANNER COOKIE (COMPLIANCE GDPR) -->
+    <div id="cookie-banner">
+        <p style="color: #fff; font-size: 0.9rem; margin: 0; line-height: 1.5; max-width: 75%;">
+            Utilizziamo cookie tecnici essenziali e analitici anonimi per garantire la sicurezza del sistema.
+            Consulta la nostra <a href="cookies.html" style="color:var(--accent-gold); text-decoration: underline;">Cookie Policy</a>.
+        </p>
+        <button onclick="acceptCookies()" style="background:var(--accent-gold); border:none; padding:12px 30px; border-radius:4px; font-weight:900; cursor:pointer; font-size: 0.85rem; letter-spacing: 1px;">ACCONSENTO</button>
+    </div>
+
     <header class="header">
         <div class="header-inner container">
             <div class="header-brand">
                 <img src="logo.webp" alt="Logo RGandja" class="brand-logo">
                 <h1>RGandja</h1>
             </div>
-            <nav class="main-nav">
+            <nav class="main-nav" aria-label="Navigazione principale">
                 <a href="index.html">Home</a>
-                <a href="chi-siamo.html">Chi Siamo</a>
-                <a href="prezzi.html">Prezzi</a>
-                <a href="demo.html">Demo</a>
+                <a href="about.html">Informazioni</a>
+                <a href="prezzi.html">Piani</a>
                 <a href="contatti.html">Contatti</a>
             </nav>
         </div>
@@ -138,75 +125,58 @@
     <section class="hero-premium">
         <div class="container text-center">
             <span class="badge-status">LEGAL COMPLIANCE</span>
-            <h1>Note Legali & Imprint</h1>
-            <p class="hero-subtitle">
-                Trasparenza societaria e tutela della proprietà intellettuale del network <strong>RGandja Enterprise</strong>.
+            <h1 style="margin-top: 20px;">Note Legali & Imprint</h1>
+            <p class="hero-subtitle" style="max-width: 650px; margin: 20px auto;">
+                Trasparenza, asset proprietari e tutela della proprietà intellettuale dell'architettura <strong>RGandja Neural Engine</strong>.
             </p>
         </div>
     </section>
 
     <main class="section container">
         <div class="card-expert dark-card" style="padding: 60px; border: 1px solid var(--border); background: #0a0e14; border-radius: 16px;">
-            <div class="legal-stamp">Official Document v2.4 - Feb 2026</div>
-            
+            <div class="legal-stamp">[SYS_DOC]: Legal Notice v2.6 - 2026</div>
+
             <div class="imprint-grid">
-                
+
                 <div class="imprint-block">
                     <h3>Proprietà e Governance</h3>
-                    <p><strong>RGANDJA ENTERPRISE</strong></p>
-                    <p>Fondatore e Amministratore Unico:<br><strong>Andrew Di Censo</strong></p>
-                    <p>Sede Legale:<br>Atene, Grecia (Unione Europea)</p>
-                    
-                    <p>GR 104 45 – Atene</p>
-                    <p style="color: var(--accent-gold); font-size: 0.75rem; font-weight: 800; letter-spacing: 1px;">
-                    </p>
-
-                    
-                    <p style="color: var(--accent-gold); font-size: 0.75rem; font-weight: 800; letter-spacing: 1px;">
-                        REGISTRATA PRESSO IL MINISTERO DELLO SVILUPPO (GREECE)
+                    <p><strong>RGANDJA NEURAL ENGINE</strong></p>
+                    <p>Software Development & Advisory:<br><strong>Andrew Di Censo</strong></p>
+                    <p>Sede Operativa:<br>Atene, Grecia (Unione Europea)</p>
+                    <p style="color: var(--accent-gold); font-size: 0.75rem; font-weight: 800; letter-spacing: 1px; margin-top: 15px;">
+                        REGIME DI PRESTAZIONE OCCASIONALE / CONSULENZA IT (UE)
                     </p>
                 </div>
 
                 <div class="imprint-block">
                     <h3>Comunicazioni Formali</h3>
-                    <p>PEC Ufficiale (Riferimento IT):<br><a href="mailto:info@pec.rgandja.it">info@pec.rgandja.it</a></p>
-                    <p>Informazioni Generali:<br><a href="mailto:info@rgandja.it">info@rgandja.it</a></p>
-                    <p>Ufficio Amministrativo:<br><a href="mailto:amministrazione@rgandja.it">amministrazione@rgandja.it</a></p>
-                    <p>Data Protection Officer:<br><a href="mailto:privacy@rgandja.com">privacy@rgandja.com</a></p>
+                    <p>Per tutte le richieste di carattere legale, amministrativo o di supporto tecnico, fare riferimento al canale ufficiale di contatto:</p>
+                    <p>Richieste e Supporto:<br><a href="contatti.html" style="color: var(--accent-gold); text-decoration: underline;">Modulo di Contatto Riservato</a></p>
+                    <p>Informativa Sulla Privacy:<br><a href="privacy.html">Protocollo Protezione Dati GDPR</a></p>
                 </div>
 
                 <div class="imprint-block full-width" style="background: rgba(212, 175, 55, 0.03); border: 1px solid rgba(212, 175, 55, 0.2);">
-                    <h3>Coordinate Bancarie (Corporate Payments)</h3>
-                    <!-- COORDINATE BANCARE COMMENTATE PER MODALITÀ VETRINA
-                    <p>Canali ufficiali per l'attivazione di licenze e depositi tramite bonifico SEPA/International:</p>
-                    <ul class="bank-info-list">
-                        <li><strong>Banca:</strong> EUROBANK S.A. (Athens, Greece)</li>
-                        <li><strong>Beneficiario:</strong> ANDREW DI CENSO</li>
-                        <li><strong>IBAN:</strong> <span class="code">GR51 0260 2200 0009 1020 0946 152</span></li>
-                        <li><strong>SWIFT/BIC:</strong> <span class="code">ERBAGRAA</span></li>
-                        <li><strong>Valuta:</strong> EUR</li>
-                    </ul>
-                    -->
-                    <p>Le coordinate bancarie per il regolamento delle licenze Enterprise e dei servizi di consulenza vengono fornite esclusivamente su richiesta formale tramite i canali amministrativi ufficiali.</p>
-                    <p style="margin-top: 15px; font-size: 0.8rem; font-style: italic; color: var(--text-muted);">
-                        Per informazioni: <a href="mailto:amministrazione@rgandja.it" style="color: var(--accent-gold);">amministrazione@rgandja.it</a>
+                    <h3>Coordinate Bancarie (Regolamenti Licenze)</h3>
+                    <p>Le coordinate bancarie ufficiali per il regolamento delle licenze d'uso e delle attività consulenziali vengono trasmesse in forma crittografata esclusivamente a seguito dell'invio di una richiesta formale.</p>
+                    <p style="margin-top: 15px; font-size: 0.85rem; font-style: italic; color: var(--text-muted);">
+                        Per richiedere un preventivo o accedere alle soluzioni personalizzate: <a href="contatti.html" style="color: var(--accent-gold); text-decoration: underline;">Contatta la Struttura</a>.
                     </p>
                 </div>
 
                 <div class="imprint-block full-width">
                     <h3>Proprietà Intellettuale & Segreto Industriale</h3>
                     <p>
-                        Il marchio <strong>RGandja™</strong>, il logo istituzionale e il framework dell'interfaccia sono asset di proprietà esclusiva della <strong>RGANDJA ENTERPRISE</strong>. Ogni riproduzione o utilizzo non autorizzato sarà perseguito nelle sedi competenti.
+                        Il marchio <strong>RGandja™</strong>, il logo istituzionale, il codice sorgente e il layout grafico dell'interfaccia sono asset di proprietà esclusiva di <strong>RGandja Neural Engine</strong>. Ogni riproduzione o utilizzo non autorizzato sarà perseguito a norma di legge.
                     </p>
                     <p style="border-left: 2px solid var(--accent-gold); padding-left: 25px; margin-top: 25px;">
-                        <strong>Protocollo RGD-Alpha:</strong> Le architetture neurali, gli algoritmi di calcolo e i set di dati proprietari sono protetti come <strong>Segreto Industriale</strong> ai sensi della <strong>Direttiva UE 2016/943</strong> e delle leggi internazionali sul copyright.
+                        <strong>Protocollo RGD-Alpha:</strong> Le architetture neurali, gli algoritmi di calcolo e i modelli analitici proprietari sono protetti come <strong>Segreto Industriale</strong> ai sensi della <strong>Direttiva UE 2016/943</strong> e delle normative vigenti sul diritto d'autore.
                     </p>
                 </div>
 
                 <div class="imprint-block full-width disclaimer-box">
                     <h3 style="border: none; margin-bottom: 10px; font-size: 0.9rem;">Limitazione di Responsabilità</h3>
                     <p>
-                        I servizi erogati sono regolati dalle normative della Repubblica Ellenica e dell'Unione Europea. Gli output generati dal Protocollo RGD-Alpha costituiscono strumenti di supporto decisionale basati su modelli predittivi e non costituiscono sollecitazione al pubblico risparmio o pareri finanziari certificati ai sensi della normativa MiFID II.
+                        I servizi erogati sono conformi alle normative applicabili nella Repubblica Ellenica e nell'Unione Europea. Gli output generati dal Protocollo RGD-Alpha costituiscono elaborazioni predittive di supporto decisionale e non intendono sollecitare il pubblico risparmio né costituire consulenza finanziaria certificata ai sensi della direttiva MiFID II.
                     </p>
                 </div>
             </div>
@@ -215,13 +185,25 @@
 
     <footer class="footer container text-center" style="padding: 60px 20px;">
         <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
-        <p>© 2026 <strong>RGANDJA ENTERPRISE</strong> — Atene, Grecia.</p>
+        <p>© 2026 <strong>RGANDJA NEURAL ENGINE</strong> — Atene, Grecia (UE).</p>
         <p style="margin-top: 20px; font-size: 0.85rem;">
-            <a href="privacy.html" style="color: #a1a1aa; font-size: 0.85rem; text-decoration: none;">Privacy Policy</a> | 
+            <a href="privacy.html" style="color: #a1a1aa; font-size: 0.85rem; text-decoration: none;">Privacy Policy</a> |
             <a href="cookies.html" style="color: #a1a1aa; font-size: 0.85rem; text-decoration: none;">Cookie Policy</a> |
-            <a href="imprint.html" style="color: #a1a1aa; font-size: 0.85rem; text-decoration: none;">Note Legali</a>
+            <a href="imprint.html" class="active-nav" style="color: var(--accent-gold); font-size: 0.85rem; text-decoration: none;">Note Legali</a>
         </p>
     </footer>
 
+    <!-- SCRIPT COOKIE CONSENT -->
+    <script>
+        function acceptCookies() {
+            const banner = document.getElementById('cookie-banner');
+            banner.style.opacity = '0';
+            setTimeout(() => { banner.style.display = 'none'; }, 400);
+            localStorage.setItem('cookieConsent', 'true');
+        }
+        if (localStorage.getItem('cookieConsent') === 'true') {
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+    </script>
 </body>
 </html>

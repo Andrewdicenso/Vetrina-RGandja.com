@@ -11,40 +11,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy | Protocollo Protezione Dati RGandja</title>
-    
+
     <link rel="icon" type="image/png" href="logo.webp">
     <link rel="apple-touch-icon" href="logo.webp">
     <link rel="stylesheet" href="style.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+
     <style>
-        :root { 
-            --accent-gold: #d4af37; 
-            --border: #1a2332; 
+        :root {
+            --accent-gold: #d4af37;
+            --border: #1a2332;
             --bg-dark: #0a0e14;
         }
 
-        .privacy-content h3 { 
-            color: var(--accent-gold); 
-            margin-top: 40px; 
-            border-bottom: 1px solid var(--border); 
-            padding-bottom: 15px; 
-            font-size: 1.3rem; 
+        .privacy-content h3 {
+            color: var(--accent-gold);
+            margin-top: 40px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
+            font-size: 1.3rem;
             letter-spacing: -0.5px;
             text-transform: uppercase;
+            font-family: 'Fira Code', monospace;
         }
 
-        .privacy-content p, .privacy-content li { 
-            color: #cbd5e0; 
-            line-height: 1.8; 
-            font-size: 0.95rem; 
+        .privacy-content p, .privacy-content li {
+            color: #cbd5e0;
+            line-height: 1.8;
+            font-size: 0.95rem;
         }
 
-        .legal-box { 
-            background: rgba(26, 35, 50, 0.3); 
-            padding: 35px; 
-            border-radius: 12px; 
-            border: 1px solid var(--border); 
-            margin-top: 30px; 
+        .legal-box {
+            background: rgba(26, 35, 50, 0.3);
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-top: 30px;
             backdrop-filter: blur(10px);
         }
 
@@ -77,7 +79,7 @@
             background: rgba(255,255,255,0.01);
             transition: border-color 0.3s;
         }
-        
+
         .card-privacy:hover {
             border-color: rgba(212, 175, 55, 0.3);
         }
@@ -89,17 +91,25 @@
     </style>
 </head>
 <body>
+
+    <div id="cookie-banner">
+        <p style="color: #fff; font-size: 0.9rem; margin: 0; line-height: 1.5; max-width: 75%;">
+            Utilizziamo cookie tecnici per il funzionamento del sito e cookie analitici anonimi per migliorare l'esperienza.
+            Nessun dato sensibile viene ceduto a terze parti. <a href="cookies.html" style="color:var(--accent-gold); text-decoration: underline;">Informativa Cookie</a>.
+        </p>
+        <button onclick="acceptCookies()" style="background:var(--accent-gold); border:none; padding:12px 30px; border-radius:4px; font-weight:900; cursor:pointer; font-size: 0.85rem; letter-spacing: 1px;">ACCONSENTO</button>
+    </div>
+
     <header class="header">
         <div class="header-inner container">
             <div class="header-brand">
                 <img src="logo.webp" alt="Logo RGandja" class="brand-logo">
                 <h1>RGandja</h1>
             </div>
-            <nav class="main-nav">
+            <nav class="main-nav" aria-label="Navigazione principale">
                 <a href="index.html">Home</a>
-                <a href="chi-siamo.html">Chi Siamo</a>
-                <a href="prezzi.html">Prezzi</a>
-                <a href="demo.html">Demo</a>
+                <a href="about.html">Informazioni</a>
+                <a href="prezzi.html">Piani</a>
                 <a href="contatti.html">Contatti</a>
             </nav>
         </div>
@@ -108,28 +118,23 @@
     <section class="hero-premium">
         <div class="container text-center">
             <span class="badge-status">GDPR COMPLIANCE 2026</span>
-            <h1>Protocollo Protezione Dati</h1>
-            <p class="hero-subtitle">Sicurezza di grado Enterprise per l'architettura decisionale globale di RGandja.</p>
+            <h1 style="margin-top: 20px;">Protocollo Protezione Dati</h1>
+            <p class="hero-subtitle" style="max-width: 650px; margin: 20px auto;">Sicurezza di grado Enterprise per l'architettura decisionale di RGandja Neural Engine.</p>
         </div>
     </section>
 
     <main class="container section privacy-content">
-        
+
         <div class="legal-box">
             <h3>1. Titolare del Trattamento e Sede Legale</h3>
-            <p>In conformità al Regolamento UE 2016/679 (GDPR), il trattamento dei dati personali raccolti tramite questa piattaforma è gestito dalla Direzione Generale di RGandja Enterprise.</p>
-            
+            <p>In conformità al Regolamento UE 2016/679 (GDPR), il trattamento dei dati personali raccolti tramite questa piattaforma è gestito da <strong>RGANDJA NEURAL ENGINE</strong>, software house indipendente con sede ad Atene, Grecia (Unione Europea).</p>
+
             <div class="highlight-box">
-                <!-- DETTAGLI FISCALI COMMENTATI PER MODALITÀ VETRINA
-                <p style="margin: 0; color: #fff;">
-                    <strong>RGANDJA ENTERPRISE</strong><br>
-                    VAT (AFM): EL803131007 | G.E.MI.: 190286401000<br>
-                    <strong>Sede:</strong> Sepolion 42, GR 104 45 – Atene (Grecia)<br>
-                    <strong>Email:</strong> amministrazione@rgandja.it
-                </p>
-                -->
-                <p style="margin: 0; color: #fff;">
-                    I dettagli societari completi e i recapiti del DPO sono disponibili per i partner registrati nella documentazione contrattuale.
+                <p style="margin: 0; color: #fff; line-height: 1.6;">
+                    <strong>RGANDJA NEURAL ENGINE</strong><br>
+                    Independent Software Development · Athens, Greece (EU)<br>
+                    Prestazione Occasionale / Consulenza IT/UE (Ritenuta d'Acconto)<br>
+                    <strong>Supporto Privacy & DPO:</strong> <a href="contatti.html" style="color: var(--accent-gold); text-decoration: underline;">Modulo Contatti Riservato</a>
                 </p>
             </div>
         </div>
@@ -142,8 +147,8 @@
             <div class="card-privacy">
                 <h3>3. Tipologia di Dati Trattati</h3>
                 <ul>
-                    <li><strong>Dati Identificativi:</strong> Gestiti tramite infrastruttura protetta per comunicazioni istituzionali.</li>
-                    <li><strong>Segreto Industriale:</strong> Protezione rigorosa secondo Direttiva UE 2016/943.</li>
+                    <li><strong>Dati Identificativi:</strong> Gestiti tramite infrastruttura protetta per comunicazioni aziendali.</li>
+                    <li><strong>Segreto Industriale:</strong> Protezione rigorosa secondo la Direttiva UE 2016/943.</li>
                     <li><strong>Dati Tecnici:</strong> Log monitorati per prevenire attacchi informatici ai nodi neurali.</li>
                 </ul>
             </div>
@@ -152,7 +157,7 @@
         <div class="legal-box" style="border-top: 2px solid var(--accent-gold);">
             <h3>4. Crittografia e Protezione</h3>
             <p>L'integrità dei dati è garantita da uno stack tecnologico avanzato:</p>
-            <ul style="list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <ul style="list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
                 <li>🛡️ <strong>AES-256</strong> per l'archiviazione dati.</li>
                 <li>🔐 <strong>TLS 1.3</strong> per la trasmissione sicura.</li>
                 <li>🚫 <strong>Zero-Knowledge</strong> per le simulazioni strategiche.</li>
@@ -160,22 +165,22 @@
         </div>
 
         <h3>5. Diritti dell'Interessato</h3>
-        <p>Ai sensi degli articoli 15-22 del GDPR, hai il diritto di richiedere l'accesso, la rettifica o la cancellazione dei tuoi dati. Le richieste ufficiali possono essere inoltrate tramite i canali di assistenza riservati.</p>
+        <p>Ai sensi degli articoli 15-22 del GDPR, hai il diritto di richiedere l'accesso, la rettifica, la portabilità o la cancellazione dei tuoi dati. Le richieste possono essere inoltrate in qualsiasi momento tramite il modulo di supporto della piattaforma.</p>
 
         <div class="grid-privacy" style="margin-bottom: 50px;">
             <div class="card-privacy">
                 <h3>6. CCPA & Global Compliance</h3>
-                <p>Rispettiamo gli standard globali. RGandja non vende, cede o monetizza i dati dei propri partner a terze parti in nessuna giurisdizione.</p>
+                <p>Rispettiamo gli standard globali di privacy. RGandja non vende, cede o monetizza i dati dei propri utenti o partner a terze parti in nessuna giurisdizione.</p>
             </div>
             <div class="card-privacy">
                 <h3>7. Conservazione dei Dati</h3>
-                <p>I dati sono conservati esclusivamente per il tempo strettamente necessario all'esecuzione delle analisi strategiche e per obblighi di legge.</p>
+                <p>I dati forniti per l'analisi sono conservati esclusivamente per il tempo strettamente necessario all'esecuzione delle elaborazioni dimostrative o consulenziali e per gli obblighi di legge.</p>
             </div>
         </div>
 
         <div class="text-center" style="margin-top: 80px; border-top: 1px solid var(--border); padding-top: 40px;">
-            <p style="opacity: 0.5; font-size: 0.8rem;">
-                Ultimo aggiornamento: Maggio 2026<br>
+            <p style="opacity: 0.5; font-size: 0.8rem; font-family: 'Fira Code', monospace;">
+                [SYS_LOG]: Ultimo aggiornamento: 2026<br>
                 Codice Documento: RGD-PRV-2026-ATH
             </p>
         </div>
@@ -183,20 +188,27 @@
 
     <footer class="footer container text-center" style="padding-bottom: 50px;">
         <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 30px;">
-        
-        <!-- DETTAGLI SOCIETARI COMMENTATI ANCHE NEL FOOTER -->
-        <!-- 
-        <div style="font-size: 0.75rem; color: #64748b; margin-bottom: 20px;">
-            VAT (AFM): EL803131007 | G.E.MI.: 190286401000 | Atene (Grecia)
-        </div>
-        -->
 
-        <p style="font-size: 0.85rem; color: #94a3b8;">© 2026 <strong>RGANDJA ENTERPRISE</strong></p>
+        <p style="font-size: 0.85rem; color: #94a3b8;">© 2026 <strong>RGANDJA NEURAL ENGINE</strong></p>
+        <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 5px;">Independent Software Development · Athens, Greece (EU)</p>
+
         <div style="margin-top: 30px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
-            <a href="privacy.html" style="color: #a1a1aa; font-size: 0.85rem; text-decoration: none;">Privacy Policy</a>
+            <a href="privacy.html" class="active-nav" style="color: var(--accent-gold); font-size: 0.85rem; text-decoration: none;">Privacy Policy</a>
             <a href="cookies.html" style="color: #a1a1aa; font-size: 0.85rem; text-decoration: none;">Cookie Policy</a>
             <a href="contatti.html" style="color: #a1a1aa; font-size: 0.85rem; text-decoration: none;">Supporto</a>
         </div>
     </footer>
+
+    <script>
+        function acceptCookies() {
+            const banner = document.getElementById('cookie-banner');
+            banner.style.opacity = '0';
+            setTimeout(() => { banner.style.display = 'none'; }, 400);
+            localStorage.setItem('cookieConsent', 'true');
+        }
+        if (localStorage.getItem('cookieConsent') === 'true') {
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
