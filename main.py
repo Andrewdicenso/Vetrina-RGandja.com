@@ -17,13 +17,110 @@ app = FastAPI(
 # Configurazione CORS per consentire le chiamate dal frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In produzione puoi sostituire "*" con "https://rgandja.com"
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-html_content = """<main>
+html_content = """<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGandja Neural Engine</title>
+    <style>
+        :root {
+            --bg-dark: #020617;
+            --card-bg: #0b132b;
+            --accent-gold: #eab308;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #1e293b;
+        }
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .text-center { text-align: center; }
+        .badge-status {
+            background: rgba(234, 179, 8, 0.1);
+            color: var(--accent-gold);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .hero-premium { padding: 100px 0 60px; }
+        .hero-subtitle { max-width: 700px; margin: 20px auto; color: var(--text-muted); font-size: 1.2rem; line-height: 1.6; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card-expert {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-gold { background: var(--accent-gold); color: #000; border: none; }
+        .btn-gold:hover { opacity: 0.9; }
+        .btn-outline { border: 1px solid var(--border); color: var(--text-main); }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal-card {
+            background: #0d1527;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 480px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px; right: 20px;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        .upload-box {
+            border: 2px dashed var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+            cursor: pointer;
+            background: rgba(255,255,255,0.02);
+            transition: border-color 0.3s ease;
+        }
+        .upload-box:hover { border-color: var(--accent-gold); }
+        .status-msg { margin-top: 15px; font-size: 0.9rem; font-weight: 600; min-height: 24px; }
+    </style>
+</head>
+<body>
+    <main>
         <section class="hero-premium">
             <div class="container text-center">
                 <span class="badge-status">IL PROGETTO</span>
@@ -32,6 +129,9 @@ html_content = """<main>
                     RGandja nasce da un'osservazione semplice: troppi imprenditori sanno a memoria cosa hanno in magazzino,
                     ma non sanno cosa sta per costargli soldi. Abbiamo sviluppato lo strumento che mancava.
                 </p>
+                <div style="margin-top: 30px;">
+                    <button class="btn btn-gold" onclick="openModal()">Testa RGandja Engine</button>
+                </div>
             </div>
         </section>
 
@@ -114,9 +214,6 @@ html_content = """<main>
                     <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.8;">
                         Sviluppo e supporto dedicati a PMI, professionisti e realtà commerciali. Disponibile <strong>Lun–Ven, 09:00–18:00 EET</strong>.
                     </p>
-                    <div style="margin-top: 35px;">
-                        <a href="contatti.html" class="btn btn-gold">Scrivici Adesso</a>
-                    </div>
                 </div>
                 <div class="card-expert">
                     <p style="font-family: monospace; font-size: 0.8rem; color: var(--accent-gold); letter-spacing: 2px; margin-bottom: 25px; text-transform: uppercase;">Contatti Diretti</p>
@@ -125,31 +222,98 @@ html_content = """<main>
                         📍 Athens, Greece — European Union<br>
                         🕐 Lun–Ven · 09:00–18:00 EET
                     </p>
-                    <div style="margin-top: 25px; padding-top: 25px; border-top: 1px solid var(--border);">
-                        <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.6;">
-                            Conforme alle normative UE · GDPR Compliant · Sviluppo e consulenza mediante ricevuta per prestazione occasionale (con Ritenuta d'Acconto)
-                        </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODAL TEST ENGINE -->
+    <div id="testModal" class="modal-overlay" style="display: none;">
+        <div class="modal-card">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 style="margin-top: 0;">Testa RGandja Engine</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+                Carica i dati della tua azienda (.csv, .xlsx o .json) per avviare l'elaborazione del report.
+            </p>
+
+            <form id="uploadForm" onsubmit="handleUpload(event)">
+                <div class="upload-box" onclick="document.getElementById('fileInput').click()">
+                    <span style="font-size: 1.5rem;">📁</span>
+                    <div id="fileName" style="margin-top: 10px; font-weight: 600; color: var(--accent-gold);">
+                        Seleziona File dal PC
                     </div>
+                    <input type="file" id="fileInput" accept=".csv, .xlsx, .json" hidden onchange="updateFileName(this)">
                 </div>
-            </div>
-        </section>
 
-        <!-- CTA -->
-        <section class="section container text-center" style="padding-bottom: 120px;">
-            <div class="card-expert" style="padding: 80px 40px; background: radial-gradient(circle, #0f172a 0%, #020617 100%);">
-                <h2 style="color: #fff; font-size: 2.2rem; letter-spacing: -1px;">Hai domande sul sistema?</h2>
-                <p style="max-width: 650px; margin: 25px auto; color: var(--text-muted); line-height: 1.8; font-size: 1.1rem;">
-                    Se hai quesiti tecnici o vuoi capire come integrare le simulazioni nel tuo flusso operativo, contattaci senza impegno.
-                </p>
-                <div style="margin-top: 40px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                    <a href="contatti.html" class="btn btn-gold">Contattaci</a>
-                    <a href="demo.html" class="btn btn-outline">Prova la Demo</a>
-                </div>
-            </div>
-        </section>
-    </main>"""
+                <button type="submit" class="btn btn-gold" style="width: 100%;">AVVIA ELABORAZIONE</button>
+            </form>
 
-# --- ROTTE API ---
+            <div id="statusMessage" class="status-msg text-center"></div>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('testModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('testModal').style.display = 'none';
+            document.getElementById('statusMessage').innerText = '';
+        }
+
+        function updateFileName(input) {
+            const fileNameDiv = document.getElementById('fileName');
+            if (input.files && input.files[0]) {
+                fileNameDiv.innerText = input.files[0].name;
+            } else {
+                fileNameDiv.innerText = "Seleziona File dal PC";
+            }
+        }
+
+        async function handleUpload(event) {
+            event.preventDefault();
+
+            const fileInput = document.getElementById('fileInput');
+            const statusMessage = document.getElementById('statusMessage');
+
+            if (!fileInput.files || !fileInput.files[0]) {
+                statusMessage.innerText = "⚠️ Seleziona prima un file da analizzare.";
+                statusMessage.style.color = "#ef4444";
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+
+            statusMessage.innerText = "⏳ Connessione al Neural Engine in corso...";
+            statusMessage.style.color = "#94a3b8";
+
+            try {
+                const response = await fetch('/api/v1/analyze', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Errore Server (${response.status})`);
+                }
+
+                const data = await response.json();
+
+                // Aggiornamento dinamico con il messaggio restituito dal backend
+                statusMessage.innerText = "✅ " + data.message;
+                statusMessage.style.color = "#10b981";
+
+            } catch (error) {
+                console.error('Upload Error:', error);
+                statusMessage.innerText = "❌ Impossibile elaborare il file. Verifica la connessione o riprova.";
+                statusMessage.style.color = "#ef4444";
+            }
+        }
+    </script>
+</body>
+</html>"""
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -165,7 +329,6 @@ async def analyze_file(file: UploadFile = File(...)):
     if not file:
         raise HTTPException(status_code=400, detail="Nessun file caricato.")
 
-    # Lettura dei dettagli del file inviato
     file_bytes = await file.read()
     file_size = len(file_bytes)
 
@@ -174,7 +337,7 @@ async def analyze_file(file: UploadFile = File(...)):
         "filename": file.filename,
         "content_type": file.content_type,
         "size_bytes": file_size,
-        "message": "File ricevuto ed elaborato correttamente dal Neural Engine RGandja.",
+        "message": f"File '{file.filename}' caricato ed elaborato con successo dal Neural Engine.",
     }
 
 

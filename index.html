@@ -269,7 +269,7 @@
 
             <form id="engineUploadForm">
                 <div style="border:2px dashed var(--border); padding:30px; text-align:center; border-radius:8px; margin-bottom:20px; background:rgba(255,255,255,0.02);">
-                    <input type="file" id="fileInput" accept=".csv, .xlsx, .json, .pdf" required style="display:none;" onchange="updateFileName(this)">
+                    <input type="file" id="fileInput" accept=".csv, .xlsx, .json, .pdf" hidden onchange="updateFileName(this)">onchange="updateFileName(this)">
                     <label for="fileInput" style="cursor:pointer; color:var(--accent-gold); font-weight:700; display:block;">
                         📁 Seleziona File dal PC
                     </label>
