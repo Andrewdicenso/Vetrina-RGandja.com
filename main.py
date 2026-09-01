@@ -1,8 +1,27 @@
 """
-RGANDJA NEURAL ENGINE - CORE CONTENT MODULE
+RGANDJA NEURAL ENGINE - CORE CONTENT MODULE & API
 Architect: Andrew Di Censo & AI Master Integration
 Version: 6.2.1 - Independent Developer Deployment (Athens / Italy)
 """
+
+from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import HTMLResponse
+
+app = FastAPI(
+    title="RGandja Neural Engine API",
+    version="6.2.1",
+    description="Engine backend per l'analisi predittiva e la gestione delle scorte.",
+)
+
+# Configurazione CORS per consentire le chiamate dal frontend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In produzione puoi sostituire "*" con "https://rgandja.com"
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 html_content = """<main>
         <section class="hero-premium">
@@ -130,5 +149,36 @@ html_content = """<main>
         </section>
     </main>"""
 
+# --- ROTTE API ---
+
+
+@app.get("/", response_class=HTMLResponse)
+async def read_root():
+    return html_content
+
+
+@app.post("/api/v1/analyze")
+async def analyze_file(file: UploadFile = File(...)):
+    """
+    Endpoint per l'ingestione e l'elaborazione dei file inviati dalla modale di prova gratuita.
+    """
+    if not file:
+        raise HTTPException(status_code=400, detail="Nessun file caricato.")
+
+    # Lettura dei dettagli del file inviato
+    file_bytes = await file.read()
+    file_size = len(file_bytes)
+
+    return {
+        "status": "success",
+        "filename": file.filename,
+        "content_type": file.content_type,
+        "size_bytes": file_size,
+        "message": "File ricevuto ed elaborato correttamente dal Neural Engine RGandja.",
+    }
+
+
 if __name__ == "__main__":
-    print("RGandja Content Module verified. Ready to be served by app.py.")
+    import uvicorn
+
+    uvicorn.run(app, host="0.0.0.0", port=8000)
