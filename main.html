@@ -213,35 +213,48 @@
         </div>
     </main>
 
-    <script>
-        const API_URL = "http://localhost:8000"; // Sostituire con l'URL Flask in produzione (es. Render/Heroku)
-        const WAR_ROOM_URL = "https://rgd-warroom-app.onrender.com/";
+<script>
+        const API_URL = ""; // URL FastAPI locale
+        const WAR_ROOM_URL = "https://rgd-warroom-lvlnhf2bemwvt5ebbgqhpb.streamlit.app/";
 
-        // 1. Invio della simulazione al backend Python /calcola
+        // 1. Invio del dataset e analisi tramite endpoint FastAPI /api/v1/analyze
         document.getElementById('simulation-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = document.getElementById('btn-scan');
             btn.innerText = "ELABORAZIONE EURISTICA IN CORSO...";
             btn.disabled = true;
 
-            const payload = {
-                algoritmo: document.getElementById('model-select').value,
-                budget: document.getElementById('budget').value,
-                standby_watt: document.getElementById('standby_watt').value,
-                metri_quadri: document.getElementById('volume-dati').value / 10 // Ponderazione stimata per la demo
-            };
+            // Recupera l'input file dentro il form
+            const fileInput = this.querySelector('input[type="file"]');
+
+            if (!fileInput || !fileInput.files.length) {
+                alert("Seleziona un file CSV, XLSX o JSON prima di avviare la scansione.");
+                btn.innerText = "ESEGUI SCANSIONE STRATEGICA";
+                btn.disabled = false;
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
 
             try {
-                const res = await fetch(`${API_URL}/calcola`, {
+                const res = await fetch(`${API_URL}/api/v1/analyze`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
+                    body: formData
                 });
+
                 const data = await res.json();
 
                 if (res.ok) {
+                    sessionStorage.setItem('rgd_last_analysis', JSON.stringify(data));
+
                     const resultBox = document.getElementById('resultBox');
-                    resultBox.innerHTML = data.risultato + `
+                    resultBox.innerHTML = `
+                        <div style="padding: 15px; background: rgba(39, 201, 63, 0.1); border: 1px solid #27c93f; border-radius: 8px;">
+                            <h4 style="color:#27c93f; margin-bottom: 5px;">Analysis Complete</h4>
+                            <p style="margin:0;">Record elaborati: <strong>${data.processed_records}</strong></p>
+                            <p style="margin:0;">Capitale a Rischio: <strong>€${data.total_capital_at_risk}</strong></p>
+                        </div>
                         <div style="margin-top:20px; text-align:center;">
                             <button onclick="document.getElementById('paywall').style.display='flex'" class="btn-execute" style="width:auto; padding:12px 25px; font-size:0.8rem;">
                                 APRI WAR ROOM COMPLETA SU STREAMLIT ➔
@@ -251,10 +264,10 @@
                     resultBox.style.display = 'block';
                     resultBox.scrollIntoView({ behavior: 'smooth' });
                 } else {
-                    alert("Errore nell'elaborazione: " + (data.error || "Parametri non validi"));
+                    alert("Errore nell'elaborazione: " + (data.detail || "Parametri non validi"));
                 }
             } catch (err) {
-                // Fallback se il backend local/remote non risponde: mostra l'overlay direttamente
+                // Fallback se il backend non risponde: mostra l'overlay direttamente
                 document.getElementById('paywall').style.display = 'flex';
             } finally {
                 btn.innerText = "ESEGUI SCANSIONE STRATEGICA";
@@ -289,5 +302,3 @@
             }
         });
     </script>
-</body>
-</html>
