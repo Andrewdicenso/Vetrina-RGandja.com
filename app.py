@@ -1,20 +1,27 @@
 import os
 from datetime import datetime, timezone
 
-from flask import Flask, jsonify, request
-from flask_cors import CORS
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
-app = Flask(__name__)
+app = FastAPI()
 # Configurazione CORS per consentire chiamate API dal frontend
-CORS(app, resources={r"/*": {"origins": "*"}})
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 # ---------------------------------------------------------
 # 1) ENDPOINT DI STATO (HEALTHCHECK)
 # ---------------------------------------------------------
-@app.route("/", methods=["GET"])
+@app.get("/")
 def home():
-    return jsonify(
+    return JSONResponse(
         {
             "status": "online",
             "version": "6.2.1",
@@ -27,31 +34,29 @@ def home():
 # ---------------------------------------------------------
 # 2) ENDPOINT PER SERVIRE IL CONTENUTO DI MAIN
 # ---------------------------------------------------------
-@app.route("/api/v1/content/about", methods=["GET"])
+@app.get("/api/v1/content/about")
 def get_about_content():
     try:
         from main import html_content
 
-        return jsonify({"status": "success", "html": html_content})
+        return JSONResponse({"status": "success", "html": html_content})
     except ImportError:
         # Corretto da 444 a 500 (HTTP Standard Internal Server Error)
-        return (
-            jsonify(
-                {
-                    "status": "error",
-                    "message": "Modulo main non trovato o errore di importazione",
-                }
-            ),
-            500,
+        return JSONResponse(
+            {
+                "status": "error",
+                "message": "Modulo main non trovato o errore di importazione",
+            },
+            status_code=500,
         )
 
 
 # ---------------------------------------------------------
 # 3) ENDPOINT DI ANALISI DIMOSTRATIVA
 # ---------------------------------------------------------
-@app.route("/calcola", methods=["POST"])
-def calcola():
-    data = request.get_json() or {}
+@app.post("/calcola")
+async def calcola(request: Request):
+    data = await request.json() or {}
 
     algoritmo = str(data.get("algoritmo", "RGD-ALPHA"))
     try:
@@ -68,7 +73,10 @@ def calcola():
         )
         num_dipendenti = int(data.get("num_dipendenti", 0) or 0)
     except (ValueError, TypeError):
-        return jsonify({"error": "Parametri di calcolo non validi"}), 400
+        return JSONResponse(
+            {"error": "Parametri di calcolo non validi"},
+            status_code=400,
+        )
 
     intensita_uso = 0.0
     if num_dipendenti > 0 and metri_quadri > 0:
@@ -105,7 +113,7 @@ def calcola():
             <em>Nota: simulazione generata dal motore euristico RGandja.</em>
         </div>
     """
-    return jsonify(
+    return JSONResponse(
         {
             "risultato": risultato_html,
             "is_premium_locked": True,
@@ -117,28 +125,26 @@ def calcola():
 # ---------------------------------------------------------
 # 4) ENDPOINT REPORT (LEAD GENERATION CON CONTROLLO PRIVACY)
 # ---------------------------------------------------------
-@app.route("/report", methods=["POST"])
-def report():
-    data = request.get_json() or {}
+@app.post("/report")
+async def report(request: Request):
+    data = await request.json() or {}
     email = data.get("email")
     privacy_accepted = data.get("privacy_accepted", False)
 
     if not email:
-        return (
-            jsonify({"status": "error", "message": "Email obbligatoria"}),
-            400,
+        return JSONResponse(
+            {"status": "error", "message": "Email obbligatoria"},
+            status_code=400,
         )
 
     # Verifica conformità GDPR se inviato via API
     if not privacy_accepted and data.get("check_privacy", True):
-        return (
-            jsonify(
-                {
-                    "status": "error",
-                    "message": "È necessario accettare la Privacy Policy per continuare.",
-                }
-            ),
-            422,
+        return JSONResponse(
+            {
+                "status": "error",
+                "message": "È necessario accettare la Privacy Policy per continuare.",
+            },
+            status_code=422,
         )
 
     ragione_sociale = data.get("ragione_sociale", "N/D - Professionista/PMI")
@@ -151,7 +157,7 @@ def report():
     print(f"Consenso Privacy Accettato: {privacy_accepted}")
     print("--------------------------------------------")
 
-    return jsonify(
+    return JSONResponse(
         {
             "status": "success",
             "message": "Report demo e autorizzazione registrati con successo.",
