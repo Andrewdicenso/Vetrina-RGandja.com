@@ -276,13 +276,17 @@
             <p style="color:var(--text-muted, #94a3b8); font-size:0.9rem; margin-bottom:25px;">Carica i dati della tua azienda (.csv, .xlsx o .json) per avviare l'elaborazione del report.</p>
 
             <form id="engineUploadForm">
-                <div class="container text-center" style="margin-top: 50px;">
-                    <span class="badge-status">SIMULATION MODULE</span>
-                    <h2 style="font-size: 2.5rem; letter-spacing: -1px; margin-top: 15px;">RGD-Alpha Logic Engine</h2>
-                    <p style="color: #cbd5e1; max-width: 650px; margin: 20px auto;">
-                        Configura i parametri per testare la scalabilità dei modelli di Decision Intelligence.
-                    </p>
+                <div style="border:2px dashed var(--border, rgba(255,255,255,0.2)); padding:30px; text-align:center; border-radius:8px; margin-bottom:20px; background:rgba(255,255,255,0.02);">
+                    <!-- Input File Nascosto -->
+                    <input type="file" id="fileInput" accept=".csv, .xlsx, .json" onchange="updateFileName(this)" style="display: none;" />
+
+                    <!-- Label personalizzato come Pulsante -->
+                    <label for="fileInput" style="cursor: pointer; color: var(--accent-gold, #d4af37); font-weight: 700; display: block;">
+                        📁 Seleziona File dal PC
+                    </label>
+                    <p id="fileNameDisplay" style="margin-top: 8px; font-size: 0.9rem; color: #ccc; margin-bottom: 0;">Nessun file selezionato</p>
                 </div>
+
                 <button type="submit" id="submitBtn" style="width:100%; background:var(--accent-gold, #d4af37); color:#000; border:none; padding:14px; border-radius:4px; font-weight:900; cursor:pointer; letter-spacing:1px;">
                     AVVIA ELABORAZIONE
                 </button>
