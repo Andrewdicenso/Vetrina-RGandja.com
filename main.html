@@ -204,7 +204,7 @@
                     </div>
 
                     <button type="submit" class="btn-execute" id="btn-scan">
-                        ESEGUI SCANSIONE STRATEGICA
+                        AVVIA ELABORAZIONE
                     </button>
                 </form>
 
@@ -215,22 +215,21 @@
     </main>
 
     <script>
-        const API_URL = "https://demo-1036951183544.europe-west1.run.app"; // Endpoint Google Cloud Run
+        const API_URL = "https://demo-1036951183544.europe-west1.run.app";
         const WAR_ROOM_URL = "https://rgd-warroom-lvlnhf2bemwvt5ebbgqhpb.streamlit.app/";
 
-        // 1. Invio del dataset e analisi tramite endpoint Cloud Run /api/v1/analyze
+        // 1. Invio del dataset tramite FormData pulito (nessun riferimento a payload indefinito)
         document.getElementById('simulation-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = document.getElementById('btn-scan');
             btn.innerText = "ELABORAZIONE EURISTICA IN CORSO...";
             btn.disabled = true;
 
-            // Recupera l'input file dentro il form
-            const fileInput = this.querySelector('input[type="file"]');
+            const fileInput = document.getElementById('file-upload');
 
             if (!fileInput || !fileInput.files.length) {
-                alert("Seleziona un file CSV, XLSX o JSON prima di avviare la scansione.");
-                btn.innerText = "ESEGUI SCANSIONE STRATEGICA";
+                alert("Seleziona un file CSV o JSON prima di avviare la scansione.");
+                btn.innerText = "AVVIA ELABORAZIONE";
                 btn.disabled = false;
                 return;
             }
@@ -244,7 +243,14 @@
                     body: formData
                 });
 
-                const data = await res.json();
+                // Controllo preventivo se la risposta è JSON valido
+                const text = await res.text();
+                let data;
+                try {
+                    data = JSON.parse(text);
+                } catch (parseErr) {
+                    throw new Error("Risposta non valida dal server (formato non JSON)");
+                }
 
                 if (res.ok) {
                     sessionStorage.setItem('rgd_last_analysis', JSON.stringify(data));
@@ -253,8 +259,8 @@
                     resultBox.innerHTML = `
                         <div style="padding: 15px; background: rgba(39, 201, 63, 0.1); border: 1px solid #27c93f; border-radius: 8px;">
                             <h4 style="color:#27c93f; margin-bottom: 5px;">Analysis Complete</h4>
-                            <p style="margin:0;">Record elaborati: <strong>${data.processed_records}</strong></p>
-                            <p style="margin:0;">Capitale a Rischio: <strong>€${data.total_capital_at_risk}</strong></p>
+                            <p style="margin:0;">Record elaborati: <strong>${data.processed_records || 0}</strong></p>
+                            <p style="margin:0;">Capitale a Rischio: <strong>€${data.total_capital_at_risk || 0}</strong></p>
                         </div>
                         <div style="margin-top:20px; text-align:center;">
                             <button onclick="document.getElementById('paywall').style.display='flex'" class="btn-execute" style="width:auto; padding:12px 25px; font-size:0.8rem;">
@@ -268,10 +274,10 @@
                     alert("Errore nell'elaborazione: " + (data.detail || "Parametri non validi"));
                 }
             } catch (err) {
-                // Fallback se il backend non risponde: mostra l'overlay direttamente
+                console.warn("Errore di connessione o backend offline, apertura paywall di fallback.", err);
                 document.getElementById('paywall').style.display = 'flex';
             } finally {
-                btn.innerText = "ESEGUI SCANSIONE STRATEGICA";
+                btn.innerText = "AVVIA ELABORAZIONE";
                 btn.disabled = false;
             }
         });
@@ -298,7 +304,6 @@
             } catch (err) {
                 console.warn("Registrazione lead offline, reindirizzamento forzato alla War Room.");
             } finally {
-                // Reindirizzamento effettivo alla War Room Streamlit
                 window.location.href = WAR_ROOM_URL;
             }
         });
