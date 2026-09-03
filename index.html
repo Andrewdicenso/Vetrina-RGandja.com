@@ -373,7 +373,7 @@
             }
         }
 
-        // GESTIONE SUBMIT FORM & ELABORAZIONE BACKEND LOCALE (CORRETTO A PERCORSO RELATIVO)
+        // GESTIONE SUBMIT FORM & ELABORAZIONE BACKEND CLOUD RUN
         document.getElementById('engineUploadForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -435,7 +435,7 @@
                 }
             } catch (error) {
                 statusDiv.style.color = '#f87171';
-                statusDiv.innerText = `Errore: ${error.message || 'Connessione al server locale fallita.'}`;
+                statusDiv.innerText = `Errore: ${error.message || 'Connessione al server di analisi fallita.'}`;
 
                 if (typeof gtag === 'function') {
                     gtag('event', 'file_upload_error', {
