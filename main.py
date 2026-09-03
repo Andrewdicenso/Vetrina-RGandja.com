@@ -8,7 +8,7 @@ import io
 import logging
 import os
 import time
-from typing import Annotated, ClassVar, Optional
+from typing import Annotated, ClassVar
 
 import pandas as pd
 from fastapi import BackgroundTasks, FastAPI, File, HTTPException, UploadFile, status
@@ -58,21 +58,21 @@ class HealthStatus(BaseModel):
 
 
 class CalculationRequest(BaseModel):
-    algoritmo: Optional[str] = "RGD-ALPHA"
-    budget: Optional[float] = 0.0
-    ore_assenze: Optional[float] = 0.0
-    standby_watt: Optional[float] = 0.0
-    metri_quadri: Optional[float] = 0.0
-    volume_dati: Optional[float] = 0.0
-    num_dipendenti: Optional[int] = 0
+    algoritmo: str | None = "RGD-ALPHA"
+    budget: float | None = 0.0
+    ore_assenze: float | None = 0.0
+    standby_watt: float | None = 0.0
+    metri_quadri: float | None = 0.0
+    volume_dati: float | None = 0.0
+    num_dipendenti: int | None = 0
 
 
 class LeadRequest(BaseModel):
     email: str
-    ragione_sociale: Optional[str] = "N/D - Professionista/PMI"
-    piano_suggerito: Optional[str] = "N/D"
-    privacy_accepted: Optional[bool] = False
-    check_privacy: Optional[bool] = True
+    ragione_sociale: str | None = "N/D - Professionista/PMI"
+    piano_suggerito: str | None = "N/D"
+    privacy_accepted: bool | None = False
+    check_privacy: bool | None = True
 
 
 class InventoryMetric(BaseModel):
