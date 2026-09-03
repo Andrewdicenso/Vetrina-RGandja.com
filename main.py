@@ -1,14 +1,14 @@
 """
 RGANDJA NEURAL ENGINE - ENTERPRISE CORE MODULE & API
 Architect: Andrew Di Censo & AI Master Integration
-Version: 6.3.0 - Production Ready Architecture
+Version: 6.4.0 - Production Ready Architecture (Unified FastAPI)
 """
 
 import io
 import logging
 import os
 import time
-from typing import Annotated, ClassVar
+from typing import Annotated, ClassVar, Optional
 
 import pandas as pd
 from fastapi import BackgroundTasks, FastAPI, File, HTTPException, UploadFile, status
@@ -31,7 +31,7 @@ logger = logging.getLogger("RGandjaEngine")
 # --------------------------------------------------------------------------
 app = FastAPI(
     title="RGandja Neural Engine API",
-    version="6.3.0",
+    version="6.4.0",
     description="Engine backend enterprise per l'analisi predittiva e l'ottimizzazione del magazzino.",
     docs_url="/api/docs",
     redoc_url="/api/redoc",
@@ -55,6 +55,24 @@ class HealthStatus(BaseModel):
     status: str
     uptime_seconds: float
     version: str
+
+
+class CalculationRequest(BaseModel):
+    algoritmo: Optional[str] = "RGD-ALPHA"
+    budget: Optional[float] = 0.0
+    ore_assenze: Optional[float] = 0.0
+    standby_watt: Optional[float] = 0.0
+    metri_quadri: Optional[float] = 0.0
+    volume_dati: Optional[float] = 0.0
+    num_dipendenti: Optional[int] = 0
+
+
+class LeadRequest(BaseModel):
+    email: str
+    ragione_sociale: Optional[str] = "N/D - Professionista/PMI"
+    piano_suggerito: Optional[str] = "N/D"
+    privacy_accepted: Optional[bool] = False
+    check_privacy: Optional[bool] = True
 
 
 class InventoryMetric(BaseModel):
@@ -165,8 +183,90 @@ async def health_check():
     return HealthStatus(
         status="healthy",
         uptime_seconds=round(time.time() - START_TIME, 2),
-        version="6.3.0",
+        version="6.4.0",
     )
+
+
+@app.post("/calcola", tags=["Legacy Simulation"])
+async def calcola_endpoint(payload: CalculationRequest):
+    """Endpoint di calcolo euristico compatibile con le richieste legacy/frontend."""
+    data = payload.model_dump()
+    algoritmo = str(data.get("algoritmo", "RGD-ALPHA"))
+
+    try:
+        budget = float(data.get("budget", 0) or 0)
+        ore_assenze = float(data.get("ore_assenze", 0) or 0)
+        standby_watt = float(data.get("standby_watt", 0) or 0)
+
+        metri_quadri = float(data.get("metri_quadri") or data.get("volume_dati") or 0)
+        num_dipendenti = int(data.get("num_dipendenti", 0) or 0)
+    except (ValueError, TypeError):
+        raise HTTPException(status_code=400, detail="Parametri di calcolo non validi")
+
+    intensita_uso = 0.0
+    if num_dipendenti > 0 and metri_quadri > 0:
+        intensita_uso = (num_dipendenti / metri_quadri) * 100
+
+    rischio_spreco = (standby_watt * 0.02) + (ore_assenze * 0.5)
+    if budget > 0:
+        rischio_spreco += min(25.0, (budget / 10000.0) * 5.0)
+
+    rischio_spreco = max(0.0, min(100.0, rischio_spreco))
+
+    if rischio_spreco < 30:
+        livello = "Basso"
+        sintesi = "Il modello rileva un livello di spreco contenuto."
+    elif rischio_spreco < 70:
+        livello = "Medio"
+        sintesi = "Il modello rileva margini di ottimizzazione interessanti."
+    else:
+        livello = "Alto"
+        sintesi = "Il modello rileva un potenziale spreco energetico significativo."
+
+    risultato_html = f"""
+        <div style='font-size:0.95rem; line-height:1.6;'>
+            <strong>Analisi Dimostrativa RGandja</strong><br><br>
+            <strong>Algoritmo:</strong> {algoritmo}<br>
+            <strong>Budget indicativo:</strong> {budget:,.2f} €<br>
+            <strong>Dipendenti:</strong> {num_dipendenti}<br>
+            <strong>Volume/Superficie:</strong> {metri_quadri:,.0f} unità/m²<br>
+            <strong>Ore di assenza:</strong> {ore_assenze:,.1f} h<br>
+            <strong>Consumo standby:</strong> {standby_watt:,.0f} W<br>
+            <strong>Intensità d'uso:</strong> {intensita_uso:,.1f} ind/100m²<br><br>
+            <strong>Livello di spreco stimato:</strong> {livello} ({rischio_spreco:,.1f}%)<br>
+            {sintesi}<br><br>
+            <em>Nota: simulazione generata dal motore euristico RGandja.</em>
+        </div>
+    """
+    return {
+        "risultato": risultato_html,
+        "is_premium_locked": True,
+        "score": rischio_spreco,
+    }
+
+
+@app.post("/report", tags=["Lead Generation"])
+async def report_endpoint(payload: LeadRequest):
+    if not payload.email:
+        raise HTTPException(status_code=400, detail="Email obbligatoria")
+
+    if not payload.privacy_accepted and payload.check_privacy:
+        raise HTTPException(
+            status_code=422,
+            detail="È necessario accettare la Privacy Policy per continuare.",
+        )
+
+    logger.info("--- NUOVA RICHIESTA REPORT/DEMO RICEVUTA ---")
+    logger.info(f"Email: {payload.email}")
+    logger.info(f"Contatto/Azienda: {payload.ragione_sociale}")
+    logger.info(f"Piano Suggerito: {payload.piano_suggerito}")
+    logger.info("--------------------------------------------")
+
+    return {
+        "status": "success",
+        "message": "Report demo e autorizzazione registrati con successo.",
+        "nota": "Dati elaborati dal nodo Athens-01.",
+    }
 
 
 @app.post(

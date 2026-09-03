@@ -355,7 +355,7 @@
             }
         }
 
-        // GESTIONE SUBMIT FORM & ELABORAZIONE BACKEND LOCALE
+        // GESTIONE SUBMIT FORM & ELABORAZIONE BACKEND LOCALE (CORRETTO A PERCORSO RELATIVO)
         document.getElementById('engineUploadForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -387,8 +387,8 @@
             }
 
             try {
-                // Endpoint aggiornato per l'ambiente di test locale
-                const response = await fetch(`${API_URL}/api/v1/analyze`, {
+                // Modificato da ${API_URL}/api/v1/analyze a /api/v1/analyze per compatibilità diretta con FastAPI
+                const response = await fetch('/api/v1/analyze', {
                     method: 'POST',
                     body: formData
                 });

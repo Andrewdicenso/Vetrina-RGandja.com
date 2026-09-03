@@ -3,9 +3,23 @@
 .DS_Store
 Thumbs.db
 
-# File temporanei Python
+# Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+.venv/
+env/
+venv/
+ENV/
+
+# Log e file temporanei
+*.log
+*.tmp
+.temp/
 
 # Cartelle di backup locali
 archive/
+
+# Eventuali file di configurazione locale o credenziali (es. .env)
+.env

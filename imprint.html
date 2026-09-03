@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6TTVMQFNY6"></script>
+    <!-- Google Analytics: Caricamento condizionato al consenso privacy (GDPR / Cookie Law Compliance) -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-6TTVMQFNY6');
+        function loadGoogleAnalytics() {
+            if (window.gaLoaded) return;
+            window.gaLoaded = true;
+
+            var script = document.createElement('script');
+            script.async = true;
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-6TTVMQFNY6';
+            document.head.appendChild(script);
+
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-6TTVMQFNY6');
+        }
+
+        // Verifica immediata se il consenso è già stato registrato in sessioni precedenti
+        if (localStorage.getItem('cookieConsent') === 'true') {
+            loadGoogleAnalytics();
+        }
     </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Note Legali & Imprint | RGandja Neural Engine</title>
@@ -200,7 +216,11 @@
             banner.style.opacity = '0';
             setTimeout(() => { banner.style.display = 'none'; }, 400);
             localStorage.setItem('cookieConsent', 'true');
+
+            // Attiva Google Analytics solo dopo il consenso esplicito dell'utente
+            loadGoogleAnalytics();
         }
+
         if (localStorage.getItem('cookieConsent') === 'true') {
             document.getElementById('cookie-banner').style.display = 'none';
         }
