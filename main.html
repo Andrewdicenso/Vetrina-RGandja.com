@@ -208,17 +208,17 @@
                     </button>
                 </form>
 
-                <!-- OUTPUT RISULTATO DINAMICO DAL BACKEND FLASK -->
+                <!-- OUTPUT RISULTATO DINAMICO DAL BACKEND CLOUD RUN -->
                 <div id="resultBox"></div>
             </div>
         </div>
     </main>
 
-<script>
-        const API_URL = ""; // URL FastAPI locale
+    <script>
+        const API_URL = "https://demo-1036951183544.europe-west1.run.app"; // Endpoint Google Cloud Run
         const WAR_ROOM_URL = "https://rgd-warroom-lvlnhf2bemwvt5ebbgqhpb.streamlit.app/";
 
-        // 1. Invio del dataset e analisi tramite endpoint FastAPI /api/v1/analyze
+        // 1. Invio del dataset e analisi tramite endpoint Cloud Run /api/v1/analyze
         document.getElementById('simulation-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = document.getElementById('btn-scan');
@@ -303,3 +303,5 @@
             }
         });
     </script>
+</body>
+</html>
