@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <!-- Google Analytics: Caricamento condizionato al consenso privacy -->
+    <!-- Google Tag Manager / Analytics (GDPR Consent Mode Ready) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6TTVMQFNY6"></script>
     <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied'
+        });
+
+        gtag('js', new Date());
+        gtag('config', 'G-6TTVMQFNY6', { 'anonymize_ip': true });
+
         function loadGoogleAnalytics() {
-            if (window.gaLoaded) return;
-            window.gaLoaded = true;
-
-            var script = document.createElement('script');
-            script.async = true;
-            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-6TTVMQFNY6';
-            document.head.appendChild(script);
-
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-6TTVMQFNY6');
+            if (typeof gtag === 'function') {
+                gtag('consent', 'update', {
+                    'analytics_storage': 'granted'
+                });
+            }
         }
 
         if (localStorage.getItem('cookieConsent') === 'true') {
@@ -25,14 +30,31 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piani e Modelli di Analisi | RGandja Neural Engine</title>
+    <title>Investimento e Modelli di Analisi | RGandja Neural Engine</title>
     <meta name="description" content="Scegli il piano RGandja adatto alla tua azienda. Calcola il risparmio stimato e richiedi l'accesso ai servizi avanzati.">
+
+    <!-- Open Graph / Social Sharing & Brand Identity -->
+    <meta property="og:title" content="Investimento e Modelli di Analisi | RGandja Neural Engine">
+    <meta property="og:description" content="Scegli il piano RGandja adatto alla tua azienda. Calcola il risparmio stimato e richiedi l'accesso ai servizi avanzati.">
+    <meta property="og:image" content="https://rgandja.com/logo.webp">
+    <meta property="og:url" content="https://rgandja.com/prezzi.html">
+    <meta property="og:type" content="website">
+
+    <!-- Dati Strutturati Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "RGandja",
+      "url": "https://rgandja.com",
+      "logo": "https://rgandja.com/logo.webp"
+    }
+    </script>
 
     <link rel="icon" type="image/png" href="logo.webp">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Ottimizzazione Layout Enterprise B2B - Split Screen & Clean Cards */
         .pricing-hero-grid {
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
@@ -63,7 +85,7 @@
             position: absolute;
             top: -14px;
             left: 40px;
-            background: var(--accent-gold);
+            background: var(--accent-gold, #d4af37);
             color: #000;
             font-size: 0.65rem;
             font-weight: 900;
@@ -80,7 +102,7 @@
 
         .feature-list-modern li {
             padding: 10px 0;
-            color: var(--text-muted);
+            color: var(--text-muted, #94a3b8);
             font-size: 0.92rem;
             display: flex;
             align-items: center;
@@ -109,7 +131,7 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            background: var(--accent-gold);
+            background: var(--accent-gold, #d4af37);
             color: #000;
             border: none;
             box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
@@ -148,6 +170,22 @@
             border-color: rgba(212, 175, 55, 0.3);
             background: rgba(255, 255, 255, 0.03);
         }
+
+        #cookie-banner {
+            position: fixed;
+            bottom: 25px; left: 25px; right: 25px;
+            background: rgba(10, 14, 20, 0.98);
+            border: 1px solid var(--accent-gold, #d4af37);
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10000;
+            border-radius: 12px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 15px 60px rgba(0,0,0,0.8);
+            transition: opacity 0.4s ease;
+        }
     </style>
 </head>
 <body>
@@ -156,9 +194,9 @@
     <div id="cookie-banner">
         <p style="color: #fff; font-size: 0.9rem; margin: 0; line-height: 1.5; max-width: 75%;">
             Utilizziamo cookie tecnici per il funzionamento del sito e cookie analitici anonimi per migliorare l'esperienza.
-            Nessun dato sensibile viene ceduto a terze parti. <a href="cookies.html" style="color:var(--accent-gold); text-decoration: underline;">Informativa Cookie</a>.
+            Nessun dato sensibile viene ceduto a terze parti. <a href="cookies.html" style="color:var(--accent-gold, #d4af37); text-decoration: underline;">Informativa Cookie</a>.
         </p>
-        <button onclick="acceptCookies()" style="background:var(--accent-gold); border:none; padding:12px 30px; border-radius:4px; font-weight:900; cursor:pointer; font-size: 0.85rem; letter-spacing: 1px;">ACCONSENTO</button>
+        <button onclick="acceptCookies()" style="background:var(--accent-gold, #d4af37); color:#000; border:none; padding:12px 30px; border-radius:4px; font-weight:900; cursor:pointer; font-size: 0.85rem; letter-spacing: 1px;">ACCONSENTO</button>
     </div>
 
     <header class="header">
@@ -170,7 +208,7 @@
             <nav class="main-nav" aria-label="Navigazione principale">
                 <a href="index.html">Home</a>
                 <a href="about.html">Informazioni</a>
-                <a href="prezzi.html" class="active-nav">Piani</a>
+                <a href="prezzi.html" class="active-nav">Investimento</a>
                 <a href="contatti.html">Contatti</a>
             </nav>
         </div>
@@ -182,24 +220,24 @@
             <div class="pricing-hero-grid">
                 <!-- Colonna Sinistra: Valore e Messaggio Strategico -->
                 <div>
-                    <span class="badge-status">INVESTIMENTO TRASPARENTE</span>
-                    <h1 style="margin-top: 15px; font-size: 2.8rem; line-height: 1.15; letter-spacing: -1px;">
-                        Massima potenza neurale.<br><span style="color: var(--accent-gold);">Zero compromessi.</span>
+                    <span class="badge-status" style="border: 1px solid var(--accent-gold, #d4af37); padding: 6px 18px; border-radius: 20px; font-size: 0.75rem; letter-spacing: 1.5px; font-weight: 800; text-transform: uppercase; color: var(--accent-gold, #d4af37); display: inline-block;">INVESTIMENTO TRASPARENTE</span>
+                    <h1 style="margin-top: 15px; font-size: 2.8rem; line-height: 1.15; letter-spacing: -1px; color: #fff;">
+                        Massima potenza neurale.<br><span style="color: var(--accent-gold, #d4af37);">Zero compromessi.</span>
                     </h1>
-                    <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin: 20px 0 30px 0;">
+                    <p style="color: var(--text-muted, #94a3b8); font-size: 1.05rem; line-height: 1.7; margin: 20px 0 30px 0;">
                         Un unico piano illimitato progettato per trasformare il tuo magazzino in un asset predittivo ad alta marginalità.
                         <strong>Disdici quando vuoi</strong>, esporta i dati in autonomia e scala senza vincoli contrattuali nascosti.
                     </p>
 
                     <div style="display: flex; flex-direction: column; gap: 14px;">
                         <div style="display: flex; align-items: center; gap: 12px; color: #fff; font-size: 0.95rem;">
-                            <span style="color: var(--accent-gold); font-size: 1.2rem;">✦</span> Attivazione immediata e onboarding guidato
+                            <span style="color: var(--accent-gold, #d4af37); font-size: 1.2rem;">✦</span> Attivazione immediata e onboarding guidato
                         </div>
                         <div style="display: flex; align-items: center; gap: 12px; color: #fff; font-size: 0.95rem;">
-                            <span style="color: var(--accent-gold); font-size: 1.2rem;">✦</span> Connettività nativa con i principali ERP aziendali
+                            <span style="color: var(--accent-gold, #d4af37); font-size: 1.2rem;">✦</span> Connettività nativa con i principali ERP aziendali
                         </div>
                         <div style="display: flex; align-items: center; gap: 12px; color: #fff; font-size: 0.95rem;">
-                            <span style="color: var(--accent-gold); font-size: 1.2rem;">✦</span> Nessun limite sui volumi di prodotti gestiti
+                            <span style="color: var(--accent-gold, #d4af37); font-size: 1.2rem;">✦</span> Nessun limite sui volumi di prodotti gestiti
                         </div>
                     </div>
                 </div>
@@ -210,11 +248,11 @@
                         <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px;">
                             <h2 style="font-size: 1.6rem; color: #fff; margin: 0;">RGandja Unlimited</h2>
                         </div>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Potenza di calcolo completa e supporto h24</p>
+                        <p style="color: var(--text-muted, #94a3b8); font-size: 0.9rem; margin-bottom: 20px;">Potenza di calcolo completa e supporto h24</p>
 
                         <div style="margin-bottom: 25px; display: flex; align-items: baseline; gap: 6px;">
-                            <span style="font-size: 3rem; font-weight: 900; color: var(--accent-gold); line-height: 1;">€149</span>
-                            <span style="color: var(--text-muted); font-size: 0.9rem;">/ mese (IVA esclusa)</span>
+                            <span style="font-size: 3rem; font-weight: 900; color: var(--accent-gold, #d4af37); line-height: 1;">€149</span>
+                            <span style="color: var(--text-muted, #94a3b8); font-size: 0.9rem;">/ mese (IVA esclusa)</span>
                         </div>
 
                         <ul class="feature-list-modern">
@@ -237,10 +275,10 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; align-items: center;">
                 <div>
                     <h2 style="color: #fff; font-size: 1.7rem; margin-bottom: 15px; letter-spacing: -0.5px;">Il ROI reale del sistema</h2>
-                    <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; font-size: 0.95rem;">
+                    <p style="color: var(--text-muted, #94a3b8); line-height: 1.7; margin-bottom: 20px; font-size: 0.95rem;">
                         I costi occulti legati a giacenze morte e inefficienze erodono mediamente dal 12% al 25% del valore complessivo di magazzino ogni anno.
                     </p>
-                    <div style="border-left: 2px solid var(--accent-gold); padding-left: 16px;">
+                    <div style="border-left: 2px solid var(--accent-gold, #d4af37); padding-left: 16px;">
                         <p style="color: #fff; font-style: italic; font-size: 0.9rem; line-height: 1.5;">
                             "Azienda di distribuzione: magazzino da €250k, scarto ridotto del 22% in 4 mesi con recupero netto di €18.000."
                         </p>
@@ -249,11 +287,11 @@
                 <div style="background: rgba(10, 15, 30, 0.9); padding: 30px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05);">
                     <p style="color: #fff; font-weight: 700; margin-bottom: 15px; font-size: 1rem;">Simulazione Risparmio Standard</p>
                     <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.9rem;">
-                        <span style="color: var(--text-muted);">Valore Medio Magazzino:</span>
+                        <span style="color: var(--text-muted, #94a3b8);">Valore Medio Magazzino:</span>
                         <span style="color: #fff; font-weight: 600;">€ 100.000</span>
                     </div>
                     <div style="display: flex; justify-content: space-between; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.9rem;">
-                        <span style="color: var(--text-muted);">Tasso spreco medio stimato:</span>
+                        <span style="color: var(--text-muted, #94a3b8);">Tasso spreco medio stimato:</span>
                         <span style="color: #fff; font-weight: 600;">15%</span>
                     </div>
                     <div style="text-align: center; padding: 18px; background: rgba(39, 201, 63, 0.04); border-radius: 10px; border: 1px solid rgba(39, 201, 63, 0.2);">
@@ -268,36 +306,36 @@
         <section style="margin: 70px 0 50px 0;">
             <div class="text-center" style="max-width: 600px; margin: 0 auto 35px auto;">
                 <h2 style="color: #fff; font-size: 1.8rem; margin-bottom: 10px;">Domande Frequenti</h2>
-                <p style="color: var(--text-muted); font-size: 0.95rem;">Tutto quello che c'è da sapere prima di attivare RGandja.</p>
+                <p style="color: var(--text-muted, #94a3b8); font-size: 0.95rem;">Tutto quello che c'è da sapere prima di attivare RGandja.</p>
             </div>
 
             <div class="faq-grid">
                 <div class="faq-card">
-                    <p style="color: var(--accent-gold); font-weight: 700; font-size: 1rem; margin-bottom: 8px;">I miei dati aziendali sono al sicuro?</p>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin: 0;">Assolutamente sì. Utilizziamo standard di crittografia end-to-end rigorosi, conformi alle direttive europee sulla sicurezza dei dati industriali.</p>
+                    <p style="color: var(--accent-gold, #d4af37); font-weight: 700; font-size: 1rem; margin-bottom: 8px;">I miei dati aziendali sono al sicuro?</p>
+                    <p style="color: var(--text-muted, #94a3b8); font-size: 0.9rem; line-height: 1.6; margin: 0;">Assolutamente sì. Utilizziamo standard di crittografia end-to-end rigorosi, conformi alle direttive europee sulla sicurezza dei dati industriali.</p>
                 </div>
                 <div class="faq-card">
-                    <p style="color: var(--accent-gold); font-weight: 700; font-size: 1rem; margin-bottom: 8px;">Posso disdire il servizio quando voglio?</p>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin: 0;">Certamente. Non ci sono contratti vincolanti a lungo termine. Puoi interrompere il rinnovo e richiedere l'esportazione dei tuoi dati in un click.</p>
+                    <p style="color: var(--accent-gold, #d4af37); font-weight: 700; font-size: 1rem; margin-bottom: 8px;">Posso disdire il servizio quando voglio?</p>
+                    <p style="color: var(--text-muted, #94a3b8); font-size: 0.9rem; line-height: 1.6; margin: 0;">Certamente. Non ci sono contratti vincolanti a lungo termine. Puoi interrompere il rinnovo e richiedere l'esportazione dei tuoi dati in un click.</p>
                 </div>
             </div>
 
-            <p style="text-align: center; color: var(--text-muted); font-size: 0.78rem; margin-top: 40px; font-style: italic;">
+            <p style="text-align: center; color: var(--text-muted, #94a3b8); font-size: 0.78rem; margin-top: 40px; font-style: italic;">
                 Nota: I prezzi indicati si intendono per la commercializzazione e l'accesso ai servizi standard di analisi e ottimizzazione neurale.
             </p>
         </section>
     </main>
 
     <footer class="footer container text-center" style="padding: 50px 0;">
-        <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 35px;">
+        <hr style="border: 0; border-top: 1px solid var(--border, rgba(255,255,255,0.1)); margin-bottom: 35px;">
         <p style="color: #fff; font-weight: 700; letter-spacing: 2px; font-size: 0.95rem;">© 2026 <strong>RGANDJA NEURAL ENGINE</strong></p>
-        <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 6px;">Independent Software Development · Athens, Greece (EU)</p>
-        <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">Prestazione occasionale / Consulenza professionale con Ritenuta d'Acconto IT/UE</p>
+        <p style="font-size: 0.82rem; color: var(--text-muted, #94a3b8); margin-top: 6px;">Independent Software Development · Athens, Greece (EU)</p>
+        <p style="font-size: 0.75rem; color: var(--text-muted, #94a3b8); margin-top: 2px;">Prestazione occasionale / Consulenza professionale con Ritenuta d'Acconto IT/UE</p>
         <div style="margin-top: 25px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap;">
-            <a href="index.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Home</a>
-            <a href="privacy.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Privacy Policy</a>
-            <a href="cookies.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Cookie Policy</a>
-            <a href="contatti.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Supporto</a>
+            <a href="index.html" style="color: var(--text-muted, #94a3b8); font-size: 0.85rem; text-decoration: none;">Home</a>
+            <a href="privacy.html" style="color: var(--text-muted, #94a3b8); font-size: 0.85rem; text-decoration: none;">Privacy Policy</a>
+            <a href="cookies.html" style="color: var(--text-muted, #94a3b8); font-size: 0.85rem; text-decoration: none;">Cookie Policy</a>
+            <a href="contatti.html" style="color: var(--text-muted, #94a3b8); font-size: 0.85rem; text-decoration: none;">Supporto</a>
         </div>
     </footer>
 
@@ -307,7 +345,6 @@
             const banner = document.getElementById('cookie-banner');
             banner.style.opacity = '0';
             setTimeout(() => { banner.style.display = 'none'; }, 400);
-            localStorage.getItem('cookieConsent'); // pulizia
             localStorage.setItem('cookieConsent', 'true');
             loadGoogleAnalytics();
         }

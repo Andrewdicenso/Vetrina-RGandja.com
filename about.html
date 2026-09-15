@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <!-- Google Analytics: Caricamento condizionato al consenso privacy (GDPR / Cookie Law Compliance) -->
+    <!-- Google Tag Manager / Analytics (GDPR Consent Mode Ready) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6TTVMQFNY6"></script>
     <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied'
+        });
+
+        gtag('js', new Date());
+        gtag('config', 'G-6TTVMQFNY6', { 'anonymize_ip': true });
+
         function loadGoogleAnalytics() {
-            if (window.gaLoaded) return;
-            window.gaLoaded = true;
-
-            var script = document.createElement('script');
-            script.async = true;
-            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-6TTVMQFNY6';
-            document.head.appendChild(script);
-
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-6TTVMQFNY6');
+            if (typeof gtag === 'function') {
+                gtag('consent', 'update', {
+                    'analytics_storage': 'granted'
+                });
+            }
         }
 
         if (localStorage.getItem('cookieConsent') === 'true') {
@@ -26,6 +31,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi Siamo | RGandja Neural Engine - Decision Intelligence</title>
+    <meta name="description" content="Scopri la visione strategica e il Protocollo RGD-Alpha di RGandja. Ottimizzazione avanzata dei processi e calcolo neurale ad Atene, Grecia.">
+
+    <!-- Open Graph / Social Sharing & Brand Identity -->
+    <meta property="og:title" content="Chi Siamo | RGandja Neural Engine - Decision Intelligence">
+    <meta property="og:description" content="Scopri la visione strategica e il Protocollo RGD-Alpha di RGandja. Ottimizzazione avanzata dei processi e calcolo neurale ad Atene, Grecia.">
+    <meta property="og:image" content="https://rgandja.com/logo.webp">
+    <meta property="og:url" content="https://rgandja.com/about.html">
+    <meta property="og:type" content="website">
+
+    <!-- Dati Strutturati Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "RGandja",
+      "url": "https://rgandja.com",
+      "logo": "https://rgandja.com/logo.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Athens",
+        "addressCountry": "GR"
+      }
+    }
+    </script>
 
     <link rel="icon" type="image/webp" href="logo.webp">
     <link rel="apple-touch-icon" href="logo.webp">
@@ -36,7 +65,7 @@
         .profile-card {
             background: rgba(15, 23, 42, 0.8);
             border: 1px solid var(--border);
-            border-right: 4px solid var(--accent-gold) !important;
+            border-right: 4px solid var(--accent-gold, #d4af37) !important;
             padding: 50px;
             box-shadow: var(--shadow-premium);
             display: flex;
@@ -46,7 +75,7 @@
         }
 
         .founder-title {
-            color: var(--accent-gold);
+            color: var(--accent-gold, #d4af37);
             font-size: 0.75rem;
             font-weight: 800;
             letter-spacing: 3px;
@@ -67,7 +96,7 @@
         }
 
         .active-nav {
-            color: var(--accent-gold) !important;
+            color: var(--accent-gold, #d4af37) !important;
             font-weight: bold;
         }
 
@@ -79,12 +108,12 @@
 <body>
 
     <!-- BANNER COOKIE (COMPLIANCE GDPR) -->
-    <div id="cookie-banner">
+    <div id="cookie-banner" style="position: fixed; bottom: 25px; left: 25px; right: 25px; background: rgba(10, 14, 20, 0.98); border: 1px solid var(--accent-gold, #d4af37); padding: 25px; display: flex; justify-content: space-between; align-items: center; z-index: 10000; border-radius: 12px; backdrop-filter: blur(20px); box-shadow: 0 15px 60px rgba(0,0,0,0.8); transition: opacity 0.4s ease;">
         <p style="color: #fff; font-size: 0.9rem; margin: 0; line-height: 1.5; max-width: 75%;">
             Utilizziamo strumenti di analisi e cookie tecnici per ottimizzare l'esperienza utente.
-            Consulta la nostra <a href="cookies.html" style="color:var(--accent-gold); text-decoration: underline;">Cookie Policy</a>.
+            Consulta la nostra <a href="cookies.html" style="color:var(--accent-gold, #d4af37); text-decoration: underline;">Cookie Policy</a>.
         </p>
-        <button onclick="acceptCookies()" style="background:var(--accent-gold); border:none; padding:12px 30px; border-radius:4px; font-weight:900; cursor:pointer; font-size: 0.85rem; letter-spacing: 1px;">ACCONSENTO</button>
+        <button onclick="acceptCookies()" style="background:var(--accent-gold, #d4af37); color:#000; border:none; padding:12px 30px; border-radius:4px; font-weight:900; cursor:pointer; font-size: 0.85rem; letter-spacing: 1px;">ACCONSENTO</button>
     </div>
 
     <header class="header">
@@ -105,70 +134,70 @@
     <main>
         <section class="hero-premium">
             <div class="container text-center">
-                <span class="badge-status">STRATEGIC VISION 2026</span>
-                <h1 style="margin-top: 20px;">Oltre l'Analisi, Verso l'Efficienza</h1>
-                <p class="hero-subtitle" style="max-width: 700px; margin: 20px auto;">
+                <span class="badge-status" style="border: 1px solid var(--accent-gold, #d4af37); padding: 6px 18px; border-radius: 20px; font-size: 0.75rem; letter-spacing: 1.5px; font-weight: 800; text-transform: uppercase; color: var(--accent-gold, #d4af37); display: inline-block;">STRATEGIC VISION 2026</span>
+                <h1 style="margin-top: 20px; color: #fff;">Oltre l'Analisi, Verso l'Efficienza</h1>
+                <p class="hero-subtitle" style="max-width: 700px; margin: 20px auto; color: var(--text-muted, #94a3b8);">
                     RGandja trasforma flussi di dati complessi in percorsi decisionali chiari.
                     Uniamo esperienza industriale e tecnologie di calcolo avanzate per supportare lo sviluppo del business moderno.
                 </p>
             </div>
         </section>
 
-        <section class="section container grid-2">
+        <section class="section container grid-2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; align-items: center; padding: 60px 20px;">
             <div class="info-block">
                 <h2 style="color: #fff; font-size: 2.2rem; margin-bottom: 30px; letter-spacing: -1px;">Il Nostro Approccio</h2>
-                <p style="margin-bottom: 20px; font-size: 1.1rem; color: var(--text-muted);">
+                <p style="margin-bottom: 20px; font-size: 1.1rem; color: var(--text-muted, #94a3b8);">
                     In un panorama informativo spesso frammentato, <strong>RGANDJA NEURAL ENGINE</strong> si pone come partner per la chiarezza operativa:
-                    <span class="text-gold" style="color:var(--accent-gold); font-weight:700;">"La qualità di una decisione dipende dalla qualità del dato analizzato."</span>
+                    <span class="text-gold" style="color:var(--accent-gold, #d4af37); font-weight:700;">"La qualità di una decisione dipende dalla qualità del dato analizzato."</span>
                 </p>
-                <p style="margin-bottom: 20px; line-height: 1.8;">
+                <p style="margin-bottom: 20px; line-height: 1.8; color: var(--text-muted, #94a3b8);">
                     Il <strong>Protocollo RGD-Alpha</strong> è una metodologia di lavoro studiata per le imprese che desiderano ottimizzare le proprie risorse. Attraverso l'analisi dei flussi interni, identifichiamo i punti di forza e le aree di miglioramento, fornendo ai manager strumenti basati su evidenze oggettive e scenari predittivi affidabili.
                 </p>
-                <p style="line-height: 1.8;">
+                <p style="line-height: 1.8; color: var(--text-muted, #94a3b8);">
                     Operiamo con un'infrastruttura tecnologica situata ad <strong>Atene, Grecia (UE)</strong>, che funge da Hub di sviluppo e calcolo. Questo ci permette di gestire elaborazioni complesse garantendo elevati standard di riservatezza, sicurezza informatica e rispetto delle normative europee (GDPR) sulla protezione delle informazioni.
                 </p>
             </div>
             <div class="profile-card">
                 <span class="founder-title">Executive Philosophy</span>
                 <h3 style="font-size: 2.5rem; color: #fff; margin: 0; letter-spacing: -1px;">RGandja</h3>
-                <p style="color: var(--accent-gold); font-weight: 700; margin-bottom: 10px; text-transform: uppercase; font-size: 0.85rem; font-family: 'Fira Code', monospace;">Business Logic Architect</p>
+                <p style="color: var(--accent-gold, #d4af37); font-weight: 700; margin-bottom: 10px; text-transform: uppercase; font-size: 0.85rem; font-family: 'Fira Code', monospace;">Business Logic Architect</p>
                 <p class="quote">
                     "Il nostro impegno è fornire una visione lucida e strumenti analitici robusti, affinché ogni impresa possa affrontare la complessità dei mercati con maggiore consapevolezza e serenità operativa."
                 </p>
             </div>
         </section>
 
-        <section class="section" style="background: #050810; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+        <section class="section" style="background: rgba(5, 8, 16, 0.5); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 0;">
             <div class="container">
-                <h2 class="text-center" style="margin-bottom: 60px; color: var(--accent-gold);">Valori Fondanti del Modello RGandja</h2>
-                <div class="grid-3">
-                    <div class="card-expert text-center">
+                <h2 class="text-center" style="margin-bottom: 60px; color: var(--accent-gold, #d4af37); font-size: 2rem;">Valori Fondanti del Modello RGandja</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                    <div class="card-expert text-center" style="background: rgba(15, 23, 42, 0.6); padding: 40px; border-radius: 20px; border: 1px solid var(--border);">
                         <div style="font-size: 2.5rem; margin-bottom: 20px;">🤝</div>
                         <h3 style="color: #fff; margin-bottom: 15px;">Trasparenza</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Costruiamo percorsi logici chiari e verificabili. Ogni analisi è motivata da dati concreti per ridurre l'incertezza nella gestione dei processi.</p>
+                        <p style="color: var(--text-muted, #94a3b8); font-size: 0.95rem; line-height: 1.6;">Costruiamo percorsi logici chiari e verificabili. Ogni analisi è motivata da dati concreti per ridurre l'incertezza nella gestione dei processi.</p>
                     </div>
-                    <div class="card-expert text-center">
+                    <div class="card-expert text-center" style="background: rgba(15, 23, 42, 0.6); padding: 40px; border-radius: 20px; border: 1px solid var(--border);">
                         <div style="font-size: 2.5rem; margin-bottom: 20px;">⚡</div>
                         <h3 style="color: #fff; margin-bottom: 15px;">Ottimizzazione</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Utilizziamo sistemi di calcolo ad alte prestazioni per individuare sprechi e inefficienze, trasformandoli in nuove opportunità di crescita per l'azienda.</p>
+                        <p style="color: var(--text-muted, #94a3b8); font-size: 0.95rem; line-height: 1.6;">Utilizziamo sistemi di calcolo ad alte prestazioni per individuare sprechi e inefficienze, trasformandoli in nuove opportunità di crescita per l'azienda.</p>
                     </div>
-                    <div class="card-expert text-center">
+                    <div class="card-expert text-center" style="background: rgba(15, 23, 42, 0.6); padding: 40px; border-radius: 20px; border: 1px solid var(--border);">
                         <div style="font-size: 2.5rem; margin-bottom: 20px;">📂</div>
                         <h3 style="color: #fff; margin-bottom: 15px;">Affidabilità</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Il protocollo RGD-Alpha integra le migliori pratiche di sicurezza industriale, proteggendo la proprietà intellettuale e la privacy dei nostri partner.</p>
+                        <p style="color: var(--text-muted, #94a3b8); font-size: 0.95rem; line-height: 1.6;">Il protocollo RGD-Alpha integra le migliori pratiche di sicurezza industriale, proteggendo la proprietà intellettuale e la privacy dei nostri partner.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section container">
+        <section class="section container" style="padding: 80px 20px;">
             <div class="card-expert text-center" style="padding: 80px 40px; background: radial-gradient(circle, #0f172a 0%, #020617 100%); border: 1px solid var(--border); border-radius: 16px;">
                 <h2 style="color: #fff; font-size: 2.2rem; letter-spacing: -1px;">Supporto alla Crescita</h2>
-                <p style="max-width: 800px; margin: 30px auto; color: var(--text-muted); line-height: 1.8; font-size: 1.1rem;">
+                <p style="max-width: 800px; margin: 30px auto; color: var(--text-muted, #94a3b8); line-height: 1.8; font-size: 1.1rem;">
                     Semplifichiamo la gestione del rischio attraverso l'innovazione tecnologica. La nostra consulenza strategica aiuta le aziende a navigare il cambiamento con un metodo solido e una visione lungimirante.
                 </p>
                 <div style="margin-top: 35px;">
-                    <a class="btn btn-gold" href="contatti.html" style="background: var(--accent-gold); color: #000; padding: 14px 32px; font-weight: 800; text-decoration: none; border-radius: 4px; display: inline-block;">Richiedi Informazioni</a>
+                    <a class="btn btn-gold" href="contatti.html" style="background: var(--accent-gold, #d4af37); color: #000; padding: 14px 32px; font-weight: 800; text-decoration: none; border-radius: 4px; display: inline-block;">Richiedi Informazioni</a>
                 </div>
             </div>
         </section>
@@ -176,13 +205,15 @@
 
     <footer class="footer container text-center" style="padding: 60px 20px 40px;">
         <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
-        <p style="color: var(--text-main); font-weight: 600; letter-spacing: 1px;">© 2026 <strong>RGANDJA NEURAL ENGINE</strong> — Atene, Grecia (UE).</p>
-
-        <p style="margin-top: 25px;">
-            <a href="privacy.html" style="color: var(--text-muted); text-decoration: none; margin: 0 12px; font-size: 0.85rem;">Privacy Policy</a> |
-            <a href="cookies.html" style="color: var(--text-muted); text-decoration: none; margin: 0 12px; font-size: 0.85rem;">Cookie Policy</a> |
-            <a href="imprint.html" style="color: var(--text-muted); text-decoration: none; margin: 0 12px; font-size: 0.85rem;">Note Legali</a>
-        </p>
+        <p style="color: #fff; font-weight: 700; letter-spacing: 2px; font-size: 0.95rem;">© 2026 <strong>RGANDJA NEURAL ENGINE</strong></p>
+        <p style="font-size: 0.82rem; color: var(--text-muted, #94a3b8); margin-top: 6px;">Independent Software Development · Athens, Greece (EU)</p>
+        <p style="font-size: 0.75rem; color: var(--text-muted, #94a3b8); margin-top: 2px;">Prestazione occasionale / Consulenza professionale con Ritenuta d'Acconto IT/UE</p>
+        <div style="margin-top: 25px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap;">
+            <a href="index.html" style="color: var(--text-muted, #94a3b8); font-size: 0.85rem; text-decoration: none;">Home</a>
+            <a href="privacy.html" style="color: var(--text-muted, #94a3b8); font-size: 0.85rem; text-decoration: none;">Privacy Policy</a>
+            <a href="cookies.html" style="color: var(--text-muted, #94a3b8); font-size: 0.85rem; text-decoration: none;">Cookie Policy</a>
+            <a href="contatti.html" style="color: var(--text-muted, #94a3b8); font-size: 0.85rem; text-decoration: none;">Supporto</a>
+        </div>
     </footer>
 
     <!-- SCRIPT COOKIE CONSENT -->
@@ -192,10 +223,9 @@
             banner.style.opacity = '0';
             setTimeout(() => { banner.style.display = 'none'; }, 400);
             localStorage.setItem('cookieConsent', 'true');
-
-            // Attiva Google Analytics al click sul consenso
             loadGoogleAnalytics();
         }
+
         if (localStorage.getItem('cookieConsent') === 'true') {
             document.getElementById('cookie-banner').style.display = 'none';
         }
