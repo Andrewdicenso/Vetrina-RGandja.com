@@ -135,7 +135,7 @@
                     Effettua l'integrazione. Il resto lo facciamo noi.
                 </p>
                 <div class="cta-group" style="margin-top: 50px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                    <a href="#" onclick="openUploadModal(event)" class="btn btn-gold" style="padding: 20px 40px;">Prova Gratis — Carica il tuo File</a>
+                    <a href="main.html" class="btn btn-gold" style="padding: 20px 40px; text-decoration: none;">Prova Gratis — Carica il tuo File</a>
                 </div>
                 <p style="margin-top: 20px; font-size: 0.8rem; color: var(--text-muted, #94a3b8);">Nessuna carta di credito richiesta · Setup in 2 minuti · GDPR Compliant</p>
             </div>
@@ -265,7 +265,7 @@
                 Gratis, senza impegno, in due minuti.
             </p>
             <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                <a href="#" onclick="openUploadModal(event)" class="btn btn-gold" style="padding: 20px 40px;">Prova Gratis — Carica il tuo File</a>
+                <a href="main.html" class="btn btn-gold" style="padding: 20px 40px; text-decoration: none;">Prova Gratis — Carica il tuo File</a>
                 <a href="contatti.html" class="btn" style="border: 1px solid var(--border, rgba(255,255,255,0.1)); padding: 22px 50px; font-size: 0.9rem; color: #fff; text-decoration: none;">Parla con Noi</a>
             </div>
             <p style="margin-top: 20px; font-size: 0.8rem; color: var(--text-muted, #94a3b8);">Sede operativa ad Atene, UE · Dati protetti GDPR · Crittografia end-to-end</p>
@@ -285,36 +285,7 @@
         </div>
     </footer>
 
-    <!-- MODALE UPLOAD PROVA GRATUITA -->
-    <div id="uploadModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(2,6,23,0.85); z-index:9999; backdrop-filter:blur(8px); justify-content:center; align-items:center;">
-        <div style="background:#0f172a; border:1px solid var(--border, rgba(255,255,255,0.1)); padding:40px; border-radius:12px; max-width:500px; width:90%; position:relative; box-shadow:0 20px 50px rgba(0,0,0,0.6);">
-            <button onclick="closeUploadModal()" style="position:absolute; top:15px; right:20px; background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer;">&times;</button>
-
-            <h3 style="color:#fff; margin-bottom:10px; font-size:1.5rem;">Testa RGandja Engine</h3>
-            <p style="color:var(--text-muted, #94a3b8); font-size:0.9rem; margin-bottom:25px;">Carica i dati della tua azienda (.csv, .xlsx o .json) per avviare l'elaborazione del report.</p>
-
-            <form id="engineUploadForm">
-                <div style="border:2px dashed var(--border, rgba(255,255,255,0.2)); padding:30px; text-align:center; border-radius:8px; margin-bottom:20px; background:rgba(255,255,255,0.02);">
-                    <!-- Input File Nascosto -->
-                    <input type="file" id="fileInput" accept=".csv, .xlsx, .json" onchange="updateFileName(this)" style="display: none;" />
-
-                    <!-- Label personalizzato come Pulsante -->
-                    <label for="fileInput" style="cursor: pointer; color: var(--accent-gold, #d4af37); font-weight: 700; display: block;">
-                        📁 Seleziona File dal PC
-                    </label>
-                    <p id="fileNameDisplay" style="margin-top: 8px; font-size: 0.9rem; color: #ccc; margin-bottom: 0;">Nessun file selezionato</p>
-                </div>
-
-                <button type="submit" id="submitBtn" style="width:100%; background:var(--accent-gold, #d4af37); color:#000; border:none; padding:14px; border-radius:4px; font-weight:900; cursor:pointer; letter-spacing:1px;">
-                    AVVIA ELABORAZIONE
-                </button>
-            </form>
-
-            <div id="uploadStatus" style="margin-top:15px; text-align:center; font-size:0.9rem;"></div>
-        </div>
-    </div>
-
-    <!-- SCRIPT COOKIE CONSENT E GESTIONE UPLOAD ANALITICO -->
+    <!-- SCRIPT COOKIE CONSENT -->
     <script>
         // Consent Mode + Accettazione Cookie GDPR
         function acceptCookies() {
@@ -340,113 +311,6 @@
                 });
             }
         }
-
-        // GESTIONE MODALE E TRACCIAMENTO EVENTI
-        function openUploadModal(e) {
-            if(e) e.preventDefault();
-            document.getElementById('uploadModal').style.display = 'flex';
-
-            // Log Evento GA4
-            if (typeof gtag === 'function') {
-                gtag('event', 'open_upload_modal', {
-                    'event_category': 'Engagement',
-                    'event_label': 'Hero/CTA Upload Button'
-                });
-            }
-        }
-
-        function closeUploadModal() {
-            document.getElementById('uploadModal').style.display = 'none';
-        }
-
-        function updateFileName(input) {
-            const nameDisplay = document.getElementById('fileNameDisplay');
-            const file = input.files[0];
-            nameDisplay.innerText = file ? file.name : 'Nessun file selezionato';
-
-            if (file && typeof gtag === 'function') {
-                const ext = file.name.split('.').pop().toLowerCase();
-                gtag('event', 'file_selected', {
-                    'event_category': 'Upload',
-                    'file_extension': ext
-                });
-            }
-        }
-
-        // GESTIONE SUBMIT FORM & ELABORAZIONE BACKEND CLOUD RUN
-        document.getElementById('engineUploadForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            const fileInput = document.getElementById('fileInput');
-            const statusDiv = document.getElementById('uploadStatus');
-            const submitBtn = document.getElementById('submitBtn');
-
-            if (!fileInput.files.length) {
-                statusDiv.style.color = '#f87171';
-                statusDiv.innerText = 'Seleziona prima un file prima di avviare.';
-                return;
-            }
-
-            const file = fileInput.files[0];
-            const formData = new FormData();
-            formData.append('file', file);
-
-            statusDiv.style.color = 'var(--accent-gold, #d4af37)';
-            statusDiv.innerText = 'Elaborazione in corso da parte del Neural Engine...';
-            submitBtn.disabled = true;
-
-            // Log Evento Avvio Upload GA4
-            if (typeof gtag === 'function') {
-                gtag('event', 'file_upload_start', {
-                    'event_category': 'Upload',
-                    'file_name': file.name,
-                    'file_size': file.size
-                });
-            }
-
-            try {
-                const response = await fetch('https://demo-1036951183544.europe-west1.run.app/api/v1/analyze', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    statusDiv.style.color = '#4ade80';
-                    statusDiv.innerText = 'Elaborazione completata con successo! Reindirizzamento...';
-
-                    // Salviamo il risultato per il backend della dashboard main.html
-                    sessionStorage.setItem('rgd_last_analysis', JSON.stringify(data));
-
-                    if (typeof gtag === 'function') {
-                        gtag('event', 'file_upload_success', {
-                            'event_category': 'Upload',
-                            'status': 'Success'
-                        });
-                    }
-
-                    // Reindirizzamento automatico alla dashboard/main.html dopo 1.5s
-                    setTimeout(() => {
-                        window.location.href = 'main.html';
-                    }, 1500);
-                } else {
-                    const errorData = await response.json().catch(() => ({}));
-                    throw new Error(errorData.detail || `Risposta server non valida (HTTP ${response.status})`);
-                }
-            } catch (error) {
-                statusDiv.style.color = '#f87171';
-                statusDiv.innerText = `Errore: ${error.message || 'Connessione al server di analisi fallita.'}`;
-
-                if (typeof gtag === 'function') {
-                    gtag('event', 'file_upload_error', {
-                        'event_category': 'Upload',
-                        'error_message': error.message
-                    });
-                }
-            } finally {
-                submitBtn.disabled = false;
-            }
-        });
     </script>
 </body>
 </html>
