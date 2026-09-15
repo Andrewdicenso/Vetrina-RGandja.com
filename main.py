@@ -1,7 +1,7 @@
 """
 RGANDJA NEURAL ENGINE - ENTERPRISE CORE MODULE & API
 Architect: Andrew Di Censo & AI Master Integration
-Version: 6.4.1 - Production Ready Architecture (Unified FastAPI)
+Version: 6.4.2 - Production Ready Architecture (Type-Safe FastAPI)
 """
 
 import io
@@ -31,7 +31,7 @@ logger = logging.getLogger("RGandjaEngine")
 # --------------------------------------------------------------------------
 app = FastAPI(
     title="RGandja Neural Engine API",
-    version="6.4.1",
+    version="6.4.2",
     description="Engine backend enterprise per l'analisi predittiva e l'ottimizzazione del magazzino.",
     docs_url="/api/docs",
     redoc_url="/api/redoc",
@@ -123,7 +123,8 @@ class InventoryPredictiveEngine:
     async def process_dataset(
         cls, file: UploadFile, content: bytes
     ) -> dict[str, object]:
-        ext = os.path.splitext(file.filename)[1].lower()
+        filename = file.filename or "dataset.csv"
+        ext = os.path.splitext(filename)[1].lower()
 
         try:
             if ext == ".csv":
@@ -140,7 +141,7 @@ class InventoryPredictiveEngine:
             pd.errors.EmptyDataError,
             pd.errors.ParserError,
         ) as e:
-            logger.error(f"Errore nella lettura del file {file.filename}: {e}")
+            logger.error(f"Errore nella lettura del file {filename}: {e}")
             raise HTTPException(
                 status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
                 detail="Impossibile leggere la struttura del file. Assicurati che il formato sia corretto.",
@@ -173,9 +174,9 @@ class InventoryPredictiveEngine:
                 total_capital_at_risk = float(total_rows * 170.25)
 
         # Mappatura dinamica delle metriche basata sul contenuto effettivo del file
-        metrics_result = []
-        for index, row in df.head(20).iterrows():
-            sku_val = str(row.iloc[0]) if len(df.columns) > 0 else f"SKU-{index + 1000}"
+        metrics_result: list[InventoryMetric] = []
+        for i, (_, row) in enumerate(df.head(20).iterrows()):
+            sku_val = str(row.iloc[0]) if len(df.columns) > 0 else f"SKU-{i + 1000}"
             desc_val = str(row.iloc[1]) if len(df.columns) > 1 else "Componente Dataset"
 
             stock_val = int(
@@ -187,7 +188,7 @@ class InventoryPredictiveEngine:
             cost_val = (
                 float(row.get(cost_col, row.get("costo", 100.0)))
                 if cost_col
-                else float((index + 1) * 75.5)
+                else float((i + 1) * 75.5)
             )
             reorder_val = int(
                 row.get("recommended_reorder_qty", row.get("riordino", 50))
@@ -209,11 +210,11 @@ class InventoryPredictiveEngine:
         )
 
         return {
-            "processed_records": total_rows,
-            "total_capital_at_risk": round(total_capital_at_risk, 2),
-            "high_risk_items_count": high_risk_count
-            if high_risk_count > 0
-            else len(metrics_result),
+            "processed_records": int(total_rows),
+            "total_capital_at_risk": float(round(total_capital_at_risk, 2)),
+            "high_risk_items_count": int(
+                high_risk_count if high_risk_count > 0 else len(metrics_result)
+            ),
             "metrics": metrics_result,
         }
 
@@ -226,7 +227,7 @@ async def health_check():
     return HealthStatus(
         status="healthy",
         uptime_seconds=round(time.time() - START_TIME, 2),
-        version="6.4.1",
+        version="6.4.2",
     )
 
 
@@ -320,25 +321,26 @@ async def analyze_file(
 ):
     start_time = time.time()
     file_bytes = await file.read()
+    filename = file.filename or "dataset.csv"
 
-    InventoryPredictiveEngine.validate_file(file.filename, file_bytes)
+    InventoryPredictiveEngine.validate_file(filename, file_bytes)
     analysis_data = await InventoryPredictiveEngine.process_dataset(file, file_bytes)
 
     execution_time = (time.time() - start_time) * 1000
 
     background_tasks.add_task(
-        logger.info, f"Elaborato file {file.filename} in {execution_time:.2f}ms"
+        logger.info, f"Elaborato file {filename} in {execution_time:.2f}ms"
     )
 
     return AnalysisReportResponse(
         job_id=f"JOB-{int(time.time())}",
-        filename=file.filename,
-        processed_records=analysis_data["processed_records"],
-        total_capital_at_risk=analysis_data["total_capital_at_risk"],
-        high_risk_items_count=analysis_data["high_risk_items_count"],
-        metrics=analysis_data["metrics"],
+        filename=filename,
+        processed_records=int(str(analysis_data["processed_records"])),
+        total_capital_at_risk=float(str(analysis_data["total_capital_at_risk"])),
+        high_risk_items_count=int(str(analysis_data["high_risk_items_count"])),
+        metrics=list(analysis_data["metrics"]),  # type: ignore
         execution_time_ms=round(execution_time, 2),
-        message=f"File '{file.filename}' analizzato con successo.",
+        message=f"File '{filename}' analizzato con successo.",
     )
 
 
