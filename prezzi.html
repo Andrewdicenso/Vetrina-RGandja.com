@@ -60,7 +60,7 @@
             grid-template-columns: 1.1fr 0.9fr;
             gap: 50px;
             align-items: center;
-            margin: 40px 0 80px 0;
+            margin: 40px 0 60px 0;
         }
 
         @media(max-width: 968px) {
@@ -186,6 +186,11 @@
             box-shadow: 0 15px 60px rgba(0,0,0,0.8);
             transition: opacity 0.4s ease;
         }
+
+        .active-nav {
+            color: var(--accent-gold, #d4af37) !important;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -216,7 +221,7 @@
 
     <main class="container">
         <!-- SPLIT HERO & PRICING SECTION -->
-        <section style="padding: 40px 0 20px 0;">
+        <section style="padding: 40px 0 10px 0;">
             <div class="pricing-hero-grid">
                 <!-- Colonna Sinistra: Valore e Messaggio Strategico -->
                 <div>
@@ -266,6 +271,24 @@
 
                         <a href="contatti.html" class="btn-cta-modern">Richiedi Attivazione Immediata</a>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BARRA RAPIDA COMPATIBILITÀ ERP -->
+        <section style="background: rgba(15, 23, 42, 0.4); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 25px 0; margin-bottom: 40px;">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-gold, #d4af37); font-weight: 800;">Compatibile con i tuoi sistemi:</span>
+                <div style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap; font-size: 0.9rem; color: #94a3b8; font-weight: 600;">
+                    <span>SAP S/4HANA</span>
+                    <span>·</span>
+                    <span>Microsoft Dynamics</span>
+                    <span>·</span>
+                    <span>TeamSystem</span>
+                    <span>·</span>
+                    <span>Zucchetti</span>
+                    <span>·</span>
+                    <span>Shopify & WMS</span>
                 </div>
             </div>
         </section>

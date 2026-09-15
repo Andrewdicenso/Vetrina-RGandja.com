@@ -7,7 +7,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){ dataLayer.push(arguments); }
 
-        // Impostazione predefinita GDPR: tracciamento analitico negato finché non c'è consenso
         gtag('consent', 'default', {
             'analytics_storage': 'denied',
             'ad_storage': 'denied'
@@ -61,7 +60,7 @@
             display: inline-block;
         }
         .text-center { text-align: center; }
-        .hero-premium { padding: 100px 0; }
+        .hero-premium { padding: 100px 0 60px 0; }
         .feature-list { list-style: none; padding: 0; margin-top: 20px; }
         .feature-list li { margin-bottom: 12px; color: var(--text-muted, #94a3b8); display: flex; align-items: center; gap: 10px; }
         .feature-list li::before { content: "✦"; color: var(--accent-gold, #d4af37); }
@@ -138,6 +137,24 @@
                     <a href="main.html" class="btn btn-gold" style="padding: 20px 40px; text-decoration: none;">Prova Gratis — Carica il tuo File</a>
                 </div>
                 <p style="margin-top: 20px; font-size: 0.8rem; color: var(--text-muted, #94a3b8);">Nessuna carta di credito richiesta · Setup in 2 minuti · GDPR Compliant</p>
+            </div>
+        </section>
+
+        <!-- ✨ NUOVA BARRA RAPIDA COMPATIBILITÀ ERP (SUBITO SOTTO LA HERO) -->
+        <section style="background: rgba(15, 23, 42, 0.4); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 25px 0;">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-gold, #d4af37); font-weight: 800;">Compatibile con i tuoi sistemi:</span>
+                <div style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap; font-size: 0.9rem; color: #94a3b8; font-weight: 600;">
+                    <span>SAP S/4HANA</span>
+                    <span>·</span>
+                    <span>Microsoft Dynamics</span>
+                    <span>·</span>
+                    <span>TeamSystem</span>
+                    <span>·</span>
+                    <span>Zucchetti</span>
+                    <span>·</span>
+                    <span>Shopify & WMS</span>
+                </div>
             </div>
         </section>
 
@@ -257,6 +274,35 @@
             </div>
         </section>
 
+        <!-- SEZIONE STRATEGICA: APPROFONDIMENTO GESTIONALI ED ERP (IN BASSO) -->
+        <section class="section container" style="padding: 80px 0;">
+            <div style="border-left: 3px solid var(--accent-gold, #d4af37); padding-left: 1.5rem; margin-bottom: 2rem;">
+                <span style="font-family: 'Fira Code', monospace; color: var(--accent-gold, #d4af37); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;">Enterprise Architecture</span>
+                <h2 style="font-size: 2rem; margin-top: 0.5rem; font-weight: 700; color: #fff;">Integrazione Universale con i Principali ERP</h2>
+            </div>
+
+            <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem; color: #cbd5e1;">
+                RGandja Neural Engine è progettato per integrarsi fluidamente con l'infrastruttura IT esistente della tua azienda. Grazie a standard API avanzati e flussi dati ottimizzati, il nostro motore dialoga con i principali sistemi gestionali sul mercato:
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(212, 175, 55, 0.2); padding: 1.5rem; border-radius: 8px;">
+                    <h3 style="color: var(--accent-gold, #d4af37); font-size: 1.1rem; margin-bottom: 0.75rem; font-family: 'Fira Code', monospace;">[ERP Enterprise]</h3>
+                    <p style="font-size: 0.95rem; color: #94a3b8; line-height: 1.5;">Compatibile con ecosistemi complessi come SAP S/4HANA, Microsoft Dynamics 365 e Oracle Cloud ERP.</p>
+                </div>
+
+                <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(212, 175, 55, 0.2); padding: 1.5rem; border-radius: 8px;">
+                    <h3 style="color: var(--accent-gold, #d4af37); font-size: 1.1rem; margin-bottom: 0.75rem; font-family: 'Fira Code', monospace;">[Soluzioni Nazionali]</h3>
+                    <p style="font-size: 0.95rem; color: #94a3b8; line-height: 1.5;">Integrazioni mirate per software gestionali ampiamente diffusi nelle PMI italiane come TeamSystem, Zucchetti e Passepartout.</p>
+                </div>
+
+                <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(212, 175, 55, 0.2); padding: 1.5rem; border-radius: 8px;">
+                    <h3 style="color: var(--accent-gold, #d4af37); font-size: 1.1rem; margin-bottom: 0.75rem; font-family: 'Fira Code', monospace;">[E-Commerce & WMS]</h3>
+                    <p style="font-size: 0.95rem; color: #94a3b8; line-height: 1.5;">Connessione nativa con piattaforme e-commerce (Shopify, WooCommerce) e sistemi di gestione magazzino dedicati.</p>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer class="footer container text-center" style="padding: 60px 0;">
@@ -275,14 +321,12 @@
 
     <!-- SCRIPT COOKIE CONSENT -->
     <script>
-        // Consent Mode + Accettazione Cookie GDPR
         function acceptCookies() {
             const banner = document.getElementById('cookie-banner');
             banner.style.opacity = '0';
             setTimeout(() => { banner.style.display = 'none'; }, 400);
             localStorage.setItem('cookieConsent', 'true');
 
-            // Aggiorna consenso Google Analytics
             if (typeof gtag === 'function') {
                 gtag('consent', 'update', {
                     'analytics_storage': 'granted'
